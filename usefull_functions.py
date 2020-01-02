@@ -141,7 +141,7 @@ try:
 	"""
 #operacje na plikach
 
-	myfile=open("myfile.txt","rw") 
+	myfile=open("myfile.txt","r") 
 	#metody: r-odczyt w-zapis od zera a-dodawanie do koncowki pliku b-binarnie [+]-jezeli pliku nie ma utworzyc rw+- odczyt,zapis,a jezeli brak utwórz
 
 	content=myfile.read() 
@@ -152,7 +152,7 @@ try:
 	
 	for line in myfile: #przechodzi po wszystkich linijkach
     	 print(line)
-	file.write("This has been written to a file")
+	myfile.write("This has been written to a file")
 	#This has been written to a file
 
 	msg = "Hello world!"
