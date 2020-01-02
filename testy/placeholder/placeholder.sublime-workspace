@@ -1,0 +1,304 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pri",
+				"print\tfunction ⟠"
+			],
+			[
+				"file",
+				"file\tTextIOWrapper | file ⟠"
+			],
+			[
+				"re",
+				"readlines(…)\tfunction ⟠"
+			],
+			[
+				"as",
+				"AssertionError\ttype ⟠"
+			],
+			[
+				"mem",
+				"MemoryError(…)\ttype ⟠"
+			],
+			[
+				"ex",
+				"except \tkeyword ⟠"
+			],
+			[
+				"ty",
+				"TypeError(…)\ttype ⟠"
+			],
+			[
+				"fro",
+				"from \tkeyword ⟠"
+			],
+			[
+				"fo",
+				"for \tkeyword ⟠"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+		[
+			[
+				[
+					"Packages/Python/Python.sublime-build",
+					""
+				],
+				[
+					"Packages/Python/Python.sublime-build",
+					"Syntax Check"
+				]
+			],
+			[
+				"Packages/Python/Python.sublime-build",
+				""
+			]
+		]
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"termina",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"terminus",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"ter",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"terminus ",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"subl",
+				"SublimeREPL: Clojure"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"preferences: ",
+				"Preferences: Terminus Key Bindings"
+			],
+			[
+				"preferences",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"terminus dwe",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"termin",
+				"Terminus: Reset"
+			],
+			[
+				"",
+				"Build With: Python - Syntax Check"
+			],
+			[
+				"ddd",
+				"Project: Add Folder"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 157.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/H/sublime/test1/placeholder"
+	],
+	"file_history":
+	[
+		"/H/sublime/test1/placeholder/placeholder.py",
+		"/H/sublime/usefull_functions.py",
+		"/H/sublime/test1/placeholder/test.py",
+		"/H/sublime/usefull string functions.py",
+		"/H/sublime/test1/placeholder/placeholder.sublime-project",
+		"/H/sublime/test1/ciag/drugi.py",
+		"/H/sublime/test1/ciag/ciag_fibonacciego.py",
+		"/H/sublime/test1/ciag/ciag_fibo.sublime-project",
+		"/H/sublime/test1/__pycache__/ciag_fibonacciego.py",
+		"/H/sublime/test1/__pycache__/ciag_fibo.sublime-project",
+		"/H/sublime/test1/__pycache__/ss.sublime-project",
+		"/H/sublime/test1/ciag_fibonacciego.py",
+		"/C/Users/oumas/AppData/Local/Temp/kite_tutorial.py"
+	],
+	"find":
+	{
+		"height": 29.0
+	},
+	"find_in_files":
+	{
+		"height": 107.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"kluczami",
+			"nums",
+			" \"))",
+			"okno",
+			"\"\n",
+			"\")"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"list",
+			"window"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 29.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.Terminus":
+	{
+		"height": 138.0
+	},
+	"output.Terminus 2":
+	{
+		"height": 138.0
+	},
+	"output.exec":
+	{
+		"height": 301.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Python/Python.sublime-build",
+	"project": "placeholder.sublime-project",
+	"replace":
+	{
+		"height": 54.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 121.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
