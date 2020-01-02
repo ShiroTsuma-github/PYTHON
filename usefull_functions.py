@@ -151,7 +151,7 @@ try:
 	# przy podaniu print(file.readlines(3)) wydrukuje 3 linijke
 	
 	for line in myfile: #przechodzi po wszystkich linijkach
-    print(line)
+    	print(line)
 
 	file.write("This has been written to a file")
 	#This has been written to a file
@@ -173,7 +173,7 @@ try:
 	finally:
     	f.close()
 
-    with open("filename.txt") as f: 
+    with open("filename.txt") as f:
    		print(f.read())
 		#szybsza metoda,ale nie pozwala w porownaniu z [try:] w korzystaniu z danych w innym bloku danych,oraz po zakonczeniu od razu zamyka plik
 
