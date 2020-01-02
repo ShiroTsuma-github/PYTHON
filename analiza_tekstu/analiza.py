@@ -5,10 +5,10 @@ alphabet=('q','w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h
 )
 lacznie=0
 def sciezka(nazwa):
-    script_dir = os.path.dirname(__file__)
-    rel_path =nazwa
-    abs_file_path = os.path.join(script_dir, rel_path)
-    return abs_file_path
+    sciezka_do_folderu = os.path.dirname(__file__)
+    sciezka_z_folderu_do_pliku =nazwa
+    pelna_sciezka = os.path.join(sciezka_do_folderu, sciezka_z_folderu_do_pliku)
+    return pelna_sciezka
 def liczenie_char(text,char):
     count=0
     for i in text:
