@@ -1,13 +1,24 @@
 import os
 
-nazwa=input("Podaj nazwe pliku: ")
+def sciezka(nazwa):
+    script_dir = os.path.dirname(__file__)
+    rel_path =nazwa
+    abs_file_path = os.path.join(script_dir, rel_path)
+    return abs_file_path
 
-script_dir = os.path.dirname(__file__)
-rel_path =nazwa
-abs_file_path = os.path.join(script_dir, rel_path)
+def liczenie_char(text,char):
+    count=0
+    for i in text:
+        if c==char:
+            count+=1
+            return count
+try:
+    nazwa=input("Podaj nazwe pliku: ")
+    file=open(sciezka(nazwa),"r")
+    text=file.read()
+    print(liczenie_char(text,"a"))
 
 
-file=open(abs_file_path,"r")
-print(file.read())
-file.close()
+finally:
+    file.close()
 
