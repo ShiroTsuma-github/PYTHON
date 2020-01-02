@@ -151,8 +151,7 @@ try:
 	# przy podaniu print(file.readlines(3)) wydrukuje 3 linijke
 	
 	for line in myfile: #przechodzi po wszystkich linijkach
-    	print(line)
-
+    	 print(line)
 	file.write("This has been written to a file")
 	#This has been written to a file
 
@@ -163,36 +162,33 @@ try:
 
 	myfile.close() 
 	#na koniec trzeba zawsze zamknac plik
-
-	try: #metoda ta zapobiega zapomnieciu o zamknieciu pliku przez nas i zapobiega błędom
-    	f = open("filename.txt")
-    	print(f.read())
-	except FileNotFoundError: #w przypdaku braku pliku lub folderu nie zamyka od razu programu
-    	print("No such file or directory")
-    	f = open(__file__, "r") #open itself
-	finally:
-    	f.close()
-
-    with open("filename.txt") as f:
-   		print(f.read())
-		#szybsza metoda,ale nie pozwala w porownaniu z [try:] w korzystaniu z danych w innym bloku danych,oraz po zakonczeniu od razu zamyka plik
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 except:
 	pass
+
+try: #metoda ta zapobiega zapomnieciu o zamknieciu pliku przez nas i zapobiega błędom
+    f = open("filename.txt")
+    print(f.read())
+except FileNotFoundError(): #w przypdaku braku pliku lub folderu nie zamyka od razu programu
+    print("No such file or directory")
+    f = open(__file__, "r") #open itself
+finally:
+    f.close()
+with open("filename.txt") as f:
+   	print(f.read())
+#szybsza metoda,ale nie pozwala w porownaniu z [try:] w korzystaniu z danych w innym bloku danych,oraz po zakonczeniu od razu zamyka plik
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
