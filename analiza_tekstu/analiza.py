@@ -1,7 +1,7 @@
 import os
 alphabet=('q','w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h','j',
 'k','l',';',':','{','}','"',"'",'|','z','x','c','v','b','n','m',',','<','.','>','?','/',
-'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','(',')','-','_','=','+',' ','~','0'
+'1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','(',')','-','_','=','+',' ','~','0',
 )
 lacznie=0
 def sciezka(nazwa):
@@ -42,7 +42,8 @@ def wyrazy(text):
 try:
     nazwa=input("Podaj nazwe pliku: ")
     file=open(sciezka(nazwa),"r")
-    text=file.read()
+    text_sub=file.read()
+    text=text_sub.lower()
     
     for i in range(0,len(alphabet)):
         char=alphabet[i]
