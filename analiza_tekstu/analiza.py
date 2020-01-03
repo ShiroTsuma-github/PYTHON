@@ -26,13 +26,8 @@ def wyrazy(text):
         if i != " ":          
             temp.append(str(i))
         else:
-            """
-            f=open("test.txt","a+")
-            f.write(str(temp))
-            f.close
-            """
             wyraz=("".join(temp))
-            wyrazy[count]=wyraz #wystepuje problem,ze nie chce wpisywac,wiec robie droga na okolo***naprawione przez uzycie innej zmiennej
+            wyrazy[count]=wyraz
             count+=1
             temp.clear()
     return wyrazy
