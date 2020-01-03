@@ -43,6 +43,8 @@ try:
 	#42
 	print(sum([1, 2, 3, 4, 5])) #wyswietla sume liczb
 	#15
+	print(round(4.853444,2)) #zaokragla do liczby miejsc po przecinku podanej
+	#4.85
 
 
 #(MI ZNANE(xD))TYPY STRUKTUR
