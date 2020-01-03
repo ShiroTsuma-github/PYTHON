@@ -32,15 +32,13 @@ def wyrazy(text):
             temp.clear()
     return wyrazy
     
-    
-
-
 try:
     nazwa=input("Podaj nazwe pliku: ")
     file=open(sciezka(nazwa),"r")
     text_sub=file.read()
     text=text_sub.lower()
     print(wyrazy(text),"\n")
+    
     for i in range(0,len(alphabet)):
         char=alphabet[i]
         temp=liczenie_char(text,char)
@@ -61,7 +59,7 @@ try:
     try:
         assert sproc>99,8
     except AssertionError:
-        print("There occured an error")
+        print("There occured an error with integrity of data")
     
         
     
