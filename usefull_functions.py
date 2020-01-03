@@ -137,8 +137,26 @@ try:
 	def my_func(f, arg):
   		return f(arg)
 
-	my_func(lambda x: 2*x*x, 5)
+	my_func(lambda x: 2*x*x, 5) #uzywa sie do operacji na jednej linijce,gdy nie chcemy wczesniej okreslac zmiennej
 
+	nums = [11, 22, 33, 44, 55]
+
+	result = list(map(lambda x: x+5, nums)) #funkcja map bierze obiekty z listy i dla kazdego z nich uzywa funkcje
+	print(result)
+	#[16, 27, 38, 49, 60]
+ 	def add_five(x):
+ 		return x + 5
+
+	nums = [11, 22, 33, 44, 55] #to samo
+	result = list(map(add_five, nums))
+	print(result)
+ 	#[16, 27, 38, 49, 60]
+  
+  
+ 	nums = [11, 22, 33, 44, 55]
+	res = list(filter(lambda x: x%2==0, nums)) #usuwa wszystkie obiekty nie spelniajace warunku
+	print(res)
+	#[22, 44]
 
 	"""
 
