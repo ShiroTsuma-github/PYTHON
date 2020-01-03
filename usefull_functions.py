@@ -129,11 +129,15 @@ try:
 	cubes = [i**3 for i in range(5)] #liczby w przedziale 0-4 do potegi 3
 	print(cubes)
 	#[0, 1, 8, 27, 64]
-	evens=[i**2 for i in range(10) if i**2 % 2 == 0] #liczby w przedziale 0-9 do kwadratu,ktore sa parzyste
-	print(evens)
+	evens=[i**2 for i in range(10) if i**2 % 2 == 0] #liczby w przedziale 0-9 do kwadratu,ktore sa parzyste 
+	print(evens) 
 	#[0, 4, 16, 36, 64]
 
+	#LAMBDA ETC
+	def my_func(f, arg):
+  		return f(arg)
 
+	my_func(lambda x: 2*x*x, 5)
 
 
 	"""
