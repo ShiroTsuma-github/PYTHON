@@ -106,6 +106,12 @@ try:
 	None
 	print(None)
 	#None
+ 
+	a = ('John', 'Charles', 'Mike')
+	b = ('Jenny', 'Christy', 'Monica')
+	x = zip(a, b)  #funkcja zip() tworzy tuple w ktorej obiekt i jest rowny obiektom i z kazdego z argumentow
+	#use the tuple() function to display a readable version of the result:
+	print(tuple(x))
 
 	#LIST SLICES pozwalaja dokladniej wprowadzac jaki zakres danych chcemy pozyskac
 	squares = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
@@ -144,8 +150,8 @@ try:
 	result = list(map(lambda x: x+5, nums)) #funkcja map bierze obiekty z listy i dla kazdego z nich uzywa funkcje
 	print(result)
 	#[16, 27, 38, 49, 60]
- 	def add_five(x):
- 		return x + 5
+	def add_five(x):
+    	 return x+5
 
 	nums = [11, 22, 33, 44, 55] #to samo
 	result = list(map(add_five, nums))
@@ -153,10 +159,20 @@ try:
  	#[16, 27, 38, 49, 60]
   
   
- 	nums = [11, 22, 33, 44, 55]
+	nums=[11,22,33,44]
 	res = list(filter(lambda x: x%2==0, nums)) #usuwa wszystkie obiekty nie spelniajace warunku
 	print(res)
 	#[22, 44]
+ 
+	#YIELD I GENERATORY
+	def countdown():
+  		i=5
+  		while i > 0:
+    		 yield i #zwraca wartosc z funkcji generatora
+    		 i -= 1
+    
+	for i in countdown():
+  		print(i)
 
 	"""
 
@@ -192,12 +208,12 @@ except:
 try: #metoda ta zapobiega zapomnieciu o zamknieciu pliku przez nas i zapobiega błędom
     f = open("filename.txt")
     print(f.read())
-except FileNotFoundError(): #w przypdaku braku pliku lub folderu nie zamyka od razu programu
-    print("No such file or directory")
+except FileNotFoundError: #w przypdaku braku pliku lub folderu nie zamyka od razu programu
+    print("Welp")
     f = open(__file__, "r") #open itself
 finally:
     f.close()
-with open("filename.txt") as f:
+with open(__file__) as f:
    	print(f.read())
 #szybsza metoda,ale nie pozwala w porownaniu z [try:] w korzystaniu z danych w innym bloku danych,oraz po zakonczeniu od razu zamyka plik
 
