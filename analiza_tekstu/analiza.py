@@ -3,6 +3,7 @@ alphabet=('q','w','e','r','t','y','u','i','o','p','[',']','a','s','d','f','g','h
 'k','l',';',':','{','}','"',"'",'|','z','x','c','v','b','n','m',',','<','.','>','?','/',
 '1','!','2','@','3','#','4','$','5','%','6','^','7','&','8','*','9','(',')','-','_','=','+',' ','~','0',
 )
+litery_temp=[]
 lacznie=0
 def sciezka(nazwa):
     sciezka_do_folderu = os.path.dirname(__file__)
@@ -31,7 +32,7 @@ def wyrazy(text):
             f.close
             """
             wyraz=("".join(temp))
-            wyrazy[count]=wyraz #wystepuje problem,ze nie chce wpisywac,wiec robie droga na okolo
+            wyrazy[count]=wyraz #wystepuje problem,ze nie chce wpisywac,wiec robie droga na okolo***naprawione przez uzycie innej zmiennej
             count+=1
             temp.clear()
     return wyrazy
@@ -44,16 +45,31 @@ try:
     file=open(sciezka(nazwa),"r")
     text_sub=file.read()
     text=text_sub.lower()
-    
+    print(wyrazy(text),"\n")
     for i in range(0,len(alphabet)):
         char=alphabet[i]
         temp=liczenie_char(text,char)
         lacznie=lacznie+temp
-        print("Dla znaku "+str(alphabet[i])+" ",temp)
+        litery_temp.append(temp)
+        print(str(alphabet[i])+": "+str(temp))
     
-    print("Laczna ilosc: "+ str(lacznie))
+    print("Laczna ilosc: "+ str(lacznie),"\n")
+    sproc=0
+    for i in range(0,len(alphabet)):
+        try:
+            proc=round(litery_temp[i]*100/lacznie,2)
+        except ZeroDivisionError:
+            proc=0
+        finally:
+            sproc=sproc+proc
+            print(str(alphabet[i])+": "+str(proc),"%")
+    try:
+        assert sproc>99,8
+    except AssertionError:
+        print("There occured an error")
     
-    print(wyrazy(text))
+        
+    
 except:
     raise 
 
