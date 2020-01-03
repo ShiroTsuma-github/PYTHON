@@ -1,4 +1,4 @@
-from os import  system,name,
+from os import  system,name
 from  time import  sleep
 
 def clear():
