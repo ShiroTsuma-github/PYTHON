@@ -1,16 +1,20 @@
 try:
     def is_prime(num):
-        #tab=[x for x in range(1,num+1)]
         count=0
-        for i in range(1,num+1):
-            if num%i==0:
-                count+=1
-            if count>2:
-                break
-        if count<=2:
-            return num
-        else:
+        if num%2==0 and num>2:
             pass
+        else:
+            #tab2=[x for x in range(1,num+1)]
+            #tab=list(filter(lambda x: x%2,tab2))
+            for i in range(1,num+1):
+                if num%i==0:
+                    count+=1
+                if count>2:
+                    break
+            if count<=2:
+                return num
+            else:
+                pass
                 
     
     def get_primes():
