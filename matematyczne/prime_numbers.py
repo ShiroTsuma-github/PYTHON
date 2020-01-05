@@ -1,17 +1,20 @@
+from time import sleep
 try:
+    tab=[]
     def is_prime(num):
         count=0
         if num%2==0 and num>2:
             pass
         else:
+            tab.append(num)
             #tab2=[x for x in range(1,num+1)]
             #tab=list(filter(lambda x: x%2,tab2))
-            for i in range(1,num+1):
+            for i in tab: #range(1,num+1):
                 if num%i==0:
                     count+=1
                 if count>2:
                     break
-            if count<=2:
+            if count==2:
                 return num
             else:
                 pass
@@ -30,6 +33,10 @@ try:
             print("welp")
 
     for i in get_primes():
+        sleep(1)
         print(i)
 except:
     pass
+finally:
+    print("\n \n \n  \n \n \n \n")
+    print(tab)
