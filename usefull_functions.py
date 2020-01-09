@@ -217,7 +217,26 @@ with open(__file__) as f:
    	print(f.read())
 #szybsza metoda,ale nie pozwala w porownaniu z [try:] w korzystaniu z danych w innym bloku danych,oraz po zakonczeniu od razu zamyka plik
 
+import _thread
+from time import sleep,ctime
+# Define a function for the thread
+def print_time(thread,delay):
+   count = 0
+   while count < 5:
+      sleep(delay)
+      count += 1
+      print (count)
+								#multithreading funkcja odwolywac podajac nazwe threadu i opoznienie. Model napisany
+# Create two threads as follows
+try:
+   _thread.start_new_thread(print_time,("Thread-1",1))
+   _thread.start_new_thread(print_time,("Thread-2",1))
+   _thread.start_new_thread(print_time,("Thread-3",1))
+except:
+   raise
 
+while 1:
+   pass
 
 
 
