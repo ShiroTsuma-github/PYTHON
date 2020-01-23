@@ -153,22 +153,27 @@ class color_convert():
             res = attr('reset')
             print(color+"       "+res+": "+ word)
     def RGB(self,red,green,blue): return '#%02x%02x%02x' % (red,green,blue)
-    def convert_single(self,to_conv): return '#%02x' % (to_conv)
+    def convert_single_channel(self,to_conv): return '#%02x' % (to_conv)
     def convert(self,input):
         if self.color_hex:
             return self.basic_colors.get(input)[1]
 
         else:
             return self.basic_colors.get(input)[0]
-    def full_random_color(self):
+    def full_random_color(self): #in pygame it makes color change all the time if inside loop
         temp=[[],[]]
         for i in range(3):
             randint=random.randint(0,255)
             temp[0].append(randint)
             if i==0:
-                temp[1].append(self.convert_single(randint))
+                temp[1].append(self.convert_single_channel(randint))
             else:
                 def conv(to_conv): return '%02x' % (to_conv)
                 temp[1].append(conv(randint)) 
-        final=[temp[0],("".join(temp[1]))]
+        if self.color_hex:
+            final=("".join(temp[1]))
+        else:
+            final=temp[0]
         return final
+#kolor=color_convert()
+#kolor.show_colors()
