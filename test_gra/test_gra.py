@@ -1,25 +1,12 @@
 import pygame
 import subprocess
+import colors.py
 pygame.init()
 width=1920//2
 height=1080//2
 run=True
 screen=pygame.display.set_mode((width,height))
-
-def color_convert(color):
-    basic_colors={"red":[255,0,0],
-                  "blue":[0,0,255],
-                  "black":[0,0,0],
-                  "white":[255,255,255],
-                  "green":[0,255,0],
-                  "violet":[238,130,238],
-                  "deep pink":[255,20,147],
-                  "gray":[128,128,128],
-                  "yellow":[255,255,0]
-                  }
-    color_to_use=basic_colors.get(color)
-    return color_to_use
-        
+     
 
 def text(text,size,color):
     result=pygame.font.SysFont("Arial", size)
