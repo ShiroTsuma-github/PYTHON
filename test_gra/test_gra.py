@@ -1,12 +1,13 @@
 import pygame
 import subprocess
 import colors.py
+
 pygame.init()
 width=1920//2
 height=1080//2
 run=True
 screen=pygame.display.set_mode((width,height))
-     
+
 
 def text(text,size,color):
     result=pygame.font.SysFont("Arial", size)
