@@ -26,6 +26,7 @@ while run:
         if event.type == pygame.QUIT:
             run =False
 
-    text("What do you see here?",32,kolor.full_random_color())
+    text("Monika",32,kolor.full_random_color())
     pygame.display.update()
 pygame.quit()
+kolor.show_colors()
