@@ -155,11 +155,26 @@ class color_convert():
     def RGB(self,red,green,blue): return '#%02x%02x%02x' % (red,green,blue)
     def convert_single_channel(self,to_conv): return '#%02x' % (to_conv)
     def convert(self,input):
-        if self.color_hex:
-            return self.basic_colors.get(input)[1]
-
+        if self.reverse_convert:
+            def search(self,input,typ):
+                hold=[]
+                for x in self.basic_colors.values():
+                    hold.append(x)
+                for x in range(0,len(hold)):
+                    print(hold[x][typ])
+                    if hold[x][1] == input:
+                        return x
+            if self.color_hex:
+                color_address=search(input,1)
+            else:
+                color_address=search(input,0)
+                 
         else:
-            return self.basic_colors.get(input)[0]
+            if self.color_hex:
+                return self.basic_colors.get(input)[1]
+
+            else:
+                return self.basic_colors.get(input)[0]
     def full_random_color(self): #in pygame it makes color change all the time if inside loop
         temp=[[],[]]
         for i in range(3):
@@ -175,5 +190,8 @@ class color_convert():
         else:
             final=temp[0]
         return final
-#kolor=color_convert()
-#kolor.show_colors()
+kolor=color_convert()
+kolor.show_colors()
+kolor.reverse_convert=True
+kolor.color_hex=True
+kolor.convert("#FFFFFF")
