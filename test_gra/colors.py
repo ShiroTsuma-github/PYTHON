@@ -156,21 +156,30 @@ class color_convert():
     def convert_single_channel(self,to_conv): return '#%02x' % (to_conv)
     def convert(self,input):
         if self.reverse_convert:
-            def search(self,input,typ):
-                hold=[]
+            def search(input):
+                hold_data=[]
+                hold_keys=[]
                 for x in self.basic_colors.values():
-                    hold.append(x)
-                for x in range(0,len(hold)):
-                    print(hold[x][typ])
-                    if hold[x][1] == input:
-                        return x
-            if self.color_hex:
-                color_address=search(input,1)
-            else:
-                color_address=search(input,0)
-                 
+                    hold_data.append(x)
+                for x in self.basic_colors.keys():
+                    hold_keys.append(x)   
+                for x in range(0,len(hold_data)):
+                    if self.color_hex:
+                        if hold_data[x][1] == input:
+                            result=(hold_data[x])
+                            pos=x
+                    else:
+                        if hold_data[x][0] == input:
+                            result=(hold_data[x])
+                            pos=x
+                for p in range(0,len(hold_keys)):
+                    if p == pos:
+                        key=("".join(hold_keys[p]))
+                print(key,": ",result)
+
+            return search(input)      
         else:
-            if self.color_hex:
+            if self.color_hex:  
                 return self.basic_colors.get(input)[1]
 
             else:
@@ -190,8 +199,5 @@ class color_convert():
         else:
             final=temp[0]
         return final
-kolor=color_convert()
-kolor.show_colors()
-kolor.reverse_convert=True
-kolor.color_hex=True
-kolor.convert("#FFFFFF")
+#kolor=color_convert()
+#kolor.show_colors()
