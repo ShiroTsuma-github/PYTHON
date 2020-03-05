@@ -199,5 +199,7 @@ class color_convert():
         else:
             final=temp[0]
         return final
-#kolor=color_convert()
+kolor=color_convert()
 #kolor.show_colors()
+kolor.reverse_convert=True
+kolor.convert([0,0,0])
