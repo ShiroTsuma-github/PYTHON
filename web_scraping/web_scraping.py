@@ -4,15 +4,6 @@ import os
 import requests
 from bs4 import BeautifulSoup
 #-----------------------------------zmienne--------------------------
-rar_zip_etc=[]
-Videos=[]
-Photos=[]
-Executables=[]
-Audio=[]
-Text=[]
-PDFs=[]
-Torrents=[]
-Other=[]
 wszystkie_linki=[]
 
 #-------------------Sciezka i otworzenie pliku------------------------
@@ -23,31 +14,13 @@ linki=open(my_file,"r")
 
 #-----------------Otworzenie zawartosci,poprawienie i wpisanie---------
 for line in linki:
-    '''
-    if line=="rar, zip, etc:\n":
-        w_co_wysylac=rar_zip_etc
-    elif line=="VIdeos:\n":
-        w_co_wysylac=Videos
-    elif line=="Photos:\n":
-        w_co_wysylac=Photos
-    elif line=="Executables:\n":
-        w_co_wysylac=Executables
-    elif line=="Audio:\n":
-        w_co_wysylac=Audio
-    elif line=="PDFs:\n":
-        w_co_wysylac=PDFs
-    elif line=="Torrents:\n":
-        w_co_wysylac=Torrents
-    elif line=="Other:\n":
-        w_co_wysylac=Other
-    else:
-        if len(line)>3:
-    '''
     wszystkie_linki.append(line.replace("\n", ""))
 
-
-
-
+for line in wszystkie_linki:
+    page=requests.get(line)
+    content=page.text
+    soup= BeautifulSoup(content,'html.parser')
+    print(soup.find(class_="fm-notification-body"))
 
 
 
