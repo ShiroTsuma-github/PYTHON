@@ -200,6 +200,6 @@ class color_convert():
             final=temp[0]
         return final
 kolor=color_convert()
-#kolor.show_colors()
+kolor.show_colors()
 kolor.reverse_convert=True
 kolor.convert([0,0,0])

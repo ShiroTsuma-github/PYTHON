@@ -1,32 +1,35 @@
-import threading as trd
-thread_status={}
-thread_count={}
-threads=[]
-# Define a function for the thread
-def print_time():
-   thread=trd.current_thread().name
-   count = 0
-   status="incomplete"
-   thread_status.update({thread:status})
-   while count <= 5:
-      thread_count.update({thread:count})
-      count += 1
-      if(count==5):
-         status="complete"
-         thread_status.update({thread:status})
-         trd.current_thread().close()
+#!/usr/bin/python
 
+import threading
+import time
 
-# Create two threads as follows
-try:
-   for i in range(5):
-      wynik=trd.Thread(target=print_time)
-      threads.append(wynik)
-      wynik.start()
-except:
-   raise
-print(threads)
-print(thread_status)
+exitFlag = 0
 
-while 1:
-   pass
+class myThread (threading.Thread):
+   def __init__(self, threadID, name, counter):
+      threading.Thread.__init__(self)
+      self.threadID = threadID
+      self.name = name
+      self.counter = counter
+   def run(self):
+      print ("Starting " + self.name)
+      print_time(self.name, 5, self.counter)
+      print ("Exiting " + self.name)
+
+def print_time(threadName, counter, delay):
+   while counter:
+      if exitFlag:
+         threadName.exit()
+      time.sleep(delay)
+      print ("%s: %s" % (threadName, time.ctime(time.time())))
+      counter -= 1
+
+# Create new threads
+thread1 = myThread(1, "Thread-1", 1)
+thread2 = myThread(2, "Thread-2", 2)
+
+# Start new Threads
+thread1.start()
+thread2.start()
+
+print ("Exiting Main Thread")
