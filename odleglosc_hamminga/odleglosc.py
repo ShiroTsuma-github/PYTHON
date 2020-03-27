@@ -7,19 +7,25 @@ import os
 #========================================text color config=====================================
 def color(color,text):
     get_color={
-    'error':'#FFOOOO',
+    'error':'#FF0000',
     'success':'#00FF00',
     'process':'#FFFF00',
     'info':'#0000FF',
     }
     reset=attr('reset')
     return (fg(get_color[color])+text+reset)
-#=======================================input file config=======================================
+#===========================================input config=======================================
 hand_input=False
 amount_of_files=2
-ten_folder = os.path.dirname(os.path.abspath(__file__))
+#=============================================tablice==========================================
 sciezki_plikow=[]
 nazwy_plikow=[]
+ilosc_linijek=[]
+formated_sciezki_plikow=[]
+formated_nazwy_plikow=[]
+#=======================================file config==========================================
+ten_folder = os.path.dirname(os.path.abspath(__file__))
+
 for i in range(0,amount_of_files):  
     if hand_input:
         file_input=str(input(color('info',"Podaj nazwę pliku wraz z formatem (np. plik.txt ): ")))
@@ -30,44 +36,50 @@ for i in range(0,amount_of_files):
     nazwy_plikow.append(file_input)
         
 
-#========================================functions config========================================
+#=========================================functions==============================================
 
-def count_lines(plik):
+def count_lines(plik,i):
     #LICZENIE LINIJEK UŻYTECZNE,JEŻELI PLANUJE NA KILKA THREADOW,ZEBY PODZIELIC KAZDEJ FRAGMENT PLIKU
     try:
         plik=open(plik,'r')
-        print(color('process',":::Liczenie linijek..."))
+        print(color('process',f':::Liczenie linijek pliku {nazwy_plikow[i]}...'))
         num_lines = sum(1 for line in plik)
         plik_jest=True
     except:
         plik_jest=False
-        print(color('error',"Program nie może znaleźć pliku! Upewnij się,czy podałeś poprawną nazwę pliku i czy znajduje się w odpowiednim folderze."))
+        print(color('error',f"Program nie może znaleźć pliku {nazwy_plikow[i]}! Upewnij się,czy podałeś poprawną nazwę pliku i czy znajduje się w folderze z programem."))
     finally:
         if plik_jest:
             plik.close()
             #print(color_success+f'Ilość linijek w pliku to {num_lines}'+reset)
+            ilosc_linijek.append(num_lines)
             return num_lines
         print (color('error',"Brak pliku do odczytu. Przerywanie programu."))
         sys.exit()
 
-def format_to_compare(plik,i):
-    if count_lines(plik)>1: 
-        try:
-            formated=f'formated_{nazwy_plikow[i]}'
-            print(color('process',":::Formatowanie pliku..."))
-            write_file=open(f'{ten_folder}\{formated}','w')
-            for line in open(sciezki_plikow[i],'r').readlines():
-                write_file.write(line.replace("\n", ""))
-                #write_file.write((line.replace(" ", "")))
-        except FileNotFoundError:
-            print(color('error',"Wystąpił błąd podczas próby formatowania tekstu."))
-        finally:
-            write_file.close()
-    else:
-        pass
+def format_to_compare():
+    for i in range(0,amount_of_files):
+        plik=sciezki_plikow[i]
+        if count_lines(plik,i)>1: 
+            try:
+                formated=f'formated_{nazwy_plikow[i]}'
+                formated_nazwy_plikow.append(formated)
+                print(color('process',f":::Formatowanie pliku {nazwy_plikow[i]}..."))
+                write_file=open(f'{ten_folder}\{formated}','w')
+                formated_sciezki_plikow.append(os.path.join(ten_folder,formated))
+                for line in open(sciezki_plikow[i],'r').readlines():
+                    write_file.write(line.replace("\n", ""))
+                    #write_file.write((line.replace(" ", "")))
+            except FileNotFoundError:
+                print(color('error',"Wystąpił błąd podczas próby formatowania tekstu."))
+            finally:
+                write_file.close()
+        else:
+            return (color('error',"Podany plik jest pusty: ")+nazwy_plikow[i])
+        
+def compare_sentence(formated_file):
+    pass
     
-    
-    
-for i in range(0,amount_of_files):
-    format_to_compare(sciezki_plikow[i],i)
+format_to_compare()
+compare_sentence("a")
 #count_lines(my_file)
