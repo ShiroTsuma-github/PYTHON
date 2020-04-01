@@ -1,1 +1,75 @@
-[Czipsy,1.8,[500.0],498.2]
+
+%%%%%
+Nazwa: choco
+Cena: 1.87
+Wplacone lacznie: 2.0
+Wplacone: [2.0]zl
+Reszta: 0.13
+Godzina: 12:56:49
+
+Continue
+
+%%%%%
+Nazwa: woda
+Cena: 4.5
+Wplacone lacznie: 5.13
+Wplacone: [2.0, 5.0]zl
+Reszta: 0.63
+Godzina: 12:56:49
+Wydane nominaly: 1*0.5zl 1*0.1zl 1*0.02zl 1*0.01zl
+
+End
+
+%%%%%
+Nazwa: woda
+Cena: 4.5
+Wplacone lacznie: 100.0
+Wplacone: [100.0]zl
+Reszta: 95.5
+Godzina: 12:57:32
+
+Continue
+
+%%%%%
+Nazwa: choco
+Cena: 1.87
+Wplacone lacznie: 95.5
+Wplacone: [100.0]zl
+Reszta: 93.63
+Godzina: 12:57:32
+Wydane nominaly: 1*50zl 2*20zl 1*2zl 1*1zl 1*0.5zl 1*0.1zl 1*0.02zl 1*0.01zl
+
+End
+
+%%%%%
+Nazwa: Coca-Cola
+Cena: 2.5
+Wplacone lacznie: 3.0
+Wplacone: [1.0, 1.0, 1.0]zl
+Reszta: 0.5
+Godzina: 13:03:26
+
+Continue
+
+%%%%%
+Nazwa: woda
+Cena: 4.5
+Wplacone lacznie: 4.5
+Wplacone: [1.0, 1.0, 1.0, 2.0, 2.0]zl
+Reszta: 0.0
+Godzina: 13:03:26
+Wydane nominaly:
+
+End
+
+%%%%%
+Nazwa: choco
+Cena: 1.87
+Wplacone lacznie: 100.0
+Wplacone: [100.0]zl
+Reszta: 98.13
+Godzina: 13:04:05
+Wydane nominaly: 1*50zl 2*20zl 1*5zl 1*2zl 1*1zl 1*0.1zl 1*0.02zl 1*0.01zl
+
+End
+
