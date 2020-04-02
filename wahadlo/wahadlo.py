@@ -9,8 +9,8 @@ if hand_input:
 else:
     _min=0
     _max=8
-    _step=5
-    _rep=2
+    _step=4
+    _rep=3
 _prev=_min
 x=(_prev+(_max-_prev)*2)%_step
 
@@ -26,6 +26,8 @@ for i in range(0,_rep):
            #pass
            _prev=abs((r-j+_prev)-_step)
            x=(_prev+(_max-_prev)*2)%_step
+        elif j == r-_step:
+            _prev=abs((r-j+_prev)-_step)
     if i == _rep-1:
         if _prev-_step==_min:
             _prev=_min
