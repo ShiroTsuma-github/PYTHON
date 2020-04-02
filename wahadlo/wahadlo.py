@@ -13,21 +13,7 @@ else:
     _rep=2
 _prev=_min
 x=(_prev+(_max-_prev)*2)%_step
-"""
-for i in range(0,_rep):
-    #r=_max*2-_min
-    r=(_min+(_max-_min)*2)
-    for j in range(_prev,(_min+(_max-_min)*2),_step):
-        if j <=_max:
-            print(j,end=" ")
-        else:
-            print(r-j+_min,end=" ")
-        if j == r-x:
-           #pass
-           _prev=abs((r-j+_min)-_step)
-    if i == _rep-1:
-        print(_prev)
-"""
+
 for i in range(0,_rep):
     #r=_max*2-_min
     r=(_prev+(_max-_prev)*2)
