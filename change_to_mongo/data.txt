@@ -1,0 +1,17 @@
+use test;
+db.faktury.insert({"_id":1,"nr_faktury":"'ZW.2020.04.1'","klient_id":3,"kwota":1411.00,"termin":"'2020-04-07'","zaplacono_dni":"'2020-04-07"});
+db.faktury.insert({"_id":2,"nr_faktury":"'ZW.2020.04.2'","klient_id":2,"kwota":677.00,"termin":"'2020-04-07'","zaplacono_dni":"'2020-04-07"});
+db.faktury.insert({"_id":3,"nr_faktury":"'ZW.2020.04.3'","klient_id":2,"kwota":1261.00,"termin":"'2020-04-07'","zaplacono_dni":"'2020-04-07"});
+db.faktury.insert({"_id":4,"nr_faktury":"'PR.2020.04.4'","klient_id":2,"kwota":753.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":5,"nr_faktury":"'ZW.2020.04.5'","klient_id":2,"kwota":627.00,"termin":"'2020-04-07'","zaplacono_dni":"'2020-04-07"});
+db.faktury.insert({"_id":6,"nr_faktury":"'PR.2020.04.6'","klient_id":2,"kwota":664.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":7,"nr_faktury":"'FV.2020.04.7'","klient_id":2,"kwota":586.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":8,"nr_faktury":"'ZW.2020.04.8'","klient_id":2,"kwota":1108.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":9,"nr_faktury":"'PR.2020.04.9'","klient_id":2,"kwota":897.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":10,"nr_faktury":"'PR.2020.04.10'","klient_id":2,"kwota":1032.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":11,"nr_faktury":"'ZW.2020.04.11'","klient_id":3,"kwota":1313.00,"termin":"'2020-04-07'","zaplacono_dni":"'2020-04-07"});
+db.faktury.insert({"_id":12,"nr_faktury":"'ZW.2020.04.12'","klient_id":3,"kwota":862.00,"termin":"'2020-04-07'","zaplacono_dni":"'2020-04-07"});
+db.faktury.insert({"_id":13,"nr_faktury":"'PR.2020.04.13'","klient_id":2,"kwota":1128.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":14,"nr_faktury":"'PR.2020.04.14'","klient_id":3,"kwota":1489.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":15,"nr_faktury":"'ZW.2020.04.15'","klient_id":1,"kwota":1297.00,"termin":"'2020-04-07'","zaplacono_dni":null});
+db.faktury.insert({"_id":16,"nr_faktury":"'PR.2020.04.16'","klient_id":1,"kwota":1212.00,"termin":"'2020-04-07'","zaplacono_dni":null});
