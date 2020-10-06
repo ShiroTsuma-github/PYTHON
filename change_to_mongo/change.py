@@ -23,7 +23,6 @@ try:
                 word+=str(i)
 except IndexError:
     pass
-
 finally:
     actual1=[]
     actual2=[]

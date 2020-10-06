@@ -7,7 +7,6 @@ uczniowie=[]
 for i in uczniowie_data:
     uczniowie.append(list(i.splitlines()))
     #use = list(map(lambda x: x-min(i), uczen_4))
- 
 
 def correct(l1):
     temp=[]
