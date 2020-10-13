@@ -101,6 +101,13 @@ try:
 	for v in enumerate(nums): #przechodzi przez wszystkie obiekty w liscie i rownoczesnie przechowuje ich pozycje
 	   print(v)
 
+	from itertools import product, permutations
+
+	letters = ('A','B')
+	print(list(permutations(letters)))	#wyswietla wszystkie kombinacje obiektów
+	print(list(product(letters, range(2)))) #powtarza obiekty do range() i przypisuje w liscie
+	
+
 	None == None #None okresla brak wartosci. W przemianie na bool variable daje False. Funkcja ktora nie zwraca nic po odwolaniu daje None
 	#True
 	None
@@ -179,6 +186,13 @@ try:
 	Tak sie komentuje wieksza ilosc linijek
 	
 	"""
+ # funkcje rekursywne
+	def silnia(x):
+		if x==1:
+			return 1
+		else:
+			return x*silnia(x-1)
+	print(silnia(5))
 #operacje na plikach
 
 	myfile=open("myfile.txt","r") 
@@ -229,9 +243,11 @@ def print_time(thread,delay):
 								#multithreading funkcja odwolywac podajac nazwe threadu i opoznienie. Model napisany
 # Create two threads as follows
 try:
+    """
    _thread.start_new_thread(print_time,("Thread-1",1))
    _thread.start_new_thread(print_time,("Thread-2",1))
    _thread.start_new_thread(print_time,("Thread-3",1))
+   """
 except:
    raise
 

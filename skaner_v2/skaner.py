@@ -1,4 +1,4 @@
-twoja_litera = 'K'
+twoja_litera = 'C'
 wynik=[]
 index=[]
 _max=0
