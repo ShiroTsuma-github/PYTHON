@@ -1,3 +1,5 @@
+#=======================GENERALNIE NIE ODPALAĆ,BO NIE CHCIAŁO MI SIĘ WSZYSTKO KOMENTOWAĆ LUB INDENTOWAĆ====================
+
 try:
 #STRING FUNCTIONS
 
@@ -254,13 +256,67 @@ except:
 while 1:
    pass
 
+# klasy i wszystko (atm mi wiadome ) o nich
+class Wolf: #superklasa,z ktorej bedą przejmować
+    legs=4 #zmienna dzielona dla całej klasy
+  def __init__(self, name, color): 		#metoda deklarująca zmienne dla instancji klasy
+      self.name = name 
+      self.color = color
 
+  def bark(self): #metoda dla klasy 
+    print("Grr...")
 
+class Dog(Wolf): #subklasa dziedzicząca od klasy Wolf
+  def bark(self): #override metody z superklasy
+    print("Woof")
+        
+husky = Dog("Max", "grey") #zapisywanie instancji dla zmiennej
+husky.bark() #odwołanie do metody klasy
 
+class Vector2D:
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
+  def __add__(self, other):
+    return Vector2D(self.x + other.x, self.y + other.y) #"magiczna metoda", specjalna metoda zastępująca 
+# podstawową funkcjonalność i pozwalająca na wcześniej niemożliwe operacje (jak w tym przypadku [+]dla takiego obiektu)
 
+first = Vector2D(5, 7)
+second = Vector2D(3, 9)
+result = first + second
+print(result.x)
+print(result.y)
+#odp: 8 16
+try: #specjalne metody zastępujące operacje
+	__sub__ for -
+	__mul__ for *
+	__truediv__ for /
+	__floordiv__ for //
+	__mod__ for %
+	__pow__ for **
+	__and__ for &
+	__xor__ for ^
+	__or__ for |
+except:
+    pass
 
+class SpecialString:
+  def __init__(self, cont):
+    self.cont = cont
 
+  def __truediv__(self, other): #other odnosi się do innej instancji klasy
+    line = "=" * len(other.cont) #w tym przypadku bierze 2 obiekt jako długość [=],wiec nie jest uniwersalne
+    return "\n".join([self.cont, line, other.cont])
 
+spam = SpecialString("spam")
+hello = SpecialString("Hello world!")
+print(spam / hello)
+
+""" wynik
+spam
+============
+Hello world!
+"""
 
 
 
