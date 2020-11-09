@@ -1,16 +1,17 @@
-from random import randint
-x=randint(0,9999)
-y=randint(0,9999)
-while x!=y:
-    x=randint(0,999999)
-    y=randint(0,999999)
-    print(x, y)
-print("Found same ",x, y)
-
-    f.write("<!DOCTYPE html>\n")
-    f.write("<html>\n")
-    f.write("<head>\n")
-    f.write(' <meta charset="utf-8">\n')
-    f.write("</head>\n")
-    f.write("<body>\n")
-    f.close()
+class test():
+    def __init__(self,f):
+        self.f=f
+    def __gt__(self,other):
+        return self.f>other.f
+        
+        
+a=test([5,2])
+b=test([3,4])
+c=test([2,2])
+tab=[a,b,c]
+print(min(tab).f)
+for i in tab:
+    if (2,2) == i.f:
+        print('jest')
+    else:
+        print('nope')

@@ -106,7 +106,7 @@ def images_from_links():
 #========================Pozyskiwanie tekstu z zdjęć=========================
 def _txt_from_img(img):
     with open(f'{_to_text}\\{_max_file_txt}.txt','a+',encoding="utf-8") as f:
-        f.write((pytesseract.image_to_string(img)))
+        f.write((pytesseract.image_to_string(img,config='--psm 6')))
 
 def get_text():
     try:
@@ -142,8 +142,8 @@ txt_to_txt()
         
 #CHWILOWO UŻYTKOWE KOMENTY
 
-images_from_links()
+#images_from_links()
 #           /
-#   get_from_folder()
+get_from_folder()
 # 
 get_text()

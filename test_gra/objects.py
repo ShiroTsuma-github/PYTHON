@@ -20,3 +20,4 @@ class Board:
                 pygame.draw.rect(screen, kolor.convert('black'), rect, 1)
                 if x*blockSize >=width or y*blockSize >=height:
                     break
+

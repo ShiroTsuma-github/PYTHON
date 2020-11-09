@@ -64,6 +64,6 @@ while run:
     sleep(2)
     drawCell(1,1)
 
-    #text("Klaudiusz Hynek",32,kolor.full_random_color())
+    text("Klaudiusz Hynek",32,kolor.full_random_color())
     pygame.display.update()
 pygame.quit()

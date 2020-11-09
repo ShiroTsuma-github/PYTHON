@@ -3,6 +3,17 @@
 try:
 #STRING FUNCTIONS
 
+	string="test"
+	if string.isdigit():
+		print("To liczba")
+	else:
+		print("To nie liczba")
+  
+	import re #regex i operacje na stringach
+	pattern=r'nibba'
+	if re.match(pattern,'nibbanibbanibbanibba'):
+     print(True)
+  
 	print(", ".join(["spam", "eggs", "ham"])) #laczy liste stringow z uzyciem innej jako separatora
 	#prints "spam, eggs, ham"
 
