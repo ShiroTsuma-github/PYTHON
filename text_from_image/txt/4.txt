@@ -1,0 +1,26 @@
+| Listing 6.2
+| <script type="text/Jjavascript’>
+| : Pp
+var bitowa_1=8;
+| var bitowa_2=10;
+document write("bitowa_1 = "+bitowa_1+” - <b>1000</b><br>”) ;
+| >. 3 aie = "+tbitowa_2+” - <b>1010</b><br>”) ;
+ocument.write(”Suma bitowa = "+ (bitowa Lijibi 2
+iS 2) a
+| <b>1010</b><br>”) ; —* eae
+| document .write(”Iloczyn bitowy = ”+(bitowa_ 1&bitowa_2)+” -
+| <b>1000</b><br>”) ; e
+| document.write (”Roznica bitowa = ”"+(bitowa 1*bitowa 2)+” -
+_ <b>0010</b><br>”) ; Ve a
+| </script>
+|
+| _} JAVASCRIPT [|
+| cs liner
+ee ee {
+| a bitowa_1=8 - 1000
+| ps — 10 - 1010
+| Suma bitowa = 10 - 1010
+| : Toczyn bitowy = 8 - 1000
+| Réznica bitowa = 2 - 0010
+| Rys. 6.2. Wynik dziatania skryptu z list. 6.2
+
