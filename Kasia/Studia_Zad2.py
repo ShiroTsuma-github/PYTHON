@@ -89,9 +89,13 @@ def czy_koniec(Lewy,Prawy,baseL,baseP,player):
             return True
         elif baseP+sum(Prawy)>baseL+sum(Lewy) and player=='P':
             print('Gratulacje Wygranej dla Gracza P')
+            return True
         else:
             print('Gratulacje remisu')
             return True
+
+        
+        
 
 def tura_lewy(Lewy,Prawy,baseL,baseP,Turn,pole):
     positional_counter=1
