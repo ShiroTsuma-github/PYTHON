@@ -1,23 +1,26 @@
+# TL;DR nie potrafilem tego rozwiazac,bo z matmy niezbyt bystry pomimo dlugiego myslenia,
+#wiec rozwiazanie skopiowane z internetu
+from math import gcd
 
-def getTotalX(a, b):
-    a=sorted(a)
-    b=sorted(b)
-    for a_i in range(a[0],b[0]+1):
-        ok=lambda x:len(x)==len(a),(list(filter(lambda x : x%a_i==0,a)))
-        print(ok)
+def get_hcf(arr):
+    hcf = arr[0] 
+    for i in arr:
+        hcf = gcd(hcf,i)
+    return hcf
+# oblicza dla liczb najmniejszy wspolny dzielnik
+def lcm(a,b):
+    return a*b//gcd(a,b)
+# dla kazdej liczby z listy sprawdza najmniejszy dzielnik,a jak zmienia to zmienia namniejszy
+def get_lcm(arr):
+    l = arr[0] 
+    for i in arr:
+        l = lcm(l,i)
+    return l
 
-
-#first_multiple_input = input().rstrip().split()
-#size of first arr
-#n = int(first_multiple_input[0])
-#size of sec arr
-#m = int(first_multiple_input[1])
-#arr1
-#arr = list(map(int, input().rstrip().split()))
-#arr2
-#brr = list(map(int, input().rstrip().split()))
-
-arr=[2,4]
-brr=[16,32,96]
-total = getTotalX(arr, brr)
-print(total)
+# input()
+a = list(map(int,input().split()))
+b = list(map(int,input().split()))
+lcm_a = get_lcm(a)
+hcf_b = get_hcf(b)
+f = [i for i in range(lcm_a, hcf_b+1) if not hcf_b%i and not i%lcm_a]
+print(len(f))

@@ -9,7 +9,7 @@ if hand_input:
 else:
     _min=0
     _max=8
-    _step=4
+    _step=3
     _rep=3
 _prev=_min
 x=(_prev+(_max-_prev)*2)%_step
@@ -23,7 +23,7 @@ for i in range(0,_rep):
         else:
             print(r-j+_prev,end=" ")
         if j == r-x:
-           #pass
+           
            _prev=abs((r-j+_prev)-_step)
            x=(_prev+(_max-_prev)*2)%_step
         elif j == r-_step:
