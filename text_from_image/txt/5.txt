@@ -1,0 +1,407 @@
+Zadanie 1.
+W jezyku JavaScript aby sprawdzi¢ warunek czy liczba znajduje si¢ w przedziale (100, 200>, nalezy zapisa¢:
+A. If (liczba > 100 || liczba <=200)
+B. If (liczba < 100 || liczba >=200)
+C. If (liczba > 100 && liczba <=200)
+D. If (liczba < 100 && liczba <=200)
+Zadanie 2.
+x = przedmiot.nazwa();
+W jezyku JavaScript zapis w ramce oznacza, ze
+A. nazwa jest polem klasy przedmiot.
+B. nazwa jest wlaSciwosciq obiektu przedmiot.
+C. zmienna x bedzie przechowywaé wynik dziatania metody nazwa.
+D. zmienna x bedzie przechowywaé wynik dziatania funkcji przedmiot.
+Zadanie 3.
+W jezyku JavaScript zapisano funkcje.
+function fun1(f) {
+if (f < 0) f =f * (-1);
+return f
+}
+Ma ona za zadanie
+A. wypisa¢ wartosé odwrotng do f
+B. zwrécié wartosé odwrotng do f
+C. wypisaé wartosé bezwzgledna z f
+D. zwrdcié wartosé bezwzgledng z f
+Zadanie 4.
+W jezyku JavaScript zapisano fragment kodu.
+<script>
+var x = 10;
+X++;
+console.log(x);
+</script>
+Po wykonaniu skryptu zmienna x
+A. bedzie réwna 11 i zostanie wypisana w oknie popup.
+B. bedzie rowna 10 i zostanie wypisana w dukumencie HTML.
+C. bedzie réwna 11 i zostanie wypisana w konsoli przegladarki internetowej.
+D. bedzie rowna 10 i zostanie wypisana w glownym oknie przegladarki internetowej.
+Zadanie 5.
+var x = 5;
+var y = 3;
+if (x = y) document.getElementByld("demo").innerHTML = 'zmienne sq réwne';
+else document.getElementByld("demo").innerHTML = 'zmienne sie rézniq';
+W ramce przedstawiono kod JavaScript z bledem logicznym. Program powinien wypisywa¢ informacj¢, czy
+liczby sq sobie réwne czy nie, lecz nie wykonuje tego. Wskaz odpowiedz, ktora dotyczy biedu.
+A. Nieprawidtowo zadeklarowano zmienne.
+B. Przed klauzulg else nie powinno byé srednika.
+C. Wklauzuli if wystepuje przypisanie zamiast poréwnania.
+D. Instrukcje wewnatrz sekcji if oraz else powinny byé zamienione miejscami.
+Zadanie 6.
+W jezyku JavaScript przedstawiona definicja jest definicja
+A. Klasy.
+B. _ tablicy.
+Cc. obiektu.
+D._ kolekeji.
+Zadanie 7.
+Dla kazdej iteracji petli wartos¢ biezacego elementu tablicy jest przypisywana do zmiennej. a wskaznik
+tablicy jest przesuwany o jeden, az do ostatniego elementu tablicy. Zdanie to jest prawdziwe dla instrukeji
+A. for
+B. next
+Cc. while
+D. foreach
+Zadanie 8.
+Wskaz zapisany w jezyku JavaScript warunek. ktory ma sprawdzi¢ spelnienie przynajmniej jednego
+z przypadkow:
+1) —dowolna naturalna liczba a jest trzycyfrowa
+2) dowolna calkowita liczba b jest ujemna
+A. ((a>99) || (a<1000)) || (b <0)
+B. ((a>99) && (a< 1000)) || (b <0)
+C. ((a>99) || (a< 1000)) && (b < 0)
+D. ((a>99) && (a < 1000)) && (b <0)
+Zadanie 9.
+var text;
+for ( vari = 0; i < tab.length; i++ ) {
+text += tab[i] + "<br>";
+}
+Ktéra czynnosé gwarantujaca poprawne wykonanie przedstawionego kodu Java Script. nalezy wykonaé
+przed petla?
+A. Zadeklarowaé zmienna i
+B. Zainicjowaé zmienna text
+C. Sprawdzié rozmiar tabeli tab
+D. Sprawdzié czy text jest typu znakowego.
+Zadanie 10.
+Hermetyzacja to zasada programowania obiektowego mowiaca o tym, ze
+A. Kasy/obiekty moga wspoldzielié ze soba funkcjonalnosé.
+B. pola i metody wykorzystywane tylko przez dana klase/obiekt sa ograniczane zasiegiem private
+lub protected.
+C. Kasy/obiekty moga mie¢ zdefiniowane metody wirtualne. ktore sa implementowane
+w pochodnych klasach/obiektach.
+D._ typy pol w klasach/obiektach moga byé dynamicznie zmieniane w zaleznosci od danych im
+przypisywanych.
+Zadanie 11.
+var str1 = "JavaScript";
+var str2 = str1.substring(2, 6);
+Przedstawiono fragment JavaScript. Po jego wykonaniu zmienna str2 bedzie przechowywaé
+A. vaSe
+B. avaS
+Cc. vaScri
+D. avaSer
+Zadanie 12.
+Ktory ze sposobéw wypisania tekstu nie jest zdefiniowany w jezyku JavaScript?
+A. Wlasnos¢ innerHTML
+B. Metoda window.alert()
+C. Funkcja MessageBox()
+D. Metoda document.write()
+Zadanie 13.
+Funkeja JavaScript powinna byé wywolana za kazdym razem, gdy uzytkownik wpisze dowolny znak do pola
+edycji. Ktorego zdarzenia nalezy uzyé?
+A. onload
+B. onclick
+C. onkeydown
+D. onmouseout
+Zadanie 14,
+var osoba = {imie: "Anna", nazwisko: "Kowalska", rok_urodzenia: 1985};
+W jezyku JavaScript zapisano definicje obiektu. Aby odwola¢ sie do wlasnosci nazwisko nalezy zapisa¢
+A. osoba[1]
+B. osoba[2]
+C. osoba.nazwisko
+D.  osoba::nazwisko
+Zadanie 15.
+W jezyku JavaScript, aby zmieni¢ wartos¢ atrybutu znacznika HTML. po uzyskaniu obiektu za pomoca
+metody getElementByld nalezy skorzystaé z
+A. pola innerHTML.
+B. metody getAttribute.
+C. metody setAttribute.
+D. pola attribute i poda¢ nazwe atrybutu.
+Zadanie 16.
+W jezyku JavaScript zapisano kod, ktorego wynikiem dzialania jest
+A.  wySwietlenie okna z pustym polem edycyjnym.
+B. bezposrednie wpisanie do zmiennej osoba wartosci ,,Adam”.
+C. pobranie z formularza wyswietlonego na stronie HTML imienia ,,Adam”.
+D. wyswietlenie okna z polem edycyjnym, w ktérym jest wpisany domyslny tekst ,,Adam”.
+Zadanie 17.
+Ktéry sposob komentowania jednoliniowego jest dozwolony w jezyku JavaScript?
+A. ! coi,
+B. # D. <!
+Zadanie 18.
+W jezyku JavaScript zdefiniowana zmienna i, ktora ma przechowywaé wynik dzielenia wynoszacy 1. to
+A. var i=3/2:
+B. var i=Number(3/2);
+C. var i=parselInt(3/2):
+D. var i=parseFloat(3/2);
+Zadanie 19.
+Wskaz bledny opis optymalizacji kodu wynikowego programu.
+A. Jej celem jest poprawienie wydajnosci programu.
+B.  W celu zwiekszenia szybkosci wykonywania kodu przez procesor moze byé prowadzona na
+roznych etapach pracy.
+C. Jej celem jest sprawdzenie zgodnosci z wymogami formalnymi.
+D. Powinna prowadzié do modyfikacji kodu zrédlowego do postaci. w ktérej bedzie on dzialal
+szybciej.
+Zadanie 20.
+Podaj wynik dzialania programu zapisanego w jezyku JavaScript. znajdujacego sie w ramce. po podaniu na
+wejsciu wartosci 5. varne
+A. 60 var a=1;
+B. 120 “Podai n: ".""):
+Cc 125 n=prompt("Podaj n: ","");
+D: 625 for(i=n;i>=2;i--)
+a*=i;
+document.write("Wynik ",a);
+Zadanie 21.
+Instrukeja przypisania elementu do tablicy w jezyku JavaScript dotyezy tablicy
+A. _ statyeznej.
+B. _asocjacyjne}. Tablica['technik’] = 'informatyk’;
+C. numeryeznej.
+D. wielowymiarowej.
+Zadanie 22.
+Jakie elementy wypisze funkeja wypisz(2) stworzona w jezyku JavaScript?
+A. 6 function wypisz(a)
+B. 2346 {
+Cc. 3468 for(var i=1;i<6;i++)
+D. 346 {
+att;
+if((a%2==0) | | (a%3==0))
+document.write(a+" ");
+}
+}
+Zadanie 23.
+W kodzie JavaScript petla zostanie wykonana let MeL
+A. 2razy. x*=3;
+B. 3 razy. ; aaa
+2
+= 2emay. while(x!=27);
+D. 27razy.
+Zadanie 24.
+W jezyku JavaScript nalezy zapisaé warunek. ktory bedzie spelniony. gdy zmienna a bedzie dowolna liczba
+naturalna dodatnia (bez 0) lub gdy zmienna b bedzie dowolna liczba z przedzialu domknietego od 10 do 100.
+Uzyte w tym warunku wyrazenie logiczne bedzie mialo postaé
+A. (a>0)|| (>= 10) || (6 <= 100))
+B. (a>0) && ((b >= 10) || (0 = 100))
+C. (a>0)|| (@>= 10) && (6 <= 100))
+D. (a>0) && ((b >= 10) KEK (b = 100))
+Zadanie 25.
+Dla kazdej iteracji petli wartos¢ biezacego elementu tablicy jest przypisywana do zmiennej. a wskaznik
+tablicy jest przesuwany o jeden. az do ostatniego elementu tablicy. Zdanie to jest prawdziwe dla instrukeji
+A. if
+B. next
+Cc. switch
+D. foreach
+Zadanie 26.
+W jezyku JavaScript wynik dzialania instrukeji zmienna++: bedzie taki sam jak instrukeji
+A. zmienna--:
+B. zmienna += 1:
+C. zmienna = zmienna + 10:
+D. zmienna == zmienna + 1:
+Zadanie 27,
+<body>
+<p>pierwszy patagtal</p>
+<p>drugi paragraf</p>
+<p>trzeci paragraf</p>
+W jezyku JavaScript nalezy odwolaé sie do elementu zawartego w pierwszym paragrafie przedstawionego
+fragmentu strony HTML. Mozna to wykonaé za pomoca funkeji
+A. getElement("p"):
+B.  gctElementByld("p1"):
+C. getElementsByTagName("p")[0]:
+D. getElementsByClassName("p.1")[0]:
+Zadanie 28.
+var obiekt1 - {
+x0;
+y: 0,
+wsp: function() {... } }
+O przedstawionym obiekcie jezyka JavaScript mozna powiedzie¢. ze ma
+A. trzy metody.
+B.  trzy wlasciwosci.
+C. dwie metody i jedna wlasciwosé.
+D. dwie wlasciwosci i jedna metode.
+Zadanie 29, ”
+W jezyku JavaScript stworzono funkcje o nazwie /iczba_max porownujaca trzy liczby naturalne pobrane
+Z parametrow funkeji i zwracajaca maksymalna z nich. Prawidlowe wywolanie takiej funkcji wraz
+z pobraniem jej wyniku bedzie mialo postaé
+A. liczba_max(a. b. c):
+B.  liczba_max(a. b. c. wynik):
+C.  liczba_max(a. b, c) = wynik:
+D. var wyntik — liczba_max(a. b. ©):
+Zadanie 30.
+Jezyk JavaScript ma obsluge
+A. obiekt6ow DOM.
+B.  funkeji wirtualnych.
+C. Mas abstrakeyjnych.
+D.  wysylania ciastek z ta sama informacja do wielu klientow strony.
+Zadanie 31.
+Instrukeja JavaScript: document.write(5==='5'); wyswietli
+Ay
+B. 0
+Cc. tue
+D. false
+Zadanie 32,
+(({A-ZtZ][a-zqeozzénts]{2,})(-[A-ZtZ] [a-zqeoz2enls]{2,})?)
+Ktora wartosé tekstowa nie pasuje do podanego w ramce wzorca wyrazenia regularnego?
+A. Kowalski
+B. Kasprowicza
+C.  Jelenia Gora
+D. Nowakowska-Kowalska
+Zadanie 33.
+Metoda oraz zmienna jest dostepna wylacznie dla innych metod wiasnej Klasy.
+Ktéry modyfikator wskazuje podany w ramce opis?
+A. static
+B. public
+C. private
+D. protected
+Zadanie 34.
+W programowaniu obiektowym w jezyku JavaScript uzyty w przedstawionym kodzie zapis: this.zawod
+oznacza
+function Uczen() {
+A. Klase. this.imie =";
+B.  metode. this.nazwisko =";
+C. _ konstruktor. this.technik = 'informatyk';
+D. wilaéciwoésé. this.zawod = function() {
+return this.technik;
+L
+}
+Zadanie 35.
+W JavaScript wywolanie zdarzenia onKeydown nastapi wtedy. gdy klawisz
+A. myszki zostal nacisniety.
+B. myszki zostal zwolniony.
+C.  klawiatury zostal nacisniety.
+D. Kawiatury zostal zwolniony.
+Zadanie 36.
+Po wykonaniu przedstawionego kodu JavaScript wyswietli sie wartosé
+A ll <script type="text/javascript">
+B. 12 document.write(Math.round(4.51) + Math.pow(2, 3));
+Gc £8 </script>
+D. 14
+Zadanie 37.
+<p id="para1">Przyktadowy tekst</p><p> i skrypt</p>
+<button onClick="changeColor(‘blue’);">niebieski</button>
+<script type="text/javascript">
+function changeColor(newColor)
+{
+var elem = document.getElementByld("para1");
+elem.style.color = newColor;
+}
+</script>
+Weisniecie przycisku o tresci ,niebieski” spowoduje wykonanie przedstawionego kodu JavaScript.
+Jaki _ bedzie efekt jego dzialania?
+A. Zmiana koloru przycisku na niebieski.
+B. Zmiana koloru tekstu ,.i skrypt” na niebieski.
+C. Zmiana kolorm tekstu ,,Przykladowy tekst” na niebieski.
+D. Zmiana koloru tekstu ,,Przykladowy tekst i skrypt” na niebieski.
+Zadanie 38.
+Liczba 0x142. zapisana w kodzie skryptu JavaScript. ma postaé
+A. dziesietna.
+B. dwéjkowa.
+C. osemkowa.
+D.  szesnastkowa.
+Zadanie 39.
+W aplikacjach internetowych tablice asocjacyjne to tablice. w ktorych
+A. indeks jest laicuchem tekstowym.
+B.  istnieja przynajmniej dwa wymiary.
+C. elementy tablicy sa zawsze indeksowane od 0.
+D. wkazdej komorce tablicy przechowywana jest inna tablica.
+Zadanie 40.
+Odwolaniem do imienia Agata. zawartym w przedstawionej tablicy JavaScript. jest element
+A. Imiona[4]:
+C. Imiona[Agata]:
+D. Imiona['Agata']:
+Zadanie 41.
+Specjalna metoda danej klasy stosowana w programowaniu obiektowym. wywolywana automatycznie
+podezas tworzenia obiektu, ktorej podstawowym zadaniem jest zwykle zainicjowanie pol. to
+A. obiekt.
+B.  destruktor.
+C. konstruktor.
+D._specyfikator dostepu.
+Zadanie 42.
+Wskaz poprawny zapis instrukeji zapisanej w jezyku JavaScript.
+A. document.write("Liczba a z dokladnoscia do 2 miejsc po przecinku ~ "+ 3.14):
+B. document.write("Liczba a z dokladnoscia do 2 miejsc po przecinku ~" ; 3.14 ):
+C. document.write("Liczba a z dokladnoscia do 2 miejsc po przecinku =" . 3.14 ):
+D. document.write("Liczba a z dokladnoscia do 2 miejsc po przecinku =" 3.14):
+Zadanie 43.
+W jezyku skryptowym JavaScript operatory: ||. && naleza do grupy operatorow
+A. bitowych.
+B.  logicznych.
+C.  przypisania.
+D.  arytmetyeznych.
+Zadanie 44,
+Wskaz petle. ktora w jezyku JavaScript wyswietli szes¢ kolejnych liczb parzystych.
+A. for(i=2;i<12;i+=2) {document.write(i);}
+B.  for(i=2;i<=12;i+=2) {document.write(i);}
+C.  for(i=2;i<12;i++) {i++; document.write(i);}
+D.  for(i=2;i<=12;i++) {i=i+2; document.write(i);}
+Zadanie 45.
+Wybierz poprawna definicje funkeji w jezyku JavaScript.
+A. nazwa_funkcji(argumenty) {instrukcje:}
+B. new nazwa_funkceji(argumenty) {instrukeje:}
+C. function nazwa_funkcji(argumenty) {instrukeje:}
+D. _ typ_funkeji nazwa_funkcji(argumenty) {instrukeje:}
+Zadanie 46.
+W jezyku JavaScript, funkcja matematyczna Math.pow() sluzy do wyznaczenia
+A. potegi liczby.
+B. wartosci przyblizonej liczby.
+C. wartosci bezwzglednej liczby.
+D. _ pierwiastka kwadratowego liczby.
+Zadanie 47.
+W jezyku JavaScript typ boolean moze byé reprezentowany przez wartos¢é
+A. -20
+B. 45.3
+Cc. te
+D. aoull
+Zadanie 48.
+Ktore wyrazenie logiczne nalezy zastosowaé w jezyku JavaScript. aby wykona¢ operacje tylko dla
+dowolnych liczb ujemnych z przedzialu jednostronnie domknietego <-200. -100)?
+A. (liczba <= -200) || (liczba > -100)
+B.  (liczba >= -200) || (liczba > -100)
+C. (liczba >= -200) && (liczba < -100)
+D. (liczba <= -200) && (liczba < -100)
+Zadanie 49.
+Ktére metody odnosza sie do predefiniowanego obiektu Date w jezyku JavaScript?
+A. row()
+B.  fromCodePoint()
+C. concat() oraz pop)
+D.  getMonth() oraz getDay()
+Zadanie 50.
+W jezyku JavaScript zdefiniowano obiekt Samochod. Aby wywola¢ jedna z metod tego obiektu. nalezy
+zapisaé
+A. Samochod.()
+B. Samochod.kolor
+C. Samochod.spalanie()
+D. Samochod.spalanie_nal00
+Zadanie 51.
+wynik = 0;
+for (i = 0; i< tab.length; i++) {
+wynik += tab[i];
+}
+W jezyku JavaScript podany w ramce fragment funkeji ma za zadanie
+A. wySwietli¢ wszystkie elementy tablicy.
+B. policzyé sume wszystkich elementéw tablicy.
+C. dodaé do kazdego elementu tablicy stala wartosé.
+D. wprowadzié do kazdego elementu tablicy aktualna wartosé zmiennej 7.
+Zadanie 52.
+1. WySswietli¢ okno do wpisania wartosci z poleceniem "Podaj kwalifikacje: ",
+nastepnie po zatwierdzeniu
+2. Umiesci¢ napis na stronie internetowej, gdzie w miejscu kropek znajduje sig
+wartos¢é pobrana z okna "Kwalifikacja: ..."
+Aby w JavaScript wykona¢ wymienione kroki. nalezy w znaczniku <script> umiesci¢ kod
+A. A = prompt("Podaj kwalifikacje: ");
+document .write ("Kwalifikacja: " + A);
+B. A = prompt("Podaj kwalifikacje: ");
+document.write ("Kwalifikacja: ".A);
+C. A = alert("Podaj kwalifikacje: ");
+document.write ("Kwalifikacja: " + A);
+D. A << prompt ("Podaj kwalifikacje: ");
+document.write ("Kwalifikacja: " + A);
+Zadanie 53.
+Jezyk JavaScript ma obsluge
+A. obiektow DOM.
+B.  funkeji wirtualnych.
+C. Klas abstrakeyjnych.
+D. _ wysylania ciastek z ta sama informacja do wielu klientow strony.
+

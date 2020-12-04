@@ -23,7 +23,7 @@ def get_data():
     lineList = [line.rstrip('\n') for line in open(ten_plik)]
     
     for j in range(0,len(lineList)):
-        if lineList[j] == '%%%%%':
+        if lineList[j] == r'%%%%%':
             print(f'Operacja {temp}: ')
             temp+=1
             o_x=0

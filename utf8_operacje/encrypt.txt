@@ -1,0 +1,6 @@
+# coding=utf8
+Jestem ciekaw czy klaudiusz Hynek da rade odczytac ta wiadomosc. Jezeli tak sa jeszcze dla niego jakies szanse.
+A teraz moje pytanie Klaudiuszu:
+Kiedy skonczysz odczczytywanie z pliku i zliczanie liter.
+Dobre pytanie,czy dawid tez bedzie chcial sprobowac to rozwiazac. Ten kto to odkoduje dostaje Monsterka 1.
+
