@@ -1,6 +1,7 @@
-**/text_from_image/images/[0-9]*.jpg
-**/text_from_image/text/*.*
-**/Proste_Szyfrowanie/*.txt
-**/utf8_operacje/*.txt
-**/testy/
+text_from_image/text/*.*
+Proste_Szyfrowanie/*.txt
+utf8_operacje/*.txt
+testy/
 /Proste_Szyfrowanie/*.txt
+/text_from_image/**/*.png
+/text_from_image/**/*.jpg
