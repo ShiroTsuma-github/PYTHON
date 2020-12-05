@@ -74,7 +74,8 @@ def _get_links():
 def get_from_folder():
     if len(to_process)>1:
         for item in to_process[1:]:
-            images.append(f'{_to_process}\\{item}')
+            Path(f'{_to_process}\\{item}').rename(f'{_to_save}\\{item}')
+            images.append(f'{_to_save}\\{item}')
     else:
         print("Folder is empty. Closing program")
         _Clear_Session()

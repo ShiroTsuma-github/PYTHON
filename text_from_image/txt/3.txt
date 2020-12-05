@@ -1,17 +1,0 @@
-@ SPRAWDZ SWOJE UMIEJETNOSC
-1. Przetestu skrypt 2 listingu 4.1, Co zauwaéyles?
-Listing 41
-<script type="text/javascript”>
-document.write (”JavaSeript<br>") ;
-document .write(’\"Zycie jest. pigkne\”<br>")
-document .write(15+"<br>”) ;
-document.write (100.4+”<br>") ;
-document.write (-26+”<br>") ;
-document.write (0.1e2+"<br>") ;
-document.write (OxAAt <br>") ;
-document.write (-OxCD) ;
-</script>
-SPRAWDZ SWOJA WIEDZ
-1. Scharakteryzuj typy danych dostepne w jezyku JavaScript.
-2. Jakie znasz sekwencje znakéw specjalnych?
-
