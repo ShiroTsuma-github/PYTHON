@@ -1,5 +1,8 @@
-for i in range(10):	#wykona sie nasze ELSE, jezeli np. petla WHILE/FOR zostanie zakonczona break
-    if i >1:
-        print(i)
-else:
-    print("The loop finished normally")	
+from mpmath import mp
+a=mp.dps=101
+a=mp.fdiv(5.0,7.0)
+counter=0
+a=str(a).replace('0.','')
+for pos in a:
+    counter+=1
+    print(counter,pos)

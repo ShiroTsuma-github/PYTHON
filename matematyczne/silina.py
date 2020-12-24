@@ -6,6 +6,3 @@ def silnia(x):
 
 print(silnia(5))
 
-2* [2,2]
-2*  2*[2,1]
-2*  2*1
