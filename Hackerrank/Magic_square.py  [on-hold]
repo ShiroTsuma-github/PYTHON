@@ -1,0 +1,26 @@
+#PRZERWANE ATM
+def formingMagicSquare(s):
+    r=list(range(1,10))
+    incorrect=[]
+    for i,row in enumerate(s):
+        for pos in row:
+            if pos in r:
+                r.remove(pos)
+            else:
+                incorrect.append(pos)
+    cost=0
+    for i in incorrect:
+        cheapest=10
+        for j in r:
+            if abs(i-j)<cheapest:
+                cheapest=abs(i-j)
+        else:
+            incorrect.pop()
+        cost+=cheapest
+    return cost
+        
+# 4 9 2
+# 3 5 7
+# 8 1 5
+s=[[4,8,2],[4,5,7],[6,1,6]]
+print(formingMagicSquare(s))

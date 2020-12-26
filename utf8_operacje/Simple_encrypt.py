@@ -48,4 +48,4 @@ def decrypt(FROM_TO_file,COUNTER_RESET=3016):
         
 # encrypt('utf8 operacje\Pozdrowienia.txt','utf8 operacje\encrypted.txt')
 # decrypt('utf8 operacje\encrypted.txt')
-# string_to_utf('⁂꧁ShiroTsuma꧂⁂')
+string_to_utf('�🌟')
