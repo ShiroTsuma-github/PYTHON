@@ -1,7 +1,15 @@
 import re as re
 from time import time
 from namedlist import namedlist
-from search_google import SearchInternet
+# from search_google import SearchInternet
+from Check_Novel import NovelUpdatesInformation
+from time import sleep
+from progressbar import progressbar,Bar,ProgressBar
+from os import system,name,path
+
+folder_path=path.dirname(__file__)
+folder=path.relpath(folder_path)
+
 
 class ParseNovel():
     def __init__(self,filepath=None):
@@ -191,7 +199,7 @@ class ParseNovel():
             print('Invalid mode. Choose from one of the following : [default]/[manga]/[novel]/[hmanga]')
             cont=False
         if _type>-1:
-            data=list(filter(lambda item : self.__check_type(item)==_type,self.__NovelList))
+            data=list(filter(lambda item : self.__checkType(item)==_type,self.__NovelList))
         elif _type==-1:
             data=self.__NovelList.keys()
         if cont:
@@ -266,7 +274,7 @@ class ParseNovel():
         print('\n')
         print(f'Amounting to:    :                        {round((manga_t/total_t)*100,3)} %       {round((novel_t/total_t)*100,3)} %        {round((hmanga_t/total_t)*100,3)} %')
 
-    def SearchForTitle(self,filter_mode='default'):
+    def SearchForTitles(self,filter_mode='default'):
         Manga_Excluded=['']
         if filter_mode=='manga':
             _type=0
@@ -278,24 +286,32 @@ class ParseNovel():
             pass
         else:
             print('Invalid mode. Choose from one of the following : [manga]/[novel]/[hmanga]/[default]')
-        # data=list(filter(lambda item : self.__check_type(item)==_type,self.__NovelList))
-        for item in data:
-            dot_count=self.__CheckType(item)
-            if dot_count==0:
-                _type='manga'
-            elif dot_count==1:
-                _type='novel'
-            else:
-                _type='doujinshi'
-            print(f'[ {self.__NovelList[item].title} ] :')
-            b=SearchInternet(title=self.__NovelList[item].title,_type=_type)
-            b.GiveXResults()
-            print(100*'=',end='\n\n')
+        data=list(filter(lambda item : self.__CheckType(item)==_type,self.__NovelList))
+        a=NovelUpdatesInformation()
+        for i in progressbar(range(len(data)), redirect_stdout=True):
+            f=open(f'{folder}\\wyniki.txt','a')
+            f.write(f'\n[ {self.__NovelList[data[i]].title} ] :\n')
+            a.title=self.__NovelList[data[i]].title
+            a.FindCurrentChapterCount()
+            f.write(f'{a.results}\n')
+            a.results=[]
+            f.close()
+    def CompareFallback(self):
+        pass
+                
         
 a=ParseNovel('Zliczanie_z_listy\\lista.txt')
 # a.AmountOfNovels()
-# a.PrintList(filter_mode='default',mode='minimal',sort='defaulasdsasdt')
+# a.PrintList(filter_mode='default',mode='full',sort='inc_priority')
 # a.PrintDump()
 # a.AmountOfChapters()
-# a.SearchForTitle()
+a.SearchForTitles(filter_mode='novel')
 
+# with ProgressBar(max_value=len(data)) as bar:
+#     for item in data:
+#         bar.update(iter_counter)
+#         print(f'\n[ {self.__NovelList[item].title} ] :')
+#         a.title=self.__NovelList[item].title
+#         a.FindCurrentChapterCount()
+#         print(a.results)
+#         iter_counter+=1

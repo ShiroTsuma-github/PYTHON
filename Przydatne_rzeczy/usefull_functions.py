@@ -557,9 +557,28 @@ str = "Please contact info@sololearn.com for assistance"	#wyciaganie adresu emai
 pattern = r"([\w\.-]+)@([\w\.-]+)(\.[\w]+)"
 
 
+# https://pypi.org/project/progressbar2/
+from time import sleep
+from progressbar import progressbar,Bar,ProgressBar
+"""
+progressbar at botom with possibility of printing things
+"""
+for i in progressbar(range(100), redirect_stdout=True):
+    print('Some text', i)
+    sleep(0.1)
+
+"""
+in place progressbar
+"""
+with ProgressBar(max_value=10) as bar:
+    for i in range(10):
+        sleep(0.1)
+        bar.update(i)
 
 
 
-
-
-
+from os import system,name,path
+# FILE AND SITE LINKS
+folder_path=path.dirname(__file__)
+folder=path.relpath(folder_path)
+file_link=f'{folder}\\linki.txt'
