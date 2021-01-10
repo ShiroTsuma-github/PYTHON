@@ -1,10 +1,27 @@
 import os, sys
+
+from numpy.lib.polynomial import _polyder_dispatcher
 sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
 from MyModules.QuickSort import QuickSortNestedList as qsn
 import numpy as np
 from math import sqrt,ceil
 
+
+"""
+generate special letter based on amount of most common letters in text(if there is more than one with same count,next lower that is distinctive),
+then multiply it's value by sqrt of text_len and then inside |[]| place the number  sequence multiplied by that letter
+
+
+"""
+
 class CustomEncode():
+    """My function to encode text based on creating array of size `sqrt` of length and ``rounding it up``. Later reading letters diagonally into the lists and  then shuffling lines and letters inside.
+    
+    Note:
+    
+        Before finishing it i didn't think how to return the sorted lines and letters into positions and it turns out i have no idea how to reverse sorting it,
+        so this works only for encoding something | scrambling it up.
+    """
     def __init__(self,text):
         self.__start_text_len=len(text)
         self.__shape=self.__find_multiplayer()
@@ -53,33 +70,72 @@ class CustomEncode():
                 line_total[i]+=ord(character)
         return (sorted(line_total.items(), key = 
              lambda kv:(kv[1], kv[0])))  
-    def __reshufle_values(self,arrays):
-        output=[]
-        for level in arrays:
-            output.append(list(reversed(qsn(level))))
-        return output
+    def __Generate_key(self,text,numbers): 
+        def get_key(val,_dict):
+            l=[]
+            for key, value in _dict.items():
+                if val == value:
+                    l.append(key)
+            return l
+        values=set(list(text))
+        values.discard('�')
+        values.discard(' ')
+        values.discard('\n')
+        values_keys=values
+        values={item:0 for item in values}
+        for letter in values_keys:
+            values[letter]=text.count(letter)
+        del text
+        if len(values)==0:
+            return '|None|'
+        max_value_letters=''
+        letters_to_encode_with=''
+        
+        
+        while True and len(values)!=1:
+            max_value_letters=(get_key(max(values.values()),values))
+            if len(max_value_letters)>1:
+                if len(values)-len(max_value_letters)>1:
+                    [values.pop(x,None) for x in max_value_letters]
+                else:
+                    letters_to_encode_with=max_value_letters
+                    break
+            else:
+                letters_to_encode_with=max_value_letters
+                break
+        else:
+            letters_to_encode_with=values.values()
+        del max_value_letters
+        del values_keys
+        
+        key=sum(list(map(lambda x:values[x],letters_to_encode_with)))
+        result='|'
+        for number in numbers:
+            result+=f'{(hex(number*key))}|'
+        return result
+
     #*******************************************************************************************************************
     def Encode(self):
         shuffled_lines=self.__reshufle_text()
         shuffled_position=[item[0] for item in (self.__reshufle_position(shuffled_lines))]
         a=list(map(lambda x:shuffled_lines[x],shuffled_position))
+        del shuffled_lines
         a=(list(map(lambda x:''.join(a[x]),range(0,len(a)))))
-        a=[[[ord(wyn),wyn]  for wyn in item] for item in a]
-        a=self.__reshufle_values(a)
-        a=[[wyn[1] for wyn in item]for item in a]
-        a=(list(map(lambda x:''.join(a[x]),range(0,len(a)))))
+
+        a=''.join(a)
+        a=list(a)
+        a.insert(0,self.__Generate_key(a,shuffled_position))
         a=''.join(a)
         self.__Computer_change=True
         self.result=a
         
- 
- 
+
 f=open('Proste_Szyfrowanie\\text.txt')
 content=f.read()
 f.close()
  
-# print(ord('�'))
 a=CustomEncode(content)
-# a.result='beka'
 a.Encode()
-print(a.result)
+f=open('Proste_Szyfrowanie\\w.txt','w+',encoding='utf-8',errors='ignore')
+f.write(a.result)
+f.close()

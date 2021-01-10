@@ -48,4 +48,8 @@ def decrypt(FROM_TO_file,COUNTER_RESET=3016):
         
 # encrypt('utf8 operacje\Pozdrowienia.txt','utf8 operacje\encrypted.txt')
 # decrypt('utf8 operacje\encrypted.txt')
-string_to_utf('�🌟')
+string_to_utf('|羈|枈|芈|庈|檈|守|墈|粈|憈|ᚈ|撈|ᲈ|消|劈|皈|薈|炈|禈|躈|讈|喈|ᾈ|ᦈ|袈|玈|䦈|醈|针|䂈|㪈|⺈|䚈|㒈|㶈|⮈|㞈|䎈|ㆈ|█|⊈|侈|䲈|⢈|𖦈|𖚈|𖲈|𒞈|𖎈|𖾈|𑢈|ᎈ|𔢈|𕞈|𖂈|𔮈|𕒈|𕶈|늈|𒪈|횈|𕆈|𑖈|𓎈|𑺈||𔺈|ꎈ|𓾈|쪈|ﶈ|𕪈|𔖈||𑮈||솈|𓦈|𒒈|Ꚉ|쒈|있||춈|𐂈||愈|𒆈|𐦈|𓂈|𓚈|𔊈|𒶈|𑊈|뢈|鶈||鞈||뮈|𐚈|𐎈||떈|뺈|骈|ꂈ|𓲈||ꦈ|겈|𐲈||펈|킈||𐾈|꾈|'.replace('|',''))
+
+
+
+#𒆈
