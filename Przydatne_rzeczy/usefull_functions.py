@@ -1,113 +1,6 @@
-#=======================GENERALNIE NIE ODPALAĆ,BO NIE CHCIAŁO MI SIĘ WSZYSTKO KOMENTOWAĆ LUB INDENTOWAĆ====================
-
-#pozwala na importowanie z folderu PYTHON
-import os, sys
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-from MyModules import *
 
 
-#STRING FUNCTIONS
 
-string="test"
-if string.isdigit():
-	print("To liczba")
-else:
-	print("To nie liczba")
-
-import re #regex i operacje na stringach
-pattern=r'nibba'
-if re.match(pattern,'nibbanibbanibbanibba'):
-	print(True)
-
-print(", ".join(["spam", "eggs", "ham"])) #laczy liste stringow z uzyciem innej jako separatora
-#prints "spam, eggs, ham"
-
-print("Hello ME".replace("ME", "world")) #zamienia wybrany substring na inny
-#prints "Hello world"
-
-print("This is a sentence.".startswith("This")) #sprawdza czy string zaczyna z wybranym substringiem
-# prints "True"
-
-print("This is a sentence.".endswith("sentence.")) #Sprawdza czy string konczy z wybranym substringiem
-# prints "True"
-
-print("This is a sentence.".upper()) #wszystko CAPS LOCK
-# prints "THIS IS A SENTENCE."
-
-print("AN ALL CAPS SENTENCE".lower()) #wszystko malymi literami	
-#prints "an all caps sentence"
-
-print("spam, eggs, ham".split(", ")) #oddzielenie wyrazow wybranym stringiem
-#prints "['spam', 'eggs', 'ham']"
-
-#FORMATING STRING
-nums = [4, 5, 6]
-msg = "Numbers: {0} {1} {2}". format(nums[0], nums[1], nums[2]) 
-#formatuje wartosci z nums[0,1,2] poprzez przechowanie na czas operacji w .format() i potem umieszczeniu w nitce w kolejnosci okreslonej przez {}
-print(msg)
-#Numbers: 4 5 6
-
-	#DODATKOWE ZASTOSOWANIA DLA ELSE
-for i in range(10):			#wykona sie nasze ELSE, jezeli np. petla WHILE/FOR zostanie zakonczona bez break
-	if i == 999:
-		# print_time('The loop finished abnormally')
-		break		#jak break wywola,to program skonczy przedwczesnie,wiec ELSE nie wykona
-else:	#nasze ELSE mozna uznac jako THEN...bo wykonuje po poprawnym ukonczeniu petli
-   print("The loop finished normally")	
-
-#ELSE zostanie wykonane z TRY\EXCEPT w przypadku, jezeli TRY nie bedzie konczyc bledem
-print('Calculation: 1/2')		#Calculation: 1/2 
-try:
-    print(1/2)					#0.5 
-except ZeroDivisionError:
-    print('Error: Divide by zero.')
-else:
-    print('Division succeeded.')	#Division succeeded. 
-
-print('Calculation: 1/0')		#Calculation: 1/0 
-try:
-    print(1/0)
-except ZeroDivisionError:
-    print('Error: Divide by zero.')	#Error: Divide by zero.
-else:
-    print('Division succeeded.')
-
-
-#NUMERIC FUNCTIONS
-
-print(min(1, 2, 3, 4, 0, 2, 1)) #wyciaga najmniejsza liczbe
-#0
-print(max([1, 4, 9, 2, 5, 6, 8])) #wyciaga najwieksza liczbe
-#9
-print(abs(-99)) #odleglosc od zera
-#99
-print(abs(42)) #odleglosc od zera
-#42
-print(sum([1, 2, 3, 4, 5])) #wyswietla sume liczb
-#15
-print(round(4.853444,2)) #zaokragla do liczby miejsc po przecinku podanej
-#4.85
-
-#TENARY OPERATORS
-a = 7
-b = 1 if a >= 5 else 42		#pozwalaja zmniejszyc ilosc kodu,ale zmniejszaja czytelnosc
-print(b)
-status  = 1
-msg = "Logout" if status == 1 else "Login"
-
-#(MI ZNANE(xD))TYPY STRUKTUR
-
-nums = [55, 44, 33, 22, 11] #zwyczajna tabela dajaca mozliwosc zapisu,zmiany i odczytu wartosci
-print(nums[2]) 
-#daje 33
-
-ages = {"Dave": 24, "Mary": 42, "John": 58} #slownik w ktorym przypisujemy wartosci do danych. Mozna dodawac,zmieniac i zapisywac wartosci
-print(ages["Dave"])
-#daje 24
-ages["Dave"]=13 
-#zmienia dane,bo juz wystepuja
-ages["Mike"]=5 
-#dodaje wpis, bo nie bylo
 print("Mike" in ages)
 #True
 print(24 in ages)
@@ -136,26 +29,6 @@ words = ("spam", "eggs", "sausages",) # podobna do listy,ale bez mozliwosci edyc
 print(words[0]) 
 #spam (wyswietla tak samo jak lista)
 
-a = "{x}, {y}".format(x=5, y=12) #pozwala na przypisywanie zmiennych
-print(a)
-#5, 12
-
-#FUNKCJE OGOLNE DLA LIST
-
-if all([i > 5 for i in nums]):  #jezeli wszystkie wyrazy listy spelniaja warunek oddaje "TRUE"/"FALSE"
-	print("All larger than 5")
-
-if any([i % 2 == 0 for i in nums]): #jezeli jakikolwiek wyraz listy spenia warunek oddaje "TRUE"/"FALSE"
-	print("At least one is even")
-
-for v in enumerate(nums): #przechodzi przez wszystkie obiekty w liscie i rownoczesnie przechowuje ich pozycje
-	print(v)
-
-from itertools import product, permutations
-
-letters = ('A','B')
-print(list(permutations(letters)))	#wyswietla wszystkie kombinacje obiektów
-print(list(product(letters, range(2)))) #powtarza obiekty do range() i przypisuje w liscie
 
 
 None == None #None okresla brak wartosci. W przemianie na bool variable daje False. Funkcja ktora nie zwraca nic po odwolaniu daje None
@@ -170,31 +43,6 @@ x = zip(a, b)  #funkcja zip() tworzy tuple w ktorej obiekt i jest rowny obiektom
 #use the tuple() function to display a readable version of the result:
 print(tuple(x))
 
-#LIST SLICES pozwalaja dokladniej wprowadzac jaki zakres danych chcemy pozyskac
-squares = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-print(squares[2:6]) #Podany zakres wyrazow to 2-5
-#[4, 9, 16, 25]
-print(squares[3:8]) #Podany zakres wyrazow to 3-7
-#[9, 16, 25, 36, 49]
-print(squares[0:1]) #Podany zakres wyrazow to wyraz 0
-#[0]
-print(squares[:7]) #Podany zakres wyrazow to 0-6
-#[0, 1, 4, 9, 16, 25, 36]
-print(squares[7:]) #Podany zakres wyrazow to 7-(koniec listy)
-#[49, 64, 81]
-print(squares[::2]) #Przeskakuje o 2 od 0-(koniec listy)
-#[0, 4, 16, 36, 64]
-print(squares[2:8:3]) # przeskakuje o 3 od 2-7
-#[4, 25]
-print(squares[1:-1]) # zakres to od 1 do (koniec listy -1) * przy podaniu [-] porusza od konca tabeli
-
-#LIST COMPREHENSIONS pozwalaja tworzyc szybko listy ktorych zawartosc obeys(na polski znaczenie nie pasuje) prostą regule
-cubes = [i**3 for i in range(5)] #liczby w przedziale 0-4 do potegi 3
-print(cubes)
-#[0, 1, 8, 27, 64]
-evens=[i**2 for i in range(10) if i**2 % 2 == 0] #liczby w przedziale 0-9 do kwadratu,ktore sa parzyste 
-print(evens) 
-#[0, 4, 16, 36, 64]
 
 #TUPLE UNPACKING
 a, b, *c, d = [1, 2, 3, 4, 5, 6, 7, 8, 9]	#zmienna *przejmuje pozostale argumenty
@@ -597,7 +445,7 @@ folder=path.relpath(folder_path)
 file_link=f'{folder}\\linki.txt'
 
 
-
+a,*b,c=3,2,4,5,2,5
 # GET ONLY X OBJECT OF LIST OF LISTS
 DATA=[[6.0, 0.5], [6.1, 1.0], [6.2, 1.5], [6.3, 2.0], [6.4, 2.5], [6.5, 3.0], [6.6, 3.5], [6.7, 4.0], [6.8, 4.5]]
 WYN1=[item[0] for item in DATA]
@@ -606,4 +454,5 @@ l = [[6.0, 0.5], [6.1, 1.0], [6.2, 1.5], [6.3, 2.0], [6.4, 2.5], [6.5, 3.0], [6.
 
 a,b = map(list,zip(*l))
 print(a,b)
+
 

@@ -3,16 +3,27 @@ from time import time
 from namedlist import namedlist
 # from search_google import SearchInternet
 from Check_Novel import NovelUpdatesInformation
-from time import sleep
-from progressbar import progressbar,Bar,ProgressBar
-from os import system,name,path
+from progressbar import progressbar
+from os import path
 
 folder_path=path.dirname(__file__)
 folder=path.relpath(folder_path)
 
 
 class ParseNovel():
+
     def __init__(self,filepath=None):
+        """Initializes with filepath. In case of lack of filepath it does nothing. Couldn't bother at the moment to fix it.
+
+        TODO:
+
+                -Change filepath enforcing and maybe think about allowing to read from text input
+                -Write function that allows to save the output in parsed format, and write parser for second format.
+            
+
+        Args:
+            filepath (Path, optional): Format is as follows: `folder\\\\file.format`. Defaults to None.
+        """
         self.__file=filepath
         self.__content=self.__LoadList()
         self.__NovelData=namedlist('value',[('title','None'), ('last_chapter',0), ('total_chapters',0), ('frequency','?'), ('status',''),('notes',''),('priority','')],default=None)
@@ -24,11 +35,23 @@ class ParseNovel():
         print(f'Initializing took: -----------{round(time()-self.__start_time,4)} seconds --------------')
 
     def __LoadList(self):
+        """Reads from file and saves positions to table.
+
+        Returns:
+        
+            list: list with practically lines from file.
+        """
         with(open(self.__file,'r',encoding='utf-8')) as f:
             self.__content=f.read().split('\n')
         return self.__content
             
     def __get_id(self):
+        """Reads header number `0` || `0.0` ||`0.0.0` depending on type of data that it reads. Then creates dictionary position with it as key and writes rest as value.
+        
+        Note:
+        
+            In case of line without it, line is saved to dump and can be invoked by using `instance.PrintDump()`
+        """
         pattern=r'\d+[\d.]+'
         for item in self.__content:
             d=re.match(pattern,item)
@@ -45,6 +68,8 @@ class ParseNovel():
         self.__content=None  
         
     def __get_element(self):
+        """Using regexp and couple of predefined patterns searches title for needed data and then saves it to variable (`everything is stored in namedlist`) after which it removes that part from title.
+        """
         pattern_last_chap=r'([ ]\d+($|[\n ])+)|([ ]\d+[.]\d+($|[ \n])+)'
         pattern_total_chap=r'([ ][(][\d ~]+[)]($|[ \n]))'
         pattern_freq=r'([^()]~[\d?x]+)'
@@ -83,11 +108,23 @@ class ParseNovel():
             self.__NovelList[item].title= self.__NovelList[item].title.strip()
     
     def __CheckType(self,data):
+        """just counts number of dots from key and because of it returns amount (done pretty stupidly)
+
+        Args:
+        
+            data (str): just key name
+
+        Returns:
+        
+            int: number of dots
+        """
         dot_count=0
         dot_count=data.count('.')
         return dot_count
         
     def AmountOfNovels(self):
+        """Prints total amount of each type and percentage it takes.
+        """
         counter=0
         manga=0
         novel=0
@@ -107,6 +144,17 @@ class ParseNovel():
         print(f'Amounting to:                            {round((manga/counter)*100,2)}%           {round((novel/counter)*100,2)}%            {round((hmanga/counter)*100,2)}%            \n\n')
     
     def PrintList(self,mode='minimal',sort='default',filter_mode='default'):
+        """Prints list based on type of positions that user wants. Depending on mode it shows different amount of data for position. It has couple methods of sorting.
+
+        Args:
+        
+            mode (str, optional): Decides how much information is shown for position. Defaults to 'minimal'. Other options are: 'half','full'
+            sort (str, optional): Chooses on which criteria positions are shown. Defaults to 'default'. Other options are: 'inc_\chapter','dec_chapter','inc_priority','dec_priority'
+            filter_mode (str, optional): [description]. Defaults to 'default'.
+
+        Returns:
+            [type]: [description]
+        """
         start_time=time()
         
         # def check_type(data):
@@ -199,7 +247,7 @@ class ParseNovel():
             print('Invalid mode. Choose from one of the following : [default]/[manga]/[novel]/[hmanga]')
             cont=False
         if _type>-1:
-            data=list(filter(lambda item : self.__checkType(item)==_type,self.__NovelList))
+            data=list(filter(lambda item : self.__CheckType(item)==_type,self.__NovelList))
         elif _type==-1:
             data=self.__NovelList.keys()
         if cont:
@@ -300,12 +348,12 @@ class ParseNovel():
         pass
                 
         
-a=ParseNovel('Zliczanie_z_listy\\lista.txt')
+a=ParseNovel('Liczenie_przeczytanych\\lista.txt')
 # a.AmountOfNovels()
-# a.PrintList(filter_mode='default',mode='full',sort='inc_priority')
+a.PrintList(filter_mode='manga',mode='HALF',sort='inc_chapter')
 # a.PrintDump()
 # a.AmountOfChapters()
-a.SearchForTitles(filter_mode='novel')
+# a.SearchForTitles(filter_mode='novel')
 
 # with ProgressBar(max_value=len(data)) as bar:
 #     for item in data:

@@ -18,8 +18,10 @@ def get_lcm(arr):
     return l
 
 # input()
-a = list(map(int,input().split()))
-b = list(map(int,input().split()))
+# a = list(map(int,input().split()))
+# b = list(map(int,input().split()))
+a=[2,4]
+b=[16,32,96]
 lcm_a = get_lcm(a)
 hcf_b = get_hcf(b)
 f = [i for i in range(lcm_a, hcf_b+1) if not hcf_b%i and not i%lcm_a]

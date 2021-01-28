@@ -1,26 +1,22 @@
 import os, sys
 
-from numpy.lib.polynomial import _polyder_dispatcher
-sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
-from MyModules.QuickSort import QuickSortNestedList as qsn
+# sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+# from MyModules.QuickSort import QuickSortNestedList as qsn
 import numpy as np
 from math import sqrt,ceil
 
 
 """
-generate special letter based on amount of most common letters in text(if there is more than one with same count,next lower that is distinctive),
-then multiply it's value by sqrt of text_len and then inside |[]| place the number  sequence multiplied by that letter
+coded with hex values of lines multiplied by amount of most common letter
 
-
+TO DO:
+    think about solving slightly differently encoded hex header with values of lines,because it is of shape of sqrt,so it tells shape of array too easily
 """
 
 class CustomEncode():
-    """My function to encode text based on creating array of size `sqrt` of length and ``rounding it up``. Later reading letters diagonally into the lists and  then shuffling lines and letters inside.
+    """My function to encode text based on creating array of size `sqrt` of length and ``rounding it up``. Later reading letters diagonally into the lists and  then sorting lines by sum of value of all letters.
     
-    Note:
-    
-        Before finishing it i didn't think how to return the sorted lines and letters into positions and it turns out i have no idea how to reverse sorting it,
-        so this works only for encoding something | scrambling it up.
+
     """
     def __init__(self,text):
         self.__start_text_len=len(text)
