@@ -1,8 +1,12 @@
-# IMPORTING SELENIUM COMPONENTS
-from SitesData import SitesInformation
 # IMPORTING SYSTEM CONTROL
-from os import system,name,path
+# from os import sys,path
+import sys,os
+from os import path
 from time import sleep
+# IMPORTING SELENIUM COMPONENTS
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from MyModules.SitesData import SitesInformation
+# from SitesData import SitesInformation
 # THIRD PARTY MODULES
 from progressbar import ProgressBar,Bar
 from namedlist import namedlist

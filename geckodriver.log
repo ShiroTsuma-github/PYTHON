@@ -1,0 +1,1140 @@
+1611821896817	geckodriver	INFO	Listening on 127.0.0.1:64840
+1611821899871	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileOM7WBl"
+Can't find symbol 'eglSwapBuffersWithDamageEXT'.
+Can't find symbol 'eglSetDamageRegionKHR'.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611821901929	Marionette	INFO	Listening on port 64848
+1611821901999	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611821902020	Marionette	INFO	Stopped listening on port 64848
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 376))
+console.error: services.settings: 
+  main/message-groups Signature failed  TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1611821904007	geckodriver	INFO	Listening on 127.0.0.1:64876
+1611822042062	geckodriver	INFO	Listening on 127.0.0.1:65104
+1611822045106	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileOMRt9S"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611822046413	Marionette	INFO	Listening on port 65113
+1611822046625	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611822046644	Marionette	INFO	Stopped listening on port 65113
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+1611863554040	geckodriver	INFO	Listening on 127.0.0.1:57817
+1611863557085	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofiletWuqGZ"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611863558535	Marionette	INFO	Listening on port 57827
+1611863558605	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611863558624	Marionette	INFO	Stopped listening on port 57827
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 376))
+console.error: services.settings: 
+  main/fxmonitor-breaches Signature failed  Error: Shutdown, aborting read-only worker requests.
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1611863627315	geckodriver	INFO	Listening on 127.0.0.1:57964
+1611863630362	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileVZohT3"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611863631756	Marionette	INFO	Listening on port 57974
+1611863631882	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611863631901	Marionette	INFO	Stopped listening on port 57974
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 376))
+1611863714056	geckodriver	INFO	Listening on 127.0.0.1:58118
+1611863717090	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileozHmD3"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611863718500	Marionette	INFO	Listening on port 58130
+1611863718610	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611863718629	Marionette	INFO	Stopped listening on port 58130
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 376))
+1611863730940	geckodriver	INFO	Listening on 127.0.0.1:58180
+1611863733955	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileOM7c8o"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611863735565	Marionette	INFO	Listening on port 58191
+1611863735974	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611863735997	Marionette	INFO	Stopped listening on port 58191
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 376))
+1611864736640	geckodriver	INFO	Listening on 127.0.0.1:59890
+1611864739680	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileiAxxS4"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611864741008	Marionette	INFO	Listening on port 59898
+1611864741202	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611864741225	Marionette	INFO	Stopped listening on port 59898
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+1611864766799	geckodriver	INFO	Listening on 127.0.0.1:60046
+1611864769851	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileWilSxS"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1611864771201	Marionette	INFO	Listening on port 60054
+1611864771371	Marionette	WARN	TLS certificate errors will be ignored for this session
+1611864771395	Marionette	INFO	Stopped listening on port 60054
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 376))
+1612260850360	geckodriver	INFO	Listening on 127.0.0.1:50441
+1612260853394	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileF8pTDy"
+*** You are running in headless mode.
+1612260886103	geckodriver	INFO	Listening on 127.0.0.1:50872
+1612260889133	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile5lM7hX"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612260891258	Marionette	INFO	Listening on port 50911
+1612260891754	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612260891764	Marionette	ERROR	[18] No reply from Marionette:Register
+1612260891772	Marionette	INFO	Stopped listening on port 50911
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+console.error: services.settings: 
+  main/fxmonitor-breaches Signature failed  TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612260930712	geckodriver	INFO	Listening on 127.0.0.1:51414
+1612260933727	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileWteYEl"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612260936192	Marionette	INFO	Listening on port 51456
+1612260936348	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612260936360	Marionette	ERROR	[18] No reply from Marionette:Register
+1612260936363	Marionette	INFO	Stopped listening on port 51456
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612260964098	geckodriver	INFO	Listening on 127.0.0.1:51786
+1612260967128	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilezMZAoD"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612260969136	Marionette	INFO	Listening on port 51830
+1612260969160	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612260969176	Marionette	INFO	Stopped listening on port 51830
+1612260969190	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261113588	geckodriver	INFO	Listening on 127.0.0.1:53544
+1612261116597	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileg50MHw"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261118763	Marionette	INFO	Listening on port 53582
+1612261119220	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261119230	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261119236	Marionette	INFO	Stopped listening on port 53582
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261164667	geckodriver	INFO	Listening on 127.0.0.1:54155
+1612261167681	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilepvHBly"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261169797	Marionette	INFO	Listening on port 54199
+1612261170305	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261170314	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261170321	Marionette	INFO	Stopped listening on port 54199
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261178782	geckodriver	INFO	Listening on 127.0.0.1:54341
+1612261181813	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile3102Sd"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261183996	Marionette	INFO	Listening on port 54374
+1612261184438	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261184453	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261184460	Marionette	INFO	Stopped listening on port 54374
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+JavaScript error: , line 0: AbortError: A request was aborted, for example through a call to IDBTransaction.abort.
+1612261252736	geckodriver	INFO	Listening on 127.0.0.1:55252
+1612261255767	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileIBJWAD"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261257941	Marionette	INFO	Listening on port 55287
+1612261258395	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261258406	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261258413	Marionette	INFO	Stopped listening on port 55287
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261495639	geckodriver	INFO	Listening on 127.0.0.1:58288
+1612261498656	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile9Uj7k3"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261500779	Marionette	INFO	Listening on port 58315
+1612261501279	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261501289	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261501295	Marionette	INFO	Stopped listening on port 58315
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261514263	geckodriver	INFO	Listening on 127.0.0.1:58487
+1612261517281	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileIYyiMW"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261519479	Marionette	INFO	Listening on port 58516
+1612261519904	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261519912	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261519919	Marionette	INFO	Stopped listening on port 58516
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261649097	geckodriver	INFO	Listening on 127.0.0.1:60250
+1612261652138	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileqAEe9b"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261654194	Marionette	INFO	Listening on port 60294
+1612261654261	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261654273	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261654278	Marionette	INFO	Stopped listening on port 60294
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261838589	geckodriver	INFO	Listening on 127.0.0.1:62446
+1612261841615	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileMRwrtE"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261843816	Marionette	INFO	Listening on port 62479
+1612261844239	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261844248	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261844256	Marionette	INFO	Stopped listening on port 62479
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612261899618	geckodriver	INFO	Listening on 127.0.0.1:63233
+1612261902641	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile4RDJOE"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261904816	Marionette	INFO	Listening on port 63280
+1612261905264	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261905277	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261905282	Marionette	INFO	Stopped listening on port 63280
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x1F0011,name=PBackgroundStorage::Msg_Observe) Channel error: cannot send/recv
+
+1612261960609	geckodriver	INFO	Listening on 127.0.0.1:63898
+1612261963640	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileDq2Ta3"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612261965659	Marionette	INFO	Listening on port 63929
+1612261965765	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612261965775	Marionette	ERROR	[18] No reply from Marionette:Register
+1612261965785	Marionette	INFO	Stopped listening on port 63929
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262057780	geckodriver	INFO	Listening on 127.0.0.1:65049
+1612262060813	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilemTX3xo"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262062972	Marionette	INFO	Listening on port 65079
+1612262063435	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262063444	Marionette	ERROR	[21] No reply from Marionette:Register
+1612262063450	Marionette	INFO	Stopped listening on port 65079
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262154994	geckodriver	INFO	Listening on 127.0.0.1:49935
+1612262158015	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile6lQpGR"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262160039	Marionette	INFO	Listening on port 49978
+1612262160138	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262160161	Marionette	INFO	Stopped listening on port 49978
+1612262160165	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262264673	geckodriver	INFO	Listening on 127.0.0.1:51215
+1612262267698	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileKoVBSi"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262269680	Marionette	INFO	Listening on port 51258
+1612262269720	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262269735	Marionette	ERROR	[18] No reply from Marionette:Register
+1612262269740	Marionette	INFO	Stopped listening on port 51258
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262305242	geckodriver	INFO	Listening on 127.0.0.1:51703
+1612262308267	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilednIpp8"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262310299	Marionette	INFO	Listening on port 51743
+1612262310387	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262310396	Marionette	ERROR	[18] No reply from Marionette:Register
+1612262310404	Marionette	INFO	Stopped listening on port 51743
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262439761	geckodriver	INFO	Listening on 127.0.0.1:53095
+1612262442784	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileQJovnc"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262444887	Marionette	INFO	Listening on port 53146
+1612262444911	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262444920	Marionette	ERROR	[21] No reply from Marionette:Register
+1612262444923	Marionette	INFO	Stopped listening on port 53146
+[Parent 29176, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262510547	geckodriver	INFO	Listening on 127.0.0.1:53911
+1612262513571	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileOkZc0r"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262515757	Marionette	INFO	Listening on port 53950
+1612262516195	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262516205	Marionette	ERROR	[18] No reply from Marionette:Register
+1612262516212	Marionette	INFO	Stopped listening on port 53950
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262870522	geckodriver	INFO	Listening on 127.0.0.1:58002
+1612262873533	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilezfs9Bv"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262876125	Marionette	INFO	Listening on port 58046
+1612262876176	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262876189	Marionette	ERROR	[18] No reply from Marionette:Register
+1612262876194	Marionette	INFO	Stopped listening on port 58046
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 968: TypeError: this._storage is null
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+console.error: "Could not load engine allegro-pl@search.mozilla.org: Error: Attempt to use XPI database when it is not initialized"
+console.warn: SearchService: "_init: abandoning init due to shutting down"
+JavaScript error: resource://gre/modules/DeferredTask.jsm, line 215: Error: Unable to arm timer, the object has been finalized.
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 573: uncaught exception: 2147500036
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 573: uncaught exception: 2147500036
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 573: uncaught exception: 2147500036
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 573: uncaught exception: 2147500036
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 573: uncaught exception: 2147500036
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262910613	geckodriver	INFO	Listening on 127.0.0.1:58504
+1612262913647	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileLTSIEB"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262915909	Marionette	INFO	Listening on port 58550
+1612262916267	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262916275	Marionette	ERROR	[18] No reply from Marionette:Register
+1612262916284	Marionette	INFO	Stopped listening on port 58550
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262927023	geckodriver	INFO	Listening on 127.0.0.1:58744
+1612262930048	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile2sDMfC"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262932038	Marionette	INFO	Listening on port 58783
+1612262932069	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262932080	Marionette	ERROR	[18] No reply from Marionette:Register
+1612262932082	Marionette	INFO	Stopped listening on port 58783
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/fxmonitor-breaches sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612262952881	geckodriver	INFO	Listening on 127.0.0.1:59063
+1612262955897	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileXJBV5R"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612262958062	Marionette	INFO	Listening on port 59087
+1612262958518	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612262958528	Marionette	ERROR	[21] No reply from Marionette:Register
+1612262958535	Marionette	INFO	Stopped listening on port 59087
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263019788	geckodriver	INFO	Listening on 127.0.0.1:59802
+1612263022823	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileW2CkjN"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263024984	Marionette	INFO	Listening on port 59840
+1612263025449	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263025457	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263025465	Marionette	INFO	Stopped listening on port 59840
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263098526	geckodriver	INFO	Listening on 127.0.0.1:60826
+1612263101549	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilepZyESM"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263103745	Marionette	INFO	Listening on port 60875
+1612263104170	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263104180	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263104185	Marionette	INFO	Stopped listening on port 60875
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263203743	geckodriver	INFO	Listening on 127.0.0.1:62353
+1612263206780	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile5ZBaX5"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263209022	Marionette	INFO	Listening on port 62390
+1612263209400	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263209408	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263209415	Marionette	INFO	Stopped listening on port 62390
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+[Parent 20264, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263221486	geckodriver	INFO	Listening on 127.0.0.1:62617
+1612263224499	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofiletDFJTV"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263226647	Marionette	INFO	Listening on port 62653
+1612263227124	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263227139	Marionette	INFO	Stopped listening on port 62653
+1612263227147	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: services.settings: 
+  main/message-groups Signature failed  TypeError: NetworkError when attempting to fetch resource.
+console.error: services.settings: 
+  main/fxmonitor-breaches Signature failed  TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263231800	geckodriver	INFO	Listening on 127.0.0.1:62773
+1612263234823	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilefxHbyK"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263237013	Marionette	INFO	Listening on port 62813
+1612263237445	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263237454	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263237461	Marionette	INFO	Stopped listening on port 62813
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+1612263303315	geckodriver	INFO	Listening on 127.0.0.1:63721
+1612263306331	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileB9QvLB"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263308568	Marionette	INFO	Listening on port 63754
+1612263308955	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263308965	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263308973	Marionette	INFO	Stopped listening on port 63754
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263327560	geckodriver	INFO	Listening on 127.0.0.1:63994
+1612263330577	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilevoL3nh"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263333039	Marionette	INFO	Listening on port 64030
+1612263333323	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263333338	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263333344	Marionette	INFO	Stopped listening on port 64030
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+1612263333619	Marionette	ERROR	[36] No reply from Marionette:Register
+1612263413751	geckodriver	INFO	Listening on 127.0.0.1:64992
+1612263416778	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileg5CXr6"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263418516	Marionette	INFO	Listening on port 65023
+1612263418798	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263418807	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263418814	Marionette	INFO	Stopped listening on port 65023
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+1612263419318	geckodriver	INFO	Listening on 127.0.0.1:65082
+1612263422346	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilenwTsV7"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263423646	Marionette	INFO	Listening on port 65118
+1612263423865	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263423874	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263439205	geckodriver	INFO	Listening on 127.0.0.1:65365
+1612263442227	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilekWSL2B"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263443491	Marionette	INFO	Listening on port 65406
+1612263443746	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263443757	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263443761	Marionette	INFO	Stopped listening on port 65406
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+1612263444259	geckodriver	INFO	Listening on 127.0.0.1:65449
+1612263447279	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilet7B5rP"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263448713	Marionette	INFO	Listening on port 65470
+1612263448797	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263448807	Marionette	ERROR	[21] No reply from Marionette:Register
+1612263471938	geckodriver	INFO	Listening on 127.0.0.1:49403
+1612263474952	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileW6Iq1O"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263476946	Marionette	INFO	Listening on port 49427
+1612263476972	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263476986	Marionette	INFO	Stopped listening on port 49427
+1612263477025	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263477557	geckodriver	INFO	Listening on 127.0.0.1:49483
+1612263480570	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileXbij0m"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263482609	Marionette	INFO	Listening on port 49511
+1612263482689	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263482700	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263534054	geckodriver	INFO	Listening on 127.0.0.1:50279
+1612263537077	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilecRk14N"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263539238	Marionette	INFO	Listening on port 50316
+1612263539699	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263539708	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263539717	Marionette	INFO	Stopped listening on port 50316
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+[Parent 30888, IPC I/O Parent] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:545
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263540245	geckodriver	INFO	Listening on 127.0.0.1:50382
+1612263543274	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileRqNcZj"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263545291	Marionette	INFO	Listening on port 50427
+1612263545395	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263545403	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263570948	geckodriver	INFO	Listening on 127.0.0.1:50817
+1612263573974	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileglFuCh"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263576155	Marionette	INFO	Listening on port 50858
+1612263576596	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263576605	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263576609	Marionette	INFO	Stopped listening on port 50858
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/message-groups sync interrupted by shutdown
+console.error: Region.jsm: "Error fetching region" (new TypeError("NetworkError when attempting to fetch resource.", ""))
+console.error: Region.jsm: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.jsm", 422))
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263577131	geckodriver	INFO	Listening on 127.0.0.1:50911
+1612263583135	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileb7zfT0"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263585203	Marionette	INFO	Listening on port 50973
+1612263585255	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263585268	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+1612263627485	geckodriver	INFO	Listening on 127.0.0.1:51313
+1612263630533	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilehS3Huv"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263632606	Marionette	INFO	Listening on port 51324
+1612263632654	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263632662	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263632672	Marionette	INFO	Stopped listening on port 51324
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.warn: services.settings: main/cfr-fxa sync interrupted by shutdown
+1612263644733	geckodriver	INFO	Listening on 127.0.0.1:51370
+1612263647746	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilenyDozI"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263649942	Marionette	INFO	Listening on port 51378
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263650369	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263650393	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263650396	Marionette	INFO	Stopped listening on port 51378
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263650983	geckodriver	INFO	Listening on 127.0.0.1:51405
+1612263654012	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileUFrIFW"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263656133	Marionette	INFO	Listening on port 51420
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263656633	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263656641	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+1612263668820	geckodriver	INFO	Listening on 127.0.0.1:51511
+1612263671832	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofiledOKMGg"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263673965	Marionette	INFO	Listening on port 51519
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263674451	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263674458	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263674465	Marionette	INFO	Stopped listening on port 51519
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263674994	geckodriver	INFO	Listening on 127.0.0.1:51551
+1612263678012	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileQFspcF"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263680282	Marionette	INFO	Listening on port 51563
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263680635	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263680645	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: https://meet.google.com/_/scs/mss-static/_/js/k=boq-rtc.MeetingsUi.pl.cowWfwmzN-c.2020.O/ck=boq-rtc.MeetingsUi.g7xqG0M4WVo.L.F4.O/am=AQAmBABoQ8D6ZwYQAGCiBAAAQAAEyA8AADACAEBrIMzB_wOkDAAgGgEAAJwgBBAg/d=1/exm=LEikZe,_b,_tp,byfTOb,lsjVmc/excm=_b,_tp,calldesktoppageview/ed=1/wt=2/ct=zgms/rs=AL5CKSGgNx_AOpEn0PaaE1VQPE3cVp0-Jw/m=n73qwf,ws9Tlc,IZT63,e5qFLc,GkRiKb,UUJqVe,xUdipf,blwjVc,fKUV3e,aurFic,COQbmf,U0aPgd,ZwDk9d,V3dDOb,XU5LFb,hl,rrm,c6KVyc,jKHFJb,mI3LFb,WO9ee,T6U9J,lHoXXe,SFhYHb,FMq9Lb,qIJF2,rsr,AePfdf,DCwKHe,RqS4qe,t8N1l,nUMwj,zmuYmd,Bmvled,mibVie,syIdOe,k2r0oe,OoSMve,KdcBrc,O6y8ed,NpD4ec,PrPYRd,O4tzsb,khenvb,iWP1Yb,MpJwZc,NwH0H,OmgaI,HLo3Ef,x60fie,xiqEse,MsyKad,lazG7b,ma,kXiGjb,azqyEc,W4cEdc,tQz2Ve,XVMNvd,L1AAkb,KUM7Z,rE6Mgd,Fl2dbf,fFdwef,Mh3sMc,ehbmDc,GcAaod,rn9YO,Y0bgVb,s39S4,lwddkf,gychg,w9hDv,RMhBfe,tgTcU,mdR7q,lAg79c,TH1Apc,Ryzncf,SdcwHb,aW3pY,YLQSd,PQaYAf,P1S3zf,DM8swd,pw70Gc,EFQ78c,Ulmmrd,ZfAoz,Ivl8bd,MI6k7c,kjKdXe,kmkrAf,PGW6ue,CBlRxf,MdUzUe,I6YDgd,N5Lqpc,fgj8Rb,xQtZb,lPKSwe,y4Nztd,QIhFr,JNoxi,texUgd,hKSk3e,pB6Zqd,llTWPd,FYCkde,rHjpXd,yDVVkb,E7GzYd,SF3gsd,FSOnAf,cilABe,jdrlZe,qexExd,DNsE7e,xGC4Gb,swpmp,gtEOic,QBFzrf,sszRX,CvtcN,oUdseb,sPwFo,iTsyac,Rsjrje,hc6Ubd,rNa50e,dWHZee,r3O6kf,Tnlgmf,QQnX0,KG2eXe,SpsfSb,cWjcJb,NNJERe,tfTN8c,o02Jie,Cw0Hjd,LgZW9b,OdgxHf,ABMzYd,VwDzFe,zbML3c,vWBbe,alwr6,JECyjf,ixOrqc,dlck6b,HDvRde,Uas9Hd,BVgquf,a9EW5e,Z7OaKe,A7fCU,JGjVRe,hIO81e,UgAtXe,pjICDe, line 6893: Error: DisconnectedError, EndCause = 72
+JavaScript error: https://meet.google.com/_/scs/mss-static/_/js/k=boq-rtc.MeetingsUi.pl.cowWfwmzN-c.2020.O/ck=boq-rtc.MeetingsUi.g7xqG0M4WVo.L.F4.O/am=AQAmBABoQ8D6ZwYQAGCiBAAAQAAEyA8AADACAEBrIMzB_wOkDAAgGgEAAJwgBBAg/d=1/exm=LEikZe,_b,_tp,byfTOb,lsjVmc/excm=_b,_tp,calldesktoppageview/ed=1/wt=2/ct=zgms/rs=AL5CKSGgNx_AOpEn0PaaE1VQPE3cVp0-Jw/m=n73qwf,ws9Tlc,IZT63,e5qFLc,GkRiKb,UUJqVe,xUdipf,blwjVc,fKUV3e,aurFic,COQbmf,U0aPgd,ZwDk9d,V3dDOb,XU5LFb,hl,rrm,c6KVyc,jKHFJb,mI3LFb,WO9ee,T6U9J,lHoXXe,SFhYHb,FMq9Lb,qIJF2,rsr,AePfdf,DCwKHe,RqS4qe,t8N1l,nUMwj,zmuYmd,Bmvled,mibVie,syIdOe,k2r0oe,OoSMve,KdcBrc,O6y8ed,NpD4ec,PrPYRd,O4tzsb,khenvb,iWP1Yb,MpJwZc,NwH0H,OmgaI,HLo3Ef,x60fie,xiqEse,MsyKad,lazG7b,ma,kXiGjb,azqyEc,W4cEdc,tQz2Ve,XVMNvd,L1AAkb,KUM7Z,rE6Mgd,Fl2dbf,fFdwef,Mh3sMc,ehbmDc,GcAaod,rn9YO,Y0bgVb,s39S4,lwddkf,gychg,w9hDv,RMhBfe,tgTcU,mdR7q,lAg79c,TH1Apc,Ryzncf,SdcwHb,aW3pY,YLQSd,PQaYAf,P1S3zf,DM8swd,pw70Gc,EFQ78c,Ulmmrd,ZfAoz,Ivl8bd,MI6k7c,kjKdXe,kmkrAf,PGW6ue,CBlRxf,MdUzUe,I6YDgd,N5Lqpc,fgj8Rb,xQtZb,lPKSwe,y4Nztd,QIhFr,JNoxi,texUgd,hKSk3e,pB6Zqd,llTWPd,FYCkde,rHjpXd,yDVVkb,E7GzYd,SF3gsd,FSOnAf,cilABe,jdrlZe,qexExd,DNsE7e,xGC4Gb,swpmp,gtEOic,QBFzrf,sszRX,CvtcN,oUdseb,sPwFo,iTsyac,Rsjrje,hc6Ubd,rNa50e,dWHZee,r3O6kf,Tnlgmf,QQnX0,KG2eXe,SpsfSb,cWjcJb,NNJERe,tfTN8c,o02Jie,Cw0Hjd,LgZW9b,OdgxHf,ABMzYd,VwDzFe,zbML3c,vWBbe,alwr6,JECyjf,ixOrqc,dlck6b,HDvRde,Uas9Hd,BVgquf,a9EW5e,Z7OaKe,A7fCU,JGjVRe,hIO81e,UgAtXe,pjICDe, line 6893: Error: DisconnectedError, EndCause = 72
+JavaScript error: https://meet.google.com/_/scs/mss-static/_/js/k=boq-rtc.MeetingsUi.pl.cowWfwmzN-c.2020.O/ck=boq-rtc.MeetingsUi.g7xqG0M4WVo.L.F4.O/am=AQAmBABoQ8D6ZwYQAGCiBAAAQAAEyA8AADACAEBrIMzB_wOkDAAgGgEAAJwgBBAg/d=1/exm=LEikZe,_b,_tp,byfTOb,lsjVmc/excm=_b,_tp,calldesktoppageview/ed=1/wt=2/ct=zgms/rs=AL5CKSGgNx_AOpEn0PaaE1VQPE3cVp0-Jw/m=n73qwf,ws9Tlc,IZT63,e5qFLc,GkRiKb,UUJqVe,xUdipf,blwjVc,fKUV3e,aurFic,COQbmf,U0aPgd,ZwDk9d,V3dDOb,XU5LFb,hl,rrm,c6KVyc,jKHFJb,mI3LFb,WO9ee,T6U9J,lHoXXe,SFhYHb,FMq9Lb,qIJF2,rsr,AePfdf,DCwKHe,RqS4qe,t8N1l,nUMwj,zmuYmd,Bmvled,mibVie,syIdOe,k2r0oe,OoSMve,KdcBrc,O6y8ed,NpD4ec,PrPYRd,O4tzsb,khenvb,iWP1Yb,MpJwZc,NwH0H,OmgaI,HLo3Ef,x60fie,xiqEse,MsyKad,lazG7b,ma,kXiGjb,azqyEc,W4cEdc,tQz2Ve,XVMNvd,L1AAkb,KUM7Z,rE6Mgd,Fl2dbf,fFdwef,Mh3sMc,ehbmDc,GcAaod,rn9YO,Y0bgVb,s39S4,lwddkf,gychg,w9hDv,RMhBfe,tgTcU,mdR7q,lAg79c,TH1Apc,Ryzncf,SdcwHb,aW3pY,YLQSd,PQaYAf,P1S3zf,DM8swd,pw70Gc,EFQ78c,Ulmmrd,ZfAoz,Ivl8bd,MI6k7c,kjKdXe,kmkrAf,PGW6ue,CBlRxf,MdUzUe,I6YDgd,N5Lqpc,fgj8Rb,xQtZb,lPKSwe,y4Nztd,QIhFr,JNoxi,texUgd,hKSk3e,pB6Zqd,llTWPd,FYCkde,rHjpXd,yDVVkb,E7GzYd,SF3gsd,FSOnAf,cilABe,jdrlZe,qexExd,DNsE7e,xGC4Gb,swpmp,gtEOic,QBFzrf,sszRX,CvtcN,oUdseb,sPwFo,iTsyac,Rsjrje,hc6Ubd,rNa50e,dWHZee,r3O6kf,Tnlgmf,QQnX0,KG2eXe,SpsfSb,cWjcJb,NNJERe,tfTN8c,o02Jie,Cw0Hjd,LgZW9b,OdgxHf,ABMzYd,VwDzFe,zbML3c,vWBbe,alwr6,JECyjf,ixOrqc,dlck6b,HDvRde,Uas9Hd,BVgquf,a9EW5e,Z7OaKe,A7fCU,JGjVRe,hIO81e,UgAtXe,pjICDe, line 6893: Error: DisconnectedError, EndCause = 72
+JavaScript error: https://meet.google.com/_/scs/mss-static/_/js/k=boq-rtc.MeetingsUi.pl.cowWfwmzN-c.2020.O/ck=boq-rtc.MeetingsUi.g7xqG0M4WVo.L.F4.O/am=AQAmBABoQ8D6ZwYQAGCiBAAAQAAEyA8AADACAEBrIMzB_wOkDAAgGgEAAJwgBBAg/d=1/exm=LEikZe,_b,_tp,byfTOb,lsjVmc/excm=_b,_tp,calldesktoppageview/ed=1/wt=2/ct=zgms/rs=AL5CKSGgNx_AOpEn0PaaE1VQPE3cVp0-Jw/m=n73qwf,ws9Tlc,IZT63,e5qFLc,GkRiKb,UUJqVe,xUdipf,blwjVc,fKUV3e,aurFic,COQbmf,U0aPgd,ZwDk9d,V3dDOb,XU5LFb,hl,rrm,c6KVyc,jKHFJb,mI3LFb,WO9ee,T6U9J,lHoXXe,SFhYHb,FMq9Lb,qIJF2,rsr,AePfdf,DCwKHe,RqS4qe,t8N1l,nUMwj,zmuYmd,Bmvled,mibVie,syIdOe,k2r0oe,OoSMve,KdcBrc,O6y8ed,NpD4ec,PrPYRd,O4tzsb,khenvb,iWP1Yb,MpJwZc,NwH0H,OmgaI,HLo3Ef,x60fie,xiqEse,MsyKad,lazG7b,ma,kXiGjb,azqyEc,W4cEdc,tQz2Ve,XVMNvd,L1AAkb,KUM7Z,rE6Mgd,Fl2dbf,fFdwef,Mh3sMc,ehbmDc,GcAaod,rn9YO,Y0bgVb,s39S4,lwddkf,gychg,w9hDv,RMhBfe,tgTcU,mdR7q,lAg79c,TH1Apc,Ryzncf,SdcwHb,aW3pY,YLQSd,PQaYAf,P1S3zf,DM8swd,pw70Gc,EFQ78c,Ulmmrd,ZfAoz,Ivl8bd,MI6k7c,kjKdXe,kmkrAf,PGW6ue,CBlRxf,MdUzUe,I6YDgd,N5Lqpc,fgj8Rb,xQtZb,lPKSwe,y4Nztd,QIhFr,JNoxi,texUgd,hKSk3e,pB6Zqd,llTWPd,FYCkde,rHjpXd,yDVVkb,E7GzYd,SF3gsd,FSOnAf,cilABe,jdrlZe,qexExd,DNsE7e,xGC4Gb,swpmp,gtEOic,QBFzrf,sszRX,CvtcN,oUdseb,sPwFo,iTsyac,Rsjrje,hc6Ubd,rNa50e,dWHZee,r3O6kf,Tnlgmf,QQnX0,KG2eXe,SpsfSb,cWjcJb,NNJERe,tfTN8c,o02Jie,Cw0Hjd,LgZW9b,OdgxHf,ABMzYd,VwDzFe,zbML3c,vWBbe,alwr6,JECyjf,ixOrqc,dlck6b,HDvRde,Uas9Hd,BVgquf,a9EW5e,Z7OaKe,A7fCU,JGjVRe,hIO81e,UgAtXe,pjICDe, line 6894: Error: startupCode: 200, error = {
+  Aa = 403
+  Da = {
+    alt-svc = "h3-29=":443"; ma=2592000,h3-T051=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43""
+    cache-control = "private"
+    content-encoding = "gzip"
+    content-length = "59"
+    content-type = "application/x-protobuf"
+    date = "Tue, 02 Feb 2021 11:01:28 GMT"
+    server = "ESF"
+    vary = "Origin, X-Origin, Referer"
+    x-content-type-options = "nosniff"
+    x-firefox-spdy = "h2"
+    x-frame-options = "SAMEORIGIN"
+    x-xss-protection = "0"
+    closure_uid_813503829 = 60
+  }
+  vk = NULL
+  Ka = {
+    ica = 39
+    closure_uid_813503829 = 61
+  }
+  Ba = {
+    Aa = {
+      3 = {
+        closure_uid_813503829 = 64
+      }
+      closure_uid_813503829 = 63
+    }
+    Ia = undefined
+    Qa = -1
+    Da = {
+      0 = 7
+      1 = "The caller does not have permission"
+      2 = {
+        closure_uid_813503829 = 66
+      }
+      closure_uid_813503829 = 65
+    }
+    Ua = 1.7976931348623157e+308
+    Wa = {
+      closure_uid_813503829 = 67
+    }
+    closure_uid_813503829 = 62
+    qd = "v3Bbmc"
+  }
+  Ia = NULL
+  Ca = NULL
+  closure_uid_813503829 = 59
+}
+JavaScript error: https://meet.google.com/_/scs/mss-static/_/js/k=boq-rtc.MeetingsUi.pl.cowWfwmzN-c.2020.O/ck=boq-rtc.MeetingsUi.g7xqG0M4WVo.L.F4.O/am=AQAmBABoQ8D6ZwYQAGCiBAAAQAAEyA8AADACAEBrIMzB_wOkDAAgGgEAAJwgBBAg/d=1/exm=LEikZe,_b,_tp,byfTOb,lsjVmc/excm=_b,_tp,calldesktoppageview/ed=1/wt=2/ct=zgms/rs=AL5CKSGgNx_AOpEn0PaaE1VQPE3cVp0-Jw/m=n73qwf,ws9Tlc,IZT63,e5qFLc,GkRiKb,UUJqVe,xUdipf,blwjVc,fKUV3e,aurFic,COQbmf,U0aPgd,ZwDk9d,V3dDOb,XU5LFb,hl,rrm,c6KVyc,jKHFJb,mI3LFb,WO9ee,T6U9J,lHoXXe,SFhYHb,FMq9Lb,qIJF2,rsr,AePfdf,DCwKHe,RqS4qe,t8N1l,nUMwj,zmuYmd,Bmvled,mibVie,syIdOe,k2r0oe,OoSMve,KdcBrc,O6y8ed,NpD4ec,PrPYRd,O4tzsb,khenvb,iWP1Yb,MpJwZc,NwH0H,OmgaI,HLo3Ef,x60fie,xiqEse,MsyKad,lazG7b,ma,kXiGjb,azqyEc,W4cEdc,tQz2Ve,XVMNvd,L1AAkb,KUM7Z,rE6Mgd,Fl2dbf,fFdwef,Mh3sMc,ehbmDc,GcAaod,rn9YO,Y0bgVb,s39S4,lwddkf,gychg,w9hDv,RMhBfe,tgTcU,mdR7q,lAg79c,TH1Apc,Ryzncf,SdcwHb,aW3pY,YLQSd,PQaYAf,P1S3zf,DM8swd,pw70Gc,EFQ78c,Ulmmrd,ZfAoz,Ivl8bd,MI6k7c,kjKdXe,kmkrAf,PGW6ue,CBlRxf,MdUzUe,I6YDgd,N5Lqpc,fgj8Rb,xQtZb,lPKSwe,y4Nztd,QIhFr,JNoxi,texUgd,hKSk3e,pB6Zqd,llTWPd,FYCkde,rHjpXd,yDVVkb,E7GzYd,SF3gsd,FSOnAf,cilABe,jdrlZe,qexExd,DNsE7e,xGC4Gb,swpmp,gtEOic,QBFzrf,sszRX,CvtcN,oUdseb,sPwFo,iTsyac,Rsjrje,hc6Ubd,rNa50e,dWHZee,r3O6kf,Tnlgmf,QQnX0,KG2eXe,SpsfSb,cWjcJb,NNJERe,tfTN8c,o02Jie,Cw0Hjd,LgZW9b,OdgxHf,ABMzYd,VwDzFe,zbML3c,vWBbe,alwr6,JECyjf,ixOrqc,dlck6b,HDvRde,Uas9Hd,BVgquf,a9EW5e,Z7OaKe,A7fCU,JGjVRe,hIO81e,UgAtXe,pjICDe, line 6893: Error: DisconnectedError, EndCause = 72
+JavaScript error: https://meet.google.com/_/scs/mss-static/_/js/k=boq-rtc.MeetingsUi.pl.cowWfwmzN-c.2020.O/ck=boq-rtc.MeetingsUi.g7xqG0M4WVo.L.F4.O/am=AQAmBABoQ8D6ZwYQAGCiBAAAQAAEyA8AADACAEBrIMzB_wOkDAAgGgEAAJwgBBAg/d=1/exm=LEikZe,_b,_tp,byfTOb,lsjVmc/excm=_b,_tp,calldesktoppageview/ed=1/wt=2/ct=zgms/rs=AL5CKSGgNx_AOpEn0PaaE1VQPE3cVp0-Jw/m=n73qwf,ws9Tlc,IZT63,e5qFLc,GkRiKb,UUJqVe,xUdipf,blwjVc,fKUV3e,aurFic,COQbmf,U0aPgd,ZwDk9d,V3dDOb,XU5LFb,hl,rrm,c6KVyc,jKHFJb,mI3LFb,WO9ee,T6U9J,lHoXXe,SFhYHb,FMq9Lb,qIJF2,rsr,AePfdf,DCwKHe,RqS4qe,t8N1l,nUMwj,zmuYmd,Bmvled,mibVie,syIdOe,k2r0oe,OoSMve,KdcBrc,O6y8ed,NpD4ec,PrPYRd,O4tzsb,khenvb,iWP1Yb,MpJwZc,NwH0H,OmgaI,HLo3Ef,x60fie,xiqEse,MsyKad,lazG7b,ma,kXiGjb,azqyEc,W4cEdc,tQz2Ve,XVMNvd,L1AAkb,KUM7Z,rE6Mgd,Fl2dbf,fFdwef,Mh3sMc,ehbmDc,GcAaod,rn9YO,Y0bgVb,s39S4,lwddkf,gychg,w9hDv,RMhBfe,tgTcU,mdR7q,lAg79c,TH1Apc,Ryzncf,SdcwHb,aW3pY,YLQSd,PQaYAf,P1S3zf,DM8swd,pw70Gc,EFQ78c,Ulmmrd,ZfAoz,Ivl8bd,MI6k7c,kjKdXe,kmkrAf,PGW6ue,CBlRxf,MdUzUe,I6YDgd,N5Lqpc,fgj8Rb,xQtZb,lPKSwe,y4Nztd,QIhFr,JNoxi,texUgd,hKSk3e,pB6Zqd,llTWPd,FYCkde,rHjpXd,yDVVkb,E7GzYd,SF3gsd,FSOnAf,cilABe,jdrlZe,qexExd,DNsE7e,xGC4Gb,swpmp,gtEOic,QBFzrf,sszRX,CvtcN,oUdseb,sPwFo,iTsyac,Rsjrje,hc6Ubd,rNa50e,dWHZee,r3O6kf,Tnlgmf,QQnX0,KG2eXe,SpsfSb,cWjcJb,NNJERe,tfTN8c,o02Jie,Cw0Hjd,LgZW9b,OdgxHf,ABMzYd,VwDzFe,zbML3c,vWBbe,alwr6,JECyjf,ixOrqc,dlck6b,HDvRde,Uas9Hd,BVgquf,a9EW5e,Z7OaKe,A7fCU,JGjVRe,hIO81e,UgAtXe,pjICDe, line 6893: Error: DisconnectedError, EndCause = 72
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+1612263703105	Marionette	ERROR	[38] No reply from Marionette:Register
+1612263718098	geckodriver	INFO	Listening on 127.0.0.1:51701
+1612263721134	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilewqw6Zu"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263723338	Marionette	INFO	Listening on port 51709
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263723755	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263723765	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263723774	Marionette	INFO	Stopped listening on port 51709
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+1612263724297	geckodriver	INFO	Listening on 127.0.0.1:51737
+1612263727323	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileHoZoeh"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263729486	Marionette	INFO	Listening on port 51748
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263729949	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263729958	Marionette	ERROR	[18] No reply from Marionette:Register
+1612263732245	Marionette	ERROR	[38] No reply from Marionette:Register
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+JavaScript error: , line 0: uncaught exception: Object
+1612263775225	Marionette	ERROR	[40] No reply from Marionette:Register
+1612263779331	geckodriver	INFO	Listening on 127.0.0.1:52170
+1612263782366	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileq96JSs"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263784365	Marionette	INFO	Listening on port 52183
+1612263784389	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263784399	Marionette	ERROR	[21] No reply from Marionette:Register
+1612263784403	Marionette	INFO	Stopped listening on port 52183
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+1612263784961	geckodriver	INFO	Listening on 127.0.0.1:52208
+1612263787991	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofiletOiV5s"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263789984	Marionette	INFO	Listening on port 52221
+1612263790017	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263790028	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263826622	geckodriver	INFO	Listening on 127.0.0.1:52434
+1612263829648	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile4JuR5u"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263831909	Marionette	INFO	Listening on port 52445
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263832269	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263832282	Marionette	ERROR	[21] No reply from Marionette:Register
+1612263832291	Marionette	INFO	Stopped listening on port 52445
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: services.settings: 
+  main/cfr Signature failed  TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612263832831	geckodriver	INFO	Listening on 127.0.0.1:52471
+1612263835861	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileTAu23U"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612263837907	Marionette	INFO	Listening on port 52486
+1612263837986	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612263837997	Marionette	ERROR	[21] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+1612263906952	Marionette	ERROR	[38] No reply from Marionette:Register
+JavaScript error: https://medium.com/, line 6: SyntaxError: expected expression, got '&'
+JavaScript error: , line 0: TypeError: NetworkError when attempting to fetch resource.
+1612264133733	geckodriver	INFO	Listening on 127.0.0.1:52834
+1612264136760	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilelB1dvq"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264138877	Marionette	INFO	Listening on port 52843
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264139386	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264139396	Marionette	ERROR	[18] No reply from Marionette:Register
+1612264139403	Marionette	INFO	Stopped listening on port 52843
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612264139931	geckodriver	INFO	Listening on 127.0.0.1:52875
+1612264142969	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilej15GOv"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264144880	Marionette	INFO	Listening on port 52885
+1612264144990	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264145007	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1612264370446	Marionette	ERROR	[38] No reply from Marionette:Register
+1612264371973	Marionette	INFO	Stopped listening on port 52885
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612264497979	geckodriver	INFO	Listening on 127.0.0.1:53642
+1612264501003	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile9YNYYC"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264503028	Marionette	INFO	Listening on port 53651
+1612264503125	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264503133	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264503150	Marionette	INFO	Stopped listening on port 53651
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612264503679	geckodriver	INFO	Listening on 127.0.0.1:53681
+1612264506718	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileDRTwil"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264508774	Marionette	INFO	Listening on port 53693
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264508842	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264508852	Marionette	ERROR	[18] No reply from Marionette:Register
+1612264544289	geckodriver	INFO	Listening on 127.0.0.1:53834
+1612264547333	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileGL5DZ2"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264549442	Marionette	INFO	Listening on port 53842
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264549954	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264549962	Marionette	ERROR	[18] No reply from Marionette:Register
+1612264549970	Marionette	INFO	Stopped listening on port 53842
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+[Parent 19928, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612264550496	geckodriver	INFO	Listening on 127.0.0.1:53874
+1612264553533	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile0d5cxV"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264555576	Marionette	INFO	Listening on port 53885
+1612264555651	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264555659	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264802839	geckodriver	INFO	Listening on 127.0.0.1:54842
+1612264805890	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilemOviHM"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264807940	Marionette	INFO	Listening on port 54852
+1612264808012	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264808021	Marionette	ERROR	[18] No reply from Marionette:Register
+1612264808027	Marionette	INFO	Stopped listening on port 54852
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612264893802	geckodriver	INFO	Listening on 127.0.0.1:55315
+1612264896827	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofile9HiIum"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264898882	Marionette	INFO	Listening on port 55324
+1612264898947	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264898956	Marionette	ERROR	[18] No reply from Marionette:Register
+1612264898966	Marionette	INFO	Stopped listening on port 55324
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612264899482	geckodriver	INFO	Listening on 127.0.0.1:55349
+1612264902525	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-web-security" "--user-data-dir" "--allow-running-insecure-content" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilezEMdp0"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612264904517	Marionette	INFO	Listening on port 55358
+1612264904547	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612264904557	Marionette	ERROR	[21] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1612265218724	geckodriver	INFO	Listening on 127.0.0.1:55711
+1612265221768	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileA5eeNx"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265223828	Marionette	INFO	Listening on port 55720
+1612265223898	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265223913	Marionette	ERROR	[18] No reply from Marionette:Register
+1612265223925	Marionette	INFO	Stopped listening on port 55720
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612265224482	geckodriver	INFO	Listening on 127.0.0.1:55747
+1612265227509	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-web-security" "--user-data-dir" "--allow-running-insecure-content" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileU5OG89"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265229445	Marionette	INFO	Listening on port 55755
+1612265229527	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265229537	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265231506	Marionette	ERROR	[38] No reply from Marionette:Register
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+JavaScript error: resource://gre/modules/LoginManagerChild.jsm, line 190: NS_ERROR_XPC_JAVASCRIPT_ERROR_WITH_DETAILS: [JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]'[JavaScript Error: "Invalid autocomplete selectedIndex" {file: "resource://gre/actors/AutoCompleteChild.jsm" line: 125}]' when calling method: [nsIAutoCompletePopup::selectedIndex]
+1612265243826	Marionette	ERROR	[40] No reply from Marionette:Register
+JavaScript error: https://ssl.gstatic.com/support/realtime/operator/1611738092232/operatordeferred_bin_base__pl.js, line 107: uncaught exception: [object Object]
+1612265262623	Marionette	ERROR	[42] No reply from Marionette:Register
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+1612265272756	Marionette	ERROR	[44] No reply from Marionette:Register
+1612265303325	Marionette	ERROR	[47] No reply from Marionette:Register
+1612265367003	Marionette	ERROR	[49] No reply from Marionette:Register
+JavaScript warning: https://receive-smss.com/sms/48732104926/, line 5: unreachable code after return statement
+JavaScript warning: https://receive-smss.com/sms/48722717428/, line 5: unreachable code after return statement
+JavaScript error: https://www.receivesms.co/polish-phone-number/2122/ line 1 > injectedScript, line 10: ReferenceError: $ is not defined
+JavaScript error: https://www.receivesms.co/polish-phone-number/2122/ line 1 > injectedScript, line 3: ReferenceError: $ is not defined
+JavaScript error: https://www.receivesms.co/polish-phone-number/2122/ line 1 > injectedScript, line 2: ReferenceError: LazyLoad is not defined
+JavaScript error: https://www.receivesms.co/js/bootstrap.min.js, line 6: ReferenceError: jQuery is not defined
+JavaScript error: https://www.receivesms.co/active-numbers/ line 1 > injectedScript, line 2: ReferenceError: LazyLoad is not defined
+JavaScript error: https://www.receivesms.co/js/bootstrap.min.js, line 6: ReferenceError: jQuery is not defined
+JavaScript error: https://www.receivesms.co/us-phone-numbers/us/ line 1 > injectedScript, line 2: ReferenceError: LazyLoad is not defined
+JavaScript error: https://www.receivesms.co/js/bootstrap.min.js, line 6: ReferenceError: jQuery is not defined
+JavaScript error: https://www.receivesms.co/us-phone-number/3446/ line 1 > injectedScript, line 10: ReferenceError: $ is not defined
+JavaScript error: https://www.receivesms.co/us-phone-number/3446/ line 1 > injectedScript, line 3: ReferenceError: $ is not defined
+JavaScript error: https://www.receivesms.co/us-phone-number/3446/ line 1 > injectedScript, line 2: ReferenceError: LazyLoad is not defined
+JavaScript error: https://www.receivesms.co/js/bootstrap.min.js, line 6: ReferenceError: jQuery is not defined
+1612265715021	geckodriver	INFO	Listening on 127.0.0.1:50532
+1612265718056	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileC504EO"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265720080	Marionette	INFO	Listening on port 50544
+1612265720177	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265720185	Marionette	ERROR	[21] No reply from Marionette:Register
+1612265720192	Marionette	INFO	Stopped listening on port 50544
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: services.settings: 
+  main/message-groups Signature failed  TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612265720622	geckodriver	INFO	Listening on 127.0.0.1:50571
+1612265723661	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-web-security" "--user-data-dir" "--allow-running-insecure-content" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofilexOs41E"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265725672	Marionette	INFO	Listening on port 50581
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265725791	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265725802	Marionette	ERROR	[18] No reply from Marionette:Register
+1612265738009	geckodriver	INFO	Listening on 127.0.0.1:50678
+1612265741029	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileU5YthU"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265743129	Marionette	INFO	Listening on port 50692
+1612265743150	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265743163	Marionette	ERROR	[18] No reply from Marionette:Register
+1612265743169	Marionette	INFO	Stopped listening on port 50692
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: services.settings: 
+  main/fxmonitor-breaches Signature failed  Error: Shutdown, aborting read-only worker requests.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612265743700	geckodriver	INFO	Listening on 127.0.0.1:50718
+1612265746718	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-web-security" "--user-data-dir" "--allow-running-insecure-content" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileRx7jC6"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265748742	Marionette	INFO	Listening on port 50726
+1612265748840	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265748853	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'
+1612265773304	geckodriver	INFO	Listening on 127.0.0.1:50929
+1612265776352	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileNarVbk"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265778352	Marionette	INFO	Listening on port 50937
+1612265778373	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265778382	Marionette	ERROR	[21] No reply from Marionette:Register
+1612265778387	Marionette	INFO	Stopped listening on port 50937
+JavaScript error: resource://activity-stream/lib/ASRouter.jsm, line 987: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsIObserverService.removeObserver]
+console.error: services.settings: 
+  main/message-groups Signature failed  TypeError: NetworkError when attempting to fetch resource.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1612265778906	geckodriver	INFO	Listening on 127.0.0.1:50959
+1612265781936	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-web-security" "--user-data-dir" "--allow-running-insecure-content" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileAjuXTd"
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265783955	Marionette	INFO	Listening on port 50967
+1612265784058	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612265784067	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612265866971	Marionette	ERROR	[38] No reply from Marionette:Register
+1612265868392	Marionette	INFO	Stopped listening on port 50967
+1612356098686	geckodriver	INFO	Listening on 127.0.0.1:64195
+1612356101719	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileOjMldy"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612356103361	Marionette	INFO	Listening on port 64205
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612356103745	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612356103760	Marionette	ERROR	[18] No reply from Marionette:Register
+1612357509707	geckodriver	INFO	Listening on 127.0.0.1:51933
+1612357512760	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\oumas\\AppData\\Local\\Temp\\rust_mozprofileG9XW3W"
+*** You are running in headless mode.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612357514093	Marionette	INFO	Listening on port 51945
+1612357514279	Marionette	WARN	TLS certificate errors will be ignored for this session
+1612357514288	Marionette	ERROR	[18] No reply from Marionette:Register
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1612357521898	Marionette	INFO	Stopped listening on port 51945

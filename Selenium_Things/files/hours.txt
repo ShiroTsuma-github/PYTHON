@@ -1,0 +1,21 @@
+0:
+    Matematyka: 7
+    Polski: 9
+    Zawodowe: 11
+1:
+    Historia: 8
+    Matematyka: 9
+    Zawodowe: 12
+    Angielski: 13
+2:
+    Zawodowe: 7
+    Historia: 10
+    Matematyka: 17
+3:
+    Matematyka: 8
+    Angielski: 10
+    Zawodowe: 12
+4:
+    Polski: 7
+    Zawodowe: 9
+    Matematyka: 12

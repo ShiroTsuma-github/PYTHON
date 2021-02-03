@@ -23,7 +23,7 @@ def clear():
 # clear()
 suma=0
 tablica=[0,1,0]
-ilosc=1000
+ilosc=100
 for i in range(0,ilosc):
     if i==0:
         pass
