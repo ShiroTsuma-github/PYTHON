@@ -1,3 +1,3 @@
 @echo off
-python H:\Dokumenty\GitHub\PYTHON\Selenium_Things\join_meet.py %*
-
+python H:\Dokumenty\GitHub\PYTHON\pyautogui\join_meet\JoinMeet_PyAuto.py %*
+pause
