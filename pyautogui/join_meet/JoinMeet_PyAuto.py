@@ -26,7 +26,7 @@ class PyAutoGui_Meet:
         
     def __load_hours(self):
         key_pattern=r'\d+:($|\s)+'
-        subject_hour_pattern=r'(\w+):(\s?\d+$)'
+        subject_hour_pattern=r'(\w+):((\s*)\d+$)'
         with(open('H:\\Dokumenty\\GitHub\\PYTHON\\pyautogui\\files\\hours.txt','r')) as f:
             table={}
             day=-1
@@ -56,7 +56,7 @@ class PyAutoGui_Meet:
             
     def Launch(self,subject):
         pyautogui.FAILSAFE=False
-        pyautogui.moveTo(0, 1080)
+        pyautogui.moveTo(0, 1080,duration=2)
         sleep(0.2)
         pyautogui.click()
         pyautogui.moveTo(145,1016)
@@ -95,6 +95,6 @@ class PyAutoGui_Meet:
             print('Couldn\'t open Window. Sorry')
             
     
-        
+print(datetime.now().weekday(),datetime.now().hour)      
 a=PyAutoGui_Meet()
 a.Start(datetime.now().weekday(),datetime.now().hour)

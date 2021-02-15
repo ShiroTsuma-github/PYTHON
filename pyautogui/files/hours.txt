@@ -19,3 +19,6 @@
     Polski: 7
     Zawodowe: 9
     Matematyka: 12
+5:
+   Matematyka: 20
+
