@@ -1,0 +1,344 @@
+Aloe Cookie5 Aloe7 Dough3 Honey4 Sugar        
+
+
+Aloe Yogurt5 Aloe2 Milk3 Sugar3 Leavening Agent
+
+
+Assorted Side Dishes1 Fried Bird2 Seafood3 Cheese5 Fruit
+
+
+Balenos Meal1 Cheese Gratin1 Meat Croquette1 Smoked Fish Steak2 Stir-Fried Vegetables
+
+
+Beer5 Starch6 Mineral Water1 Sugar2 Leavening Agent
+
+
+Boiled Bird Eggs3 Egg6 Mineral Water1 Cooking Wine1 Salt
+
+
+Borscht7 Fragrant Jerky3 Milk1 Cinnamon2 Mineral Water
+
+
+Butter-Roasted Lobster1 Lobster4 Butter5 Salt5 Olive Oil
+
+
+Calpheon Meal2 Soft Bread1 Milk Tea1 Fish Fillet Salad1 Cheese Pie
+
+
+Carrot Confit2 Special Carrot6 Mineral Water3  Lump of Raw Sugar2 Salt
+
+
+Cheese Gratin1 Grilled Sausage5 Dough4 Vegetable3 Cheese
+
+
+Cheese Pie4 Dough7 Cheese3 Butter3 Egg        
+
+
+Chicken Breast Salad5 Chicken Meat5 Fruit5 Vegetable1 Vinegar
+
+
+Chowder1 Dried Pearl Oyster Flesh2 Pepper2 Meat1 Milk
+
+
+Coconut Cocktail2 Coconut1 Exotic Herbal Wine2 Essence of Liquor1 Fruit
+
+
+Coconut Fried Fish3 Coconut1 Fish2 Egg3 Dough
+
+
+Coconut Pasta2 Coconut2 Onion4 Garlic5 Dough
+
+
+Couscous1 Freekeh Snake Stew6 Teff Flour Dough3 Nutmeg4 Vegetable
+
+
+Dark Pudding1 Oatmeal1 Pickled Vegetables5 Bird Meat7 Blood 2
+
+
+Date Palm Wine5 Date Palm2 Essence of Liquor1 Sugar4 Leavening Agent
+
+
+Delotia Juice4 Delotia5 Fruit3 Sugar3 Purified Water
+
+
+Delotia Milk Tea4 Delotia3 Milk3 Cooking Honey3  
+3 Purified Water
+
+
+Delotia Pudding5 Delotia7 Wolf Blood2 Honey Wine1 Oatmeal
+
+
+Delotia Tart3 Delotia2 Milk5 Flour1 Egg      
+
+
+Desert Dumpling6 Reptile Meat6 Dough1 Cinnamon2 <a 
+2 Olive Oil
+
+
+Dressing1 Egg1 Mineral Water1 Olive Oil2 Salt
+
+
+Energizing Cron Meal1 Special Drieghanese Meal3 Serendia 
+Meal3 Mediah Meal1 Ancient Cron Spice
+
+
+Essence of Liquor1 Flour1 Fruit1 Leavening Agent Exotic Herbal Wine
+
+
+Fig Pie5 Fig3 Dough3 Sugar2 Olive Oil
+
+
+Fish Fillet Chips2 Fish3 White Sauce7 Flour2 Salt
+
+
+Fish Fillet Salad2 Fish2 Dressing3 Onion2 Cheese
+
+
+Fish Soup1 Fish3 Flour2 Cream6 Mineral Water
+
+
+Five-Grain Chicken Porridge2 Ground Bird Meat2 Mineral Water3 Starch Frank Sandwich
+
+
+Freekeh Snake Stew3 Snake Meat6 Freekeh2 Star Anise5 Mineral Water
+
+
+Fried Bird7 Bird Meat4 Flour2 Egg3 Pepper  
+
+
+Fried Fish1 Fish3 Flour2 Deep Frying Oil Fried Vegetables
+
+
+Fruit and Vegetable Salad4 Fruit4 Vegetable1 Vinegar2 Cooking Wine
+
+
+Fruit Juice4 Fruit3 Sugar5 Mineral Water1 Salt
+
+
+Fruit Pie6 Fruit6 Dough3 Cream4 Sugar
+
+
+Fruit Pudding5 Fruit1 Cream3 Milk2 Sugar    
+
+
+Fruit Wine5 Fruit1 Exotic Herbal Wine3 Essence of Liquor2 Mineral Water
+
+
+Ghormeh Sabzi5 Yak Meat2 Starch5 Garlic2 Salt
+
+
+Good Feed1 Fish6 Meat4 Flour3 Mineral Water
+
+
+Grain Soup6 Starch3 Mineral Water3 Cooking Wine1 Salt
+
+
+Grilled Bird Meat2 Bird Meat6 Deep Frying Oil2 Cooking Wine1 Salt
+
+
+Grilled Sausage6 Meat1 Onion2 Pepper2 Salt
+
+
+Grilled Scorpion3 Scorpion Meat2 Butter3 Nutmeg3 Hot Pepper
+
+
+Ham Sandwich2 Soft Bread2 Grilled Sausage5 Vegetable4 Egg
+
+
+Hard-boiled Gargoyle Leg1 Gargoyle Leg2 Exotic Herbal Wine3 Onion3 Garlic
+
+
+Hard-Boiled Shellfish2 Seafood3 Essence of Liquor4 Garlic2 Hot Pepper
+
+
+High-Quality Carrot Juice1 High-Quality Carrot3 Flour3 Sugar4 Mineral Water
+
+
+Honey Wine3 Honey2 Essence of Liquor2 Sugar6 Mineral Water
+
+
+Honeycomb Cookie6 Honey4 Dough2 Egg4 Milk  
+
+
+Hunter's Salad1 Soft Whale Meat2 Vinegar2 Dressing5 Garlic
+
+
+Kamasylvia Meal1 RB Mushroom Sandwich1 Coconut Pasta1 Fig Pie2 Fruit Wine
+
+
+Khalk's Fermented Wine1 Fugitive Khalk's Horn5 Honey Wine6 Date Palm6 Leavening Agent
+
+
+King of Jungle Hamburg4 Lion Meat4 Teff Bread2 Pickled Vegetables3 Nutmeg
+
+
+Knight Combat Rations1 Dark Pudding1 Ham Sandwich1 Meat Croquette1 Fruit Wine
+
+
+Lean Meat Salad8 Meat2 Vinegar3 Pepper4 Dressing
+
+
+Lizard Kebab6 Reptile Meat2 Red Sauce3 Onion7 Starch
+
+
+Margoria Seafood Meal1 Prawn Salad1 Steamed Prawn1 Pan-Fried Oyster1 Butter-Roasted Lobster
+
+
+Meat Croquette8 Meat5 Flour2 Egg2 Cheese    
+
+
+Meat Pasta5 Meat4 Dough3 Pepper2 Garlic      
+
+
+Meat Pie4 Meat6 Dough2 Sugar2 Olive Oil      
+
+
+Meat Sandwich1 Soft Bread7 Meat6 Vegetable3 Cheese
+
+
+Meat Soup5 Meat1 Pepper2 Cream4 Mineral Water
+
+
+Meat Stew5 Meat2 Flour3 Mineral Water2 Cooking Wine
+
+
+Mediah Meal1 Dark Pudding1 Oatmeal2 Grilled Sausage1 Lean Meat Salad
+
+
+Milk Tea2 Tea With Fine Scent2 Flour3 Milk3 Honey
+
+
+Oatmeal9 Flour3 Milk3 Onion2 Honey 
+
+
+Odyllita Meal1 Delotia Pudding1 Stir-Fried Bracken Meat2 Delotia Juice2 Chicken Breast Salad
+
+
+Omelet5 Starch5 Egg2 Olive Oil2 Salt
+
+
+Organic Feed2 Fish2 Oatmeal5 Meat4 Bird 
+Meat
+
+
+Pan-Fried Oyster3 Oyster2 Egg5 Flour2 Vinegar
+
+
+Pickled Fish1 Fish2 Vinegar2 Leavening Agent4 Salt
+
+
+Pickled Vegetables8 Vegetable4 Vinegar2 Leavening Agent2 Sugar
+
+
+Pistachio Fried Rice4 Pistachio6 Teff2 Cinnamon2 Salt
+
+
+Prawn Salad2 Shrimp3 Olive Oil2 Salt3 Egg  
+
+
+RB Mushroom Cheese Melt1 RB Mushroom2 Meat2 Cheese3 Salt
+
+
+RB Mushroom Sandwich1 RB Mushroom1 Soft Bread2 Cream2 Onion
+
+
+Red Sauce1 Meat1 Base Sauce2 Sugar2 Mineral Water
+
+
+Roast Marmot5 Marmot Meat3 Hot Pepper2 Salt1 Red Sauce
+
+
+Savory Steak4 Lion Meat5 Fig2 Cooking Wine 3 Pepper
+
+
+Seafood Grilled With Butter1 Seafood3 Butter2 Salt1 Olive Oil
+
+
+Seafood Mushroom Salad1 Seafood1 Fortune Teller Mushroom2 
+2 Dressing Seafood Pasta
+
+
+Serendia Meal1 Ham Sandwich1 Meat Pie1 Honeycomb Cookie2 Boiled Bird Eggs
+
+
+Skewered Llama Cheese Melt5 Llama Meat4 Cheese3 Hot Pepper1 Pepper
+
+
+Smoked Fish Steak2 Fish2 Salt3 Olive Oil Soft Bread
+
+
+Special Arehaza Meal2 Coconut Cocktail1 Coconut Pasta1 Coconut Fried Fish1 Meat Stew
+
+
+Special Carrot Juice1 Special Carrot3 Flour3 Sugar4 Mineral Water
+
+
+Special Drieghanese Meal1 Skewered Llama Cheese Melt1 Stir-Fried Bracken1 Roast Marmot1 Ghormeh Sabzi
+
+
+Steak8 Meat2 Red Sauce2 Garlic2 Salt
+
+
+Steamed Bird5 Bird Meat3 Vegetable2 Essence of Liquor2 Vinegar
+
+
+Steamed Fish1 Fish2 Garlic3 Mineral Water2 Salt
+
+
+Steamed Prawn4 Shrimp3 Paprika2 Hot Pepper3 Cooking Wine
+
+
+Steamed Seafood2 Seafood3 Hot Pepper6 Mineral Water2 Salt
+
+
+Steamed Whale Meat1 Blue Whale Meat1 Honey Wine4 Garlic6 Mineral Water
+
+
+Stir-Fried Bird5 Chicken Meat5 Starch3 Onion2 Deep Frying Oil
+
+
+Stir-Fried Bracken8 Bracken5 Garlic2 Salt5 Mineral Water
+
+
+Stir-Fried Bracken Meat3 Bracken6 Meat3 Garlic2 <a 
+2 Olive Oil
+
+
+Stir-fried Gazelle Hind Leg1 Gazelle Hind Leg4 Garlic5 Olive Oil3 Cabbage
+
+
+Stir-Fried Meat7 Meat2 Onion3 Hot Pepper2 Base Sauce
+
+
+Stir-Fried Seafood1 Seafood4 Vegetable2 White Sauce2 Hot Pepper
+
+
+Stir-Fried Vegetables5 Vegetable2 Hot Pepper2 
+Olive Oil1 Salt
+
+
+Sute Tea2 Tea With Fine Scent2 Butter3 Milk1 Salt
+
+
+Sweet Honey Wine2 Top-Quality Cooking Honey4 Full-Bodied Exotic Wine10 10 Sugar2 Fruit
+
+
+Tea With Fine Scent4 Plants4 Fruit3 Honey7 Mineral Water
+
+
+Teff Bread5 Teff Flour3 Mineral Water2 Salt2 Leavening Agent
+
+
+Teff Sandwich1 Teff Bread1 Grilled Scorpion1 Freekeh Snake Stew3 Red Sauce
+
+
+Valencia Meal1 Teff Sandwich1 King of Jungle Hamburg1 Couscous2 Fig Pie
+
+
+Vinegar1 Fruit1 Starch1 Leavening Agent1 Sugar
+
+
+Whale Meat Salad1 Blue Whale Meat6 Vegetable2 Dressing3 Egg
+
+
+White Sauce1 Fruit1 Milk1 Base Sauce2 Cooking Wine

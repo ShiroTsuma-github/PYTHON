@@ -349,10 +349,10 @@ class ParseNovel():
                 
         
 a=ParseNovel('Liczenie_przeczytanych\\lista.txt')
-# a.AmountOfNovels()
+a.AmountOfNovels()
 a.PrintList(filter_mode='manga',mode='HALF',sort='inc_chapter')
-# a.PrintDump()
-# a.AmountOfChapters()
+a.PrintDump()
+a.AmountOfChapters()
 # a.SearchForTitles(filter_mode='novel')
 
 # with ProgressBar(max_value=len(data)) as bar:

@@ -89,11 +89,11 @@ with window('Odczytywanie zawartosci pliku',width=window_percentage(Main_window_
     add_menu_item('Close',callback=load_file.close_file)
     add_spacing(count=100)
     show_documentation()
-set_main_window_resizable(True)
-start_dearpygui()
+# set_main_window_resizable(True)
+# start_dearpygui()
 
 
-self.__Novel_Site_Data=namedlist('NovelSiteData',[('SiteLink',''),('fix',''),('suffix',''),('AdditionalLinks',[]),('AdditionalActionNeeded',False)])
+# ('NovelSiteData',[('SiteLink',''),('fix',''),('suffix',''),('AdditionalLinks',[]),('AdditionalActionNeeded',False)])
 
 
 
@@ -105,15 +105,19 @@ class DearPyGUI():
         self.Main_window_width=MainWindowWidth
         self.Main_window_height=MainWindowHeight
         self.SetWindowSize()
-        self.__
-        
-        self.FilesUsedList=
+        """FileLinkParameters store in list data about path to file with specific ID for easing use of bigger amount of files.
+        """
+        self.__FileLinkParameters=namedlist('FileLinkParams',[('filename'),('file_ID'),('relative_path',None),('full_path',None)])
+        self.FilesUsedList=[]
     @property
     def Main_window_width(self):
         return self.__Main_window_width
     @property 
     def Main_window_height(self):
         return self.__Main_window_height
+    @property
+    def FilesUsedList(self):
+        return self.__FilesUsedList
     @Main_window_width.setter
     def Main_window_width(self,_input):
         if str(_input).isdigit():
@@ -136,13 +140,35 @@ class DearPyGUI():
         else:
             print('Size Error:: Could not set height. Changing to default.')
             self.__Main_window_height=720
+    @FilesUsedList.setter
+    def FilesUsedList(self,FileToAdd,File_ID=None):
+        if FileToAdd==[] and len(FileToAdd)==0:
+            self.__FilesUsedList=[]
+            return
+        full_path_pattern=r"^([A-Za-z]:\\)(([A-Z\]a-z.!#&^@()_ 0-9\[])+\\?){0,10}([\w\s])+\.txt$"   #grupa 4 to tytul pliku
+        relative_path_pattern=r'(?!^[A-Za-z]:\\)(([A-Za-z0-9!@#$%^&\-_+=,. ([\])])+\\){0,10}(([\w\s])+\.txt)$'  #grupa 3 to tytul
+        """Relative path will start following from folder two levels higher, than folder the python file is launched. (.\\.\\file.py)
+        """
+        full_result=re.match(full_path_pattern,FileToAdd)
+        relative_result=re.match(relative_path_pattern,FileToAdd)
+        if full_result:
+            filename=full_result.group(4)
+            self.__FilesUsedList.append(self.__FileLinkParameters(filename=filename,file_ID=File_ID,full_path=full_result.group()))
+        if relative_result:
+            filename=relative_result.group(3)
+            self.__FilesUsedList.append(self.__FileLinkParameters(filename=filename,file_ID=File_ID,relative_path=relative_result.group()))
     def SetTheme(theme):
-        """Choose one of the  themes available. Choose from : `"Dark", "Light", "Classic", "Dark 2", "Grey", "Dark Grey", "Cherry", "Purple", "Gold", "Red"`
+        """Choose one of the  themes available. 
+        Choose from : `"Dark", "Light", "Classic", "Dark 2", "Grey", "Dark Grey", "Cherry", "Purple", "Gold", "Red"`
 
         Args:
             theme (str): name of the theme.
         """
-        set_theme(theme)
+        themes=["Dark", "Light", "Classic", "Dark 2", "Grey", "Dark Grey", "Cherry", "Purple", "Gold", "Red"]
+        if theme in themes:
+            set_theme(theme)
+        else:
+            print('Type Error:: Theme not included in available themes.')
     def SetWindowSize(self,Width=0,Ratio=None):
         """Sets Size of Main Application to specified by `Main_window_width` and `Main_window_height`. 
 
@@ -165,6 +191,8 @@ class DearPyGUI():
                     Size_y*=Size_x
                     self.Main_window_width=int(Width)
                     self.Main_window_height=int(Size_y)
+                else:
+                    print('Ratio Error:: Could not properly read|set ratio.')
                     
                     
             
@@ -173,6 +201,7 @@ class DearPyGUI():
     def Launch(self):
         start_dearpygui()
     
-# dear=DearPyGUI(100000,1000000)
-# dear.SetWindowSize(Ratio='1:2',Width=500)
-# dear.Launch()
+dear=DearPyGUI(100000,1000000)
+dear.FilesUsedList="example.txt"
+dear.SetWindowSize(Ratio='1:2',Width=500)
+dear.Launch()

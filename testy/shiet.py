@@ -1,32 +1,8 @@
-def split_text(text,chars):
-        table=[]
-        corrected=chars
-        while True:
-            if text[corrected]!=' ':
-                for i in range(corrected,corrected-chars,-1):
-                    if text[i]==' ':
-                        break
-                table.append(i)
-                
-            else:
-                table.append(corrected)
-            corrected+=chars
-            if corrected>=len(text):
-                return table
+def dec(n):
+    tab=[]
+    while n!=0:
+        tab.append(n%2)
+        n//=2
+    return (tab[::-1])
 
-t="""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae neque eget mi aliquet facilisis at non odio. Maecenas nulla sem, dignissim id ante nec, imperdiet eleifend est. Curabitur a rhoncus lacus, sit amet placerat sapien. Proin tristique, massa sed dignissim fermentum, ex tortor faucibus risus, et blandit sapien elit eget ligula. Nunc id mi fermentum, varius nunc nec, facilisis ipsum. Etiam vitae vehicula justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas augue massa, iaculis a metus quis, tristique venenatis nisl. Nullam nec lacinia nulla, non sodales nulla. Sed a condimentum elit. Quisque dignissim, libero vitae bibendum sagittis, ligula ipsum sodales nibh, sed pulvinar ipsum turpis vel urna. Nulla non congue nibh, nec porta dolor. Nam ultricies tellus vitae nunc lobortis ornare. Nullam molestie sapien et ante rhoncus tempus. Curabitur quis cursus nisl, nec porttitor eros. Nunc imperdiet, arcu in lobortis condimentum, leo nisl dapibus nibh, vel facilisis mi quam et eros.Nam diam arcu, egestas ut convallis in, semper non diam. Donec in leo ipsum. Pellentesque non consectetur neque. Proin eget leo id ante mattis euismod. Donec at dolor leo. Aenean ex mi, ultricies ut hendrerit ut, pulvinar vitae risus. Curabitur auctor ornare vestibulum. Mauris a tellus nisi. Donec nulla lectus, pharetra et dictum et, pharetra id mauris. Nam sit amet nunc sit amet nisi lacinia egestas eget quis ex. Donec rhoncus lorem id nibh condimentum placerat. Integer porttitor congue ante, eu sollicitudin leo blandit et. Donec volutpat odio quis lacus tempus dignissim. Nam efficitur mauris aliquam, ullamcorper dui quis, posuere enim. Pellentesque massa metus, lobortis vitae fermentum eu, feugiat vitae leo. Nunc tempus quam eu lectus efficitur, et commodo turpis gravida.
-Maecenas turpis mauris, finibus non maximus vel, rutrum et orci. Cras nec eleifend libero. Mauris et faucibus mi. Duis finibus elit quis accumsan dictum. Donec nec lectus elit. Curabitur elementum cursus massa, quis rutrum ex mollis a. Donec semper elit dolor, ac consequat sapien consectetur non. Vivamus justo mi, porta a sodales vel, fermentum sit amet erat. Nulla id volutpat purus. Maecenas hendrerit ex et nulla fermentum congue.
-Quisque volutpat quam sit amet libero scelerisque feugiat. Proin sed quam nec lacus porttitor sodales sed vel elit. Sed iaculis neque et nunc feugiat condimentum. Fusce maximus turpis in diam auctor, sit amet pellentesque metus condimentum. Morbi lacinia condimentum diam, blandit malesuada augue malesuada et. Pellentesque in dui vel risus varius ultricies in non lacus. Fusce et lorem nec neque euismod imperdiet. Pellentesque et dui a velit fringilla tristique nec et dolor. Phasellus efficitur, tortor eget pretium ultrices, augue erat tempor eros, eget semper turpis neque a tellus. Sed lacinia mollis facilisis. Nulla id elementum quam. Nulla tempus ligula est. Nulla interdum, turpis sed ultrices consequat, magna mi scelerisque lacus, vel dignissim risus nisl tristique urna. Praesent dictum hendrerit erat, eu scelerisque eros pharetra vehicula.
-Maecenas viverra faucibus pharetra. Quisque malesuada gravida elit, at commodo ligula varius dignissim. Integer fermentum eu diam ac vestibulum. Fusce venenatis dolor sed est posuere pellentesque. Aliquam erat volutpat. Proin congue viverra felis, in pretium eros sollicitudin ut. Duis tempor mi non tortor consectetur tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam tellus sem, eleifend et tellus ac, ornare volutpat nisl. Nullam cursus mollis augue, aliquet tristique ante vestibulum et. Aenean a posuere turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus dapibus pulvinar sapien, a vestibulum velit ornare ut. Morbi eleifend ante ipsum, quis fringilla nisl commodo at.
-Cras non turpis sed urna volutpat tempus sit amet in justo. Aliquam suscipit urna fermentum, dapibus purus sit amet, venenatis turpis. Donec ac justo in magna porta malesuada molestie eu lectus. Etiam quis varius nisl, sed elementum velit. Aliquam erat volutpat. Proin lorem tellus, malesuada a hendrerit vel, gravida sed ligula. Donec facilisis odio nisi. Mauris ante dolor, vestibulum sed lectus vel, venenatis accumsan velit. Nulla eget quam et tortor ultrices ornare quis eu velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In non nunc neque. Praesent tortor erat, interdum id mollis in, aliquam ac felis. Phasellus nec porttitor eros, porttitor aliquam nunc. Etiam porta nisl eu erat sodales vestibulum. Nullam vel quam vel urna fermentum scelerisque vel quis odio. In neque orci, finibus vitae placerat ut, condimentum vitae orci.
-In pellentesque urna velit, quis porta turpis dapibus sit amet. Vestibulum at lacus velit. Duis pretium, lectus a gravida pellentesque, erat leo ultrices velit, non feugiat nibh ex id ante. Nullam nec odio ac odio fringilla tempus. Integer eget ornare sem. Integer ullamcorper sagittis dolor vitae consequat. Duis fringilla, purus sit amet interdum elementum, odio libero convallis elit, sit amet pulvinar nunc nulla vitae est. Quisque tempor ante orci, id tincidunt sem malesuada in. Aenean id eleifend eros.
-Aenean sit amet ex et justo tempus fermentum vitae id libero. Praesent ullamcorper neque magna, a tristique massa convallis eu. Quisque nec vehicula ex. Duis non sagittis metus. Curabitur venenatis suscipit orci, pulvinar rhoncus tellus. Cras ut egestas velit. Donec suscipit dictum urna.
-Sed consectetur sapien eros, non maximus leo auctor quis. Cras dapibus nisl vitae justo aliquet, vel aliquam metus interdum. Cras ut bibendum quam, vitae venenatis felis. Vivamus cursus tellus sed justo finibus consectetur nec vel dolor. Aliquam erat volutpat. Vivamus molestie tortor eget dapibus elementum. Etiam eu auctor sapien. Etiam ac aliquam risus, eget sollicitudin orci. Donec pulvinar nibh sed purus lacinia mattis. Donec ut odio ac nulla egestas eleifend ut semper augue.
-Donec vel erat vitae purus ultricies fermentum. Maecenas in neque convallis, sollicitudin arcu eget, hendrerit risus. Vestibulum a dui quis nulla posuere fermentum volutpat id erat. Vivamus nec odio libero. Ut vitae rhoncus nisi. Mauris non arcu sit amet turpis posuere rutrum eget tristique dui. Donec vitae turpis sagittis, finibus purus id, vehicula nibh. Proin dignissim nibh id pharetra volutpat. Ut at dictum eros, ac porta massa. Aliquam cursus sem velit, non tincidunt erat laoreet sed. Vivamus in tincidunt ex. Curabitur consectetur vel ipsum nec pretium. Quisque commodo urna in felis rutrum pretium. "
-"""
-table=split_text(t,80)
-for i,j in enumerate(table):
-    if i==0:
-        print(f'content {i}:  {t[0:j]}')
-        continue
-    print(f'content {i}:  {t[table[i-1]:j]}')
+print(dec(123))

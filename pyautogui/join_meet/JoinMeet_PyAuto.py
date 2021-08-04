@@ -6,6 +6,9 @@ from datetime import datetime
 """
 Po dolaczeniu na meet odcisza,puszcza audio wczesniej nagrane zarywajace,po czym po 1 min wysyla w chacie wiadomosc,ze zarywa,wiec 
 nie bede dzis zbyt gadal
+
+--Problem: jak aplikacja otworzy na fullscreen na 2 monitorze to traktuje jakby otworzyła dobrze na 1.
+fix chyba:jezeli znajdzie,ze fullscreen,to sprawdzic  czy jest to widoczne w obszarze  1 ekranu
 """
     
 class PyAutoGui_Meet:
