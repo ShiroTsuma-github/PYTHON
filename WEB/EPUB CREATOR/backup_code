@@ -1,0 +1,100 @@
+ class __EasyFirefox(__EasyBrowser):
+        def __init__(self,driver_path):
+            pass
+            # self.options=FirefoxOptions()
+            # self.instance=self.InitializeSession()
+            # self.initial_options=FirefoxOptions()
+        def InitializeSession(self):
+            return Firefox(self.path,options=self.options)
+        def ResetSession(self):
+            try:
+                self.instance.quit()
+                self.options=self.initial_options
+            except:
+                raise
+            finally:
+                self.instance=self.InitializeSession()
+        def ReloadSession(self):
+            try:
+                self.instance.quit()
+            except:
+                raise 
+            finally:
+                self.instance=self.InitializeSession()
+        def TerminateSession(self):
+            self.instance.quit()
+        def AddOption(self,option):
+            self.options.add_argument(option)
+                
+    class __EasyChrome():
+        def __init__(self,driver_path):
+            self.path=driver_path
+            self.options=ChromeOptions()
+            self.instance=self.InitializeSession()
+        def InitializeSession(self):
+            return Chrome(self.path,options=self.options)
+        def ResetSession(self):
+            try:
+                self.instance.quit()
+                self.options=ChromeOptions()
+            except:
+                raise 
+            finally:
+                self.instance=self.InitializeSession()
+        def ReloadSession(self):
+            try:
+                self.instance.quit()
+            except:
+                raise 
+            finally:
+                self.instance=self.InitializeSession()
+        def TerminateSession(self):
+            self.instance.quit()
+        def AddOption(self,option):
+            self.options.add_argument(option)
+                
+    class __EasyEdge():
+        def __init__(self,driver_path):
+            self.path=driver_path
+            self.options=EdgeOptions()
+            self.instance=self.InitializeSession()
+        def InitializeSession(self):
+            return Edge(self.path,options=self.options)
+        def ResetSession(self):
+            try:
+                self.instance.quit()
+                self.options=EdgeOptions()
+            except:
+                raise 
+            finally:
+                self.instance=self.InitializeSession()
+        def ReloadSession(self):
+            try:
+                self.instance.quit()
+            except:
+                raise 
+            finally:
+                self.instance=self.InitializeSession()
+        def TerminateSession(self):
+            self.instance.quit()
+        def AddOption(self,option):
+            self.options.add_argument(option)
+                
+
+
+
+            if parameter.upper()=='XPATH':
+                pass
+            elif parameter.upper()=='CLASS_NAME':
+                pass
+            elif parameter.upper()=='ID':
+                pass
+            elif parameter.upper()=='CSS_SELECTOR':
+                pass
+
+
+
+        if self.current_tab<self.total_tabs-1:
+            self.current_tab+=1
+        else:
+            self.current_tab-=1

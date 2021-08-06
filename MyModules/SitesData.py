@@ -93,5 +93,6 @@ class SitesInformation():
             
 if __name__ == '__main__':
     a=SitesInformation(BrowserType='Chrome',headless=False)
+    a.AddChromeOption('beka')
     
         
