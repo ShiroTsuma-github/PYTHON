@@ -6,3 +6,4 @@ testy/
 /text_from_image/**/*.png
 /text_from_image/**/*.jpg
 /text_from_image/**/*.txt
+**/SessionDownloads/

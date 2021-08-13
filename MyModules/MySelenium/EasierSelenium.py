@@ -1,4 +1,3 @@
-from genericpath import isfile
 from typing import Union
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Chrome,Firefox,Edge
@@ -8,8 +7,12 @@ from msedge.selenium_tools import EdgeOptions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+from glob import glob
 import re
 from os.path import abspath,isdir
+from os import mkdir,listdir
+from shutil import rmtree
+import os
 import sys
 from time import sleep
 from progressbar import progressbar
@@ -148,6 +151,9 @@ class EasySelenium():
         self.total_tabs=1
         self.tabs.append('')
         self.links.append('')
+        self.PendingDownloads=[]
+        self.FinishedDownloads=[]
+        self.Downloads_path=''
     def __LoadDrivers(self):
         """Hidden method that checks for `MySelenium` folder in current path and from that goes to `DRIVERS` and tries to open specified driver
 
@@ -202,15 +208,26 @@ class EasySelenium():
         if self.browser_type!='CHROME':
             print('Sorry. That browser wasn\'t implemented yet.')
             return
-        if isdir(path):
-            opt={'download.default_directory':path}
-        else:
+        if not isdir(path):
             pattern=r'(.*)\\(.*\..*)$'
             folder_path=re.search(pattern,path)
             if folder_path:
-                opt={'download.default_directory':folder_path.group(1)}
-            self.browser.AddExpOption(opt)
-            self.ReloadBrowser()
+                path=folder_path.group(1)
+        path=f'{path}\\SessionDownloads'
+        opt={'download.default_directory':f'{path}\\CACHE'}
+        try:
+            mkdir(path)
+        except FileExistsError:
+            pass
+        path+='\\CACHE'
+        try:
+            mkdir(path)
+        except FileExistsError:
+            pass
+                
+        self.browser.AddExpOption(opt)
+        self.Downloads_path=path
+        self.ReloadBrowser()
         
         
     def ChangeVisibility(self)->None:
@@ -236,6 +253,11 @@ class EasySelenium():
         """Closes Browser.
         """
         self.browser.TerminateSession()
+        self.CheckDownloads()
+        if len(self.Downloads_path)>1:
+            rmtree(f'{self.Downloads_path}',ignore_errors=True)
+            
+            
     
     def BrowserWait(self,seconds:int)->None:
         """Makes browser wait for `seconds`. 
@@ -246,7 +268,7 @@ class EasySelenium():
         for i in progressbar(range(seconds),redirect_stdout=True):
             sleep(1)
     
-    def CreateTroubleshootWindow(self,seconds:int)->None:
+    def CreateTroubleshootWindow(self,seconds:int,new:bool=True)->None:
         """Opens Browser window for specified amount of `seconds` to allow for doing actions etc.
 
         Note:
@@ -255,8 +277,12 @@ class EasySelenium():
             
         Args:
             seconds (int): amount of seconds to wait for.
+            new (boolean): Specifies if open clear session ( `True` ) or with setting already set (`False`).Defaults to True.
         """
-        self.ResetBrowser()
+        if new:
+            self.ResetBrowser()
+        else:
+            self.ReloadBrowser()
         for i in progressbar(range(int(seconds/(seconds/10))),redirect_stdout=True):
             sleep(int(seconds/10))
         self.CloseBrowser()
@@ -358,6 +384,24 @@ class EasySelenium():
         obj.send_keys(text)
         if end:
             obj.send_keys(Keys.RETURN)
+        
+    def CheckDownloads(self):
+        """[summary]
+
+        Returns:
+            [type]: [description]
+        """
+        if len(self.Downloads_path)<1:
+            return
+        self.PendingDownloads=glob(f'{self.Downloads_path}\\*.crdownload')
+        self.FinishedDownloads+=[f'{self.Downloads_path}\\{f}' for f in listdir(self.Downloads_path) if f'{self.Downloads_path}\\{f}' not in self.PendingDownloads]
+        for _file in self.FinishedDownloads:
+            os.replace(_file,_file.replace('CACHE\\',''))
+        if len(glob(f'{self.Downloads_path}\\*.crdownload'))<1:
+            return True
+        
+        return False
+            
     
     
     
@@ -389,7 +433,7 @@ class EasySelenium():
         if self.current_tab<0:
             sys.exit('All tabs closed. Closing program')
         self.browser.ChangeInstance(self.current_tab)
-        
+#                                           Pretty much identical. Change to single one ? less code or easier to use?
     def CloseTitleTab(self,name:str)->None:
         """Closes tab based on title that is displayed on top (`<title>` tag in HTML)
 
@@ -436,8 +480,7 @@ class EasySelenium():
             self.current_tab-=1
         if self.current_tab<0:
             sys.exit('All tabs closed. Closing program')
-        self.browser.ChangeInstance(self.current_tab)
-        
+        self.browser.ChangeInstance(self.current_tab)                                              
         
     def ListTabsInfo(self):
         """Displays information about tabs.
@@ -488,9 +531,12 @@ class EasySelenium():
         
 if __name__ == '__main__': 
     a=EasySelenium('chrome')
-    # a.CreateTroubleshootWindow(60)
-    a.OpenURL('https://www.python.org')
+    # a.OpenURL('https://www.python.org')
     a.PrepareDownloads(__file__)
+    a.CheckDownloads()
+    a.CloseBrowser()
+    # a.BrowserWait(30)
+    # a.CreateTroubleshootWindow(500,False)
     # print(a.CurrentURLAddress())
     # print(a.CurrentURLTitle())
     # a.AddTab('www.facebook.com')
@@ -504,4 +550,4 @@ if __name__ == '__main__':
     # a.CloseCurrentTab()
     # a.GoRightmostTab()
 
-    a.BrowserWait(30)
+    
