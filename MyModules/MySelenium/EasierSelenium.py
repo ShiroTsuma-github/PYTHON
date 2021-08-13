@@ -1,3 +1,4 @@
+from genericpath import isfile
 from typing import Union
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Chrome,Firefox,Edge
@@ -8,14 +9,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
 import re
-from os.path import abspath
+from os.path import abspath,isdir
 import sys
 from time import sleep
 from progressbar import progressbar
 
 
 class DriverFolderNotFound(Exception):
-    """Raised when can't find DRIVERS folder (probably beacuse you renamed `\\WEB\\` or `\\WEB\\DRIVERS\\`)"""
+    """Raised when can't find DRIVERS folder (probably beacuse you renamed `\\MySelenium\\` or `\\MySelenium\\DRIVERS\\`)"""
     pass
 class DriverMissing(Exception):
     """Raised when can't find specific driver or `browser_type` doesn't match"""
@@ -23,7 +24,7 @@ class DriverMissing(Exception):
 class IncorrectOption(Exception):
     """Raised when option passed is incorrect. Make sure you are using option that works with browser that you use"""
     
-    
+   
     
 class EasySelenium():
     class __EasyBrowser():
@@ -36,11 +37,11 @@ class EasySelenium():
             
         def InitializeSession(self):
             try:
-                if self.browser_type.upper()=='CHROME':
+                if self.browser_type=='CHROME':
                     return Chrome(self.path,options=self.options)
-                elif self.browser_type.upper()=='FIREFOX':
+                elif self.browser_type=='FIREFOX':
                     return Firefox(self.path,options=self.options)
-                elif self.browser_type.upper()=='EDGE':
+                elif self.browser_type=='EDGE':
                     return Edge(self.path,options=self.options)
             except:
                 sys.exit('Could not find driver for what you specified or there occurred unidentified error.')
@@ -67,11 +68,26 @@ class EasySelenium():
             
         def AddOption(self,option):
             self.options.add_argument(option)
+        def AddExpOption(self,option):
+            self.options.add_experimental_option('prefs',option)
+        def AddAddon(self,addon):
+            self.options.add_extension(addon)
             
+        def Maximize(self):
+            self.instance.maximize_window()
+            
+        def FixSiteAddress(self,link):
+            temp=link
+            pattern=r'((http|https):[/]{2})'
+            if re.match(pattern,temp):
+                pass
+            else:
+                temp=f'http://{temp}'
+            return temp
+        
         def OpenSite(self,link):
             try:
                 self.instance.get(link)
-                # print(f'opening site. current handle: {self.instance.current_window_handle}')
             except:
                 sys.exit('There was problem with link.')
             
@@ -82,33 +98,36 @@ class EasySelenium():
             return self.instance.title
         
         def FindElement(self,element:str,parameter:str):
+            parameter=parameter.upper()
             try:
-                if parameter.upper()=='XPATH':
+                if parameter=='XPATH':
                     return self.instance.find_element_by_xpath(element)
-                elif parameter.upper()=='CLASS_NAME':
+                elif parameter=='CLASS_NAME':
                     return self.instance.find_element_by_class_name(element)
-                elif parameter.upper()=='ID':
+                elif parameter=='ID':
                     return self.instance.find_element_by_id(element)
-                elif parameter.upper()=='CSS_SELECTOR':
+                elif parameter=='CSS_SELECTOR':
                     return self.instance.find_element_by_css_selector(element)
-                elif parameter.upper()=='NAME':
+                elif parameter=='NAME':
                     return self.instance.find_element_by_name(element)
-                elif parameter.upper()=='LINK-CONTENT':
+                elif parameter=='LINK-CONTENT':
                     return self.instance.find_element_by_link_text(element)
-                elif parameter.upper()=='LINK-PARTIAL CONTENT':
+                elif parameter=='LINK-PARTIAL CONTENT':
                     return self.instance.find_element_by_partial_link_text(element)
             except NoSuchElementException:
-                if parameter.upper()=='XPATH':
+                if parameter=='XPATH':
                     print('The XPATH didn\'t work. Maybe try giving full XPATH. And make sure you want XPATH to correct object')
                 sys.exit('Could not find element you are looking for. Did you give correct parameter?')
         
-        def AddInstance(self):
-            self.instance.execute_script('window.open()')
+        def AddInstance(self,site,current_handle=None):
+            self.instance.execute_script(f'window.open("{site}")')
+            
         def CloseInstance(self):
             self.instance.close()
+            
         def ChangeInstance(self,position):
             self.instance.switch_to.window(self.instance.window_handles[position])
-            # print(self.instance.current_window_handle)
+            
         def ListInstances(self):
             print(self.instance.window_handles)
             
@@ -120,35 +139,37 @@ class EasySelenium():
         Args:
             browser_type (str): type of browser to initialize
         """
-        self.browser_type=browser_type
+        self.browser_type=browser_type.upper()
         self.browser=self.__LoadDrivers()
         self.objects=[]
         self.tabs=[]
+        self.links=[]
         self.current_tab=0
         self.total_tabs=1
-        self.tabs.append(self.CurrentURLTitle())
+        self.tabs.append('')
+        self.links.append('')
     def __LoadDrivers(self):
-        """Hidden method that checks for `WEB` folder in current path and from that goes to `DRIVERS` and tries to open specified driver
+        """Hidden method that checks for `MySelenium` folder in current path and from that goes to `DRIVERS` and tries to open specified driver
 
         Raises:
-            DriverFolderNotFound: If there is no `WEB` folder in current file path.
+            DriverFolderNotFound: If there is no `MySelenium` folder in current file path.
             DriverMissing: There is no driver found with specified name
 
         Returns:
             __EasyBrowser instance: Returns object address to __EasyBrowser initialized
         """
-        pattern=r'(.*\\WEB\\)(.*)'
+        pattern=r'(.*\\MySelenium\\)(.*)'
         folder_path=re.search(pattern,abspath(__file__))
         try:
             if folder_path:
                 folder_path=str(folder_path.group(1))+'DRIVERS\\'
             else:
                 raise DriverFolderNotFound
-            if self.browser_type.upper()=='CHROME':
+            if self.browser_type=='CHROME':
                 return self.__EasyBrowser(f'{folder_path}chromedriver.exe',ChromeOptions(),self.browser_type)
-            elif self.browser_type.upper()=='FIREFOX':
+            elif self.browser_type=='FIREFOX':
                 return self.__EasyBrowser(folder_path,FirefoxOptions(),self.browser_type)
-            elif self.browser_type.upper()=='EDGE':
+            elif self.browser_type=='EDGE':
                 return self.__EasyBrowser(f'{folder_path}msedgedriver.exe',EdgeOptions(),self.browser_type)
             else:
                 raise DriverMissing
@@ -168,12 +189,38 @@ class EasySelenium():
             option (str): option to add.
         """
         self.browser.AddOption(option)
+    def AddBrowserAddon(self,addon:str)->None:
+        """Given path to `.crx` file will load it to browser.
+
+        Args:
+            addon (str): [description]
+        """
+        self.browser.AddAddon(addon)
+        self.ReloadBrowser()
+    
+    def PrepareDownloads(self,path:str)->None:
+        if self.browser_type!='CHROME':
+            print('Sorry. That browser wasn\'t implemented yet.')
+            return
+        if isdir(path):
+            opt={'download.default_directory':path}
+        else:
+            pattern=r'(.*)\\(.*\..*)$'
+            folder_path=re.search(pattern,path)
+            if folder_path:
+                opt={'download.default_directory':folder_path.group(1)}
+            self.browser.AddExpOption(opt)
+            self.ReloadBrowser()
+        
         
     def ChangeVisibility(self)->None:
         """Changes browser visibility through `headless`.
         """
         self.browser.options.headless=not self.browser.options.headless
         self.ReloadBrowser()
+    
+    def MaximizeWindow(self)->None:
+        self.browser.Maximize()
         
     def ResetBrowser(self)->None:
         """Reloads Browser with cleared setttings.
@@ -237,13 +284,10 @@ class EasySelenium():
         Args:
             link (str): link to site
         """
-        temp=link
-        pattern=r'((http|https):[/]{2})'
-        if re.match(pattern,temp):
-            self.browser.OpenSite(str(temp))
-        else:
-            self.browser.OpenSite(f'http://{temp}')
+
+        self.browser.OpenSite(self.browser.FixSiteAddress(link))
         self.tabs[self.current_tab]=self.CurrentURLTitle()
+        self.links[self.current_tab]=self.CurrentURLAddress()
             
     def ObjectContent(self,element:str,parameter:str)->str:
         """Returns content of object provided.
@@ -315,14 +359,29 @@ class EasySelenium():
         if end:
             obj.send_keys(Keys.RETURN)
     
-    def AddTab(self):
-        self.browser.AddInstance()
-        self.tabs.append('')
+    
+    
+    def AddTab(self,URL:str)->None:
+        """Adds new Tab to rightmost of another tabs. Adds it's title and URL into `self.links` and `self.tabs`
+
+        Args:
+            URL (str): address of site to open
+        """
+        self.browser.ChangeInstance(self.total_tabs-1)
+        temp=self.browser.FixSiteAddress(URL)
+        self.browser.AddInstance(temp,self.current_tab)
         self.total_tabs+=1
-        sleep(1)
+        self.browser.ChangeInstance(self.total_tabs-1)
+        self.tabs.append(self.CurrentURLTitle())
+        self.links.append(temp)
+        self.browser.ChangeInstance(self.current_tab)
         
-    def CloseCurrentTab(self):
+        
+    def CloseCurrentTab(self)->None:
+        """Closes tab that is currently focused.
+        """
         self.tabs.pop(self.current_tab)
+        self.links.pop(self.current_tab)
         self.total_tabs-=1
         self.browser.CloseInstance()
         if self.current_tab==self.total_tabs:
@@ -330,10 +389,44 @@ class EasySelenium():
         if self.current_tab<0:
             sys.exit('All tabs closed. Closing program')
         self.browser.ChangeInstance(self.current_tab)
-    def CloseTitleTab(self,name):
+        
+    def CloseTitleTab(self,name:str)->None:
+        """Closes tab based on title that is displayed on top (`<title>` tag in HTML)
+
+        Args:
+            name (str): title of tab.
+        """
         for pos in range(0,len(self.tabs)):
             if self.tabs[pos].upper()==str(name).upper():
                 break
+        else:
+            print('No tab with such Title. Did you type it correctly?')
+            return
+        self.tabs.pop(pos)
+        self.links.pop(pos)
+        self.total_tabs-=1
+        self.browser.ChangeInstance(pos)
+        self.current_tab=pos
+        self.browser.CloseInstance()
+        if self.current_tab==self.total_tabs:
+            self.current_tab-=1
+        if self.current_tab<0:
+            sys.exit('All tabs closed. Closing program')
+        self.browser.ChangeInstance(self.current_tab)
+        
+    def CloseURLTab(self,name:str)->None:
+        """Closes tab based on URL of it.
+
+        Args:
+            name (str): URL of site.
+        """
+        for pos in range(0,len(self.links)):
+            if self.links[pos].upper()==str(name).upper():
+                break
+        else:
+            print('No tab with such URL. Did you type it correctly?')
+            return
+        self.links.pop(pos)
         self.tabs.pop(pos)
         self.total_tabs-=1
         self.browser.ChangeInstance(pos)
@@ -343,25 +436,50 @@ class EasySelenium():
             self.current_tab-=1
         if self.current_tab<0:
             sys.exit('All tabs closed. Closing program')
-            
+        self.browser.ChangeInstance(self.current_tab)
         
-    def ListTabs(self):
-        self.browser.ListInstances() 
-        print(self.tabs)
         
-    def GoToNextTab(self):
+    def ListTabsInfo(self):
+        """Displays information about tabs.
+        
+
+        Returns [list] with:
+            [0]: List of instances,
+            [1]: List of tab titles,
+            [2]: List of URL addresses
+        """
+        return [self.browser.ListInstances(),self.tabs,self.links]
+    
+    
+    def GoRightTab(self):
+        """Changes tab to one further right.
+        """
         if self.current_tab<self.total_tabs-1:
             self.browser.ChangeInstance(self.current_tab+1)
             self.current_tab+=1
         else:
             print('There is no next tab.')
     
-    def GoToPreviousTab(self):
+    def GoLeftTab(self):
+        """Changes tab to one further left.
+        """
         if self.current_tab-1>=0:
             self.browser.ChangeInstance(self.current_tab-1)
             self.current_tab-=1
         else:
             print('There is no previous tab.')
+    
+    def GoRightmostTab(self):
+        """Changes tab to one on rightmost side.
+        """
+        self.browser.ChangeInstance(self.total_tabs-1)
+        self.current_tab=self.total_tabs-1
+    
+    def GoLeftmostTab(self):
+        """Changes tab to one on leftmost side.
+        """
+        self.browser.ChangeInstance(0)
+        self.current_tab=0
         
         
     
@@ -371,26 +489,19 @@ class EasySelenium():
 if __name__ == '__main__': 
     a=EasySelenium('chrome')
     # a.CreateTroubleshootWindow(60)
-    # a.OpenURL('https://www.python.org')
+    a.OpenURL('https://www.python.org')
+    a.PrepareDownloads(__file__)
     # print(a.CurrentURLAddress())
     # print(a.CurrentURLTitle())
-    # print(a.ObjectContent('q','name'))
-    # a.InputIntoField('Testujemy','q','name')
-    # poz=a.SaveObjectInList('q','name')
-    # a.InputIntoField('Testujemy2',poz)
-    a.OpenURL('www.python.org')
-    a.BrowserWait(1)
-    a.AddTab()
-    a.GoToNextTab()
-    a.CloseCurrentTab()
-    a.AddTab()
-    a.AddTab()
-    # a.GoToNextTab()
-    a.OpenURL('www.google.com')
-    a.GoToNextTab()
-    a.OpenURL('www.minecraft.com')
-    a.GoToNextTab()
-    # a.OpenURL('www.amazon.com')
-    a.ListTabs()
-    a.CloseTitleTab('google')
+    # a.AddTab('www.facebook.com')
+    # a.AddTab('www.google.com')
+    # a.GoRightTab()
+    # a.OpenURL('https://www.wp.pl')
+    # a.CloseURLTab(a.links[2])
+    # a.OpenURL('www.google.com')
+    # a.AddTab('www.minecraft.com')
+    # a.GoLeftmostTab()
+    # a.CloseCurrentTab()
+    # a.GoRightmostTab()
+
     a.BrowserWait(30)
