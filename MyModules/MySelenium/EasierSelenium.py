@@ -1,4 +1,5 @@
 from typing import Union
+from pyautogui import click
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import Chrome,Firefox,Edge
 from selenium.webdriver import ChromeOptions
@@ -6,6 +7,7 @@ from selenium.webdriver import FirefoxOptions
 from msedge.selenium_tools import EdgeOptions
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 
 from glob import glob
 import re
@@ -37,6 +39,8 @@ class EasySelenium():
             self.options=options
             self.__initial_options=options
             self.instance=self.InitializeSession()
+            self.action_handler=ActionChains(self.instance)
+            # add sele.actionchAINS
             
         def InitializeSession(self):
             try:
@@ -122,7 +126,7 @@ class EasySelenium():
                     print('The XPATH didn\'t work. Maybe try giving full XPATH. And make sure you want XPATH to correct object')
                 sys.exit('Could not find element you are looking for. Did you give correct parameter?')
         
-        def AddInstance(self,site,current_handle=None):
+        def AddInstance(self,site):
             self.instance.execute_script(f'window.open("{site}")')
             
         def CloseInstance(self):
@@ -136,7 +140,7 @@ class EasySelenium():
             
    
                 
-    def __init__(self,browser_type:str):
+    def __init__(self,browser_type:str,download=False,_file=None):
         """Initialization of class with browser_type
 
         Args:
@@ -144,16 +148,17 @@ class EasySelenium():
         """
         self.browser_type=browser_type.upper()
         self.browser=self.__LoadDrivers()
+        self.action=self.__LoadActions()
         self.objects=[]
-        self.tabs=[]
-        self.links=[]
+        self.tabs=['']
+        self.links=['']
         self.current_tab=0
         self.total_tabs=1
-        self.tabs.append('')
-        self.links.append('')
         self.PendingDownloads=[]
         self.FinishedDownloads=[]
         self.Downloads_path=''
+        if download:
+            self.PrepareDownloads(_file)
     def __LoadDrivers(self):
         """Hidden method that checks for `MySelenium` folder in current path and from that goes to `DRIVERS` and tries to open specified driver
 
@@ -182,6 +187,8 @@ class EasySelenium():
         except (DriverFolderNotFound,DriverMissing) as error:
             sys.exit(error.__doc__)
             
+    def __LoadActions(self):
+        return self.browser.action_handler
     def AddBrowserOption(self,option:str)->None:
         """Adds setting like language,size,mode,etc.
 
@@ -243,11 +250,33 @@ class EasySelenium():
         """Reloads Browser with cleared setttings.
         """
         self.browser.ResetSession()
+        self.objects=[]
+        self.tabs=['']
+        self.links=['']
+        self.current_tab=0
+        self.total_tabs=1
+        self.PendingDownloads=[]
+        self.FinishedDownloads=[]
         
     def ReloadBrowser(self)->None:
         """Reloads browser without clearing settings.
         """
         self.browser.ReloadSession()
+        temp=self.links if self.links[0]!='' else []
+        self.links=[]
+        self.tabs=[]
+        self.current_tab=0
+        self.total_tabs=1
+        if len(temp)==0:
+            self.links.append('')
+            self.tabs.append('')
+        else:
+            for tab in temp:
+                self.AddTab(tab)
+            self.browser.ChangeInstance(0)
+            self.browser.CloseInstance()
+            self.browser.ChangeInstance(self.current_tab)
+            
         
     def CloseBrowser(self)->None:
         """Closes Browser.
@@ -384,22 +413,40 @@ class EasySelenium():
         obj.send_keys(text)
         if end:
             obj.send_keys(Keys.RETURN)
+    def PressObject(self,element:Union[int,str],parameter:str=None)->None:
+        if parameter:
+            obj=self.browser.FindElement(element,parameter)
+        else:
+            try:
+                obj=self.objects[element]
+            except:
+                sys.exit('parameter is empty and element is not int or does not exist under specified element(id)')
+        self.action.click(on_element=obj)
+        sleep(0.1)
+        self.action.perform()
         
-    def CheckDownloads(self):
-        """[summary]
+        
+    def CheckDownloads(self,frequency:int=1)->bool:
+        """Checks if there is no .crdownload file inside CACHE folder inside SessionDownloads on path given in PrepareDownloads. 
+        Moves files without extension out ot CACHE
 
+        Args:
+            frequency (int): Time to wait (in seconds) for before returning if `False`. Defaults to 1 second
         Returns:
-            [type]: [description]
+            [bool]: Returns `True` if finished downloading, else `False`
         """
         if len(self.Downloads_path)<1:
-            return
+            sys.exit('Initiate PrepareDownloads first.')
         self.PendingDownloads=glob(f'{self.Downloads_path}\\*.crdownload')
         self.FinishedDownloads+=[f'{self.Downloads_path}\\{f}' for f in listdir(self.Downloads_path) if f'{self.Downloads_path}\\{f}' not in self.PendingDownloads]
         for _file in self.FinishedDownloads:
-            os.replace(_file,_file.replace('CACHE\\',''))
+            try:
+                os.replace(_file,_file.replace('CACHE\\',''))
+            except:
+                pass
         if len(glob(f'{self.Downloads_path}\\*.crdownload'))<1:
             return True
-        
+        sleep(1)
         return False
             
     
@@ -482,7 +529,7 @@ class EasySelenium():
             sys.exit('All tabs closed. Closing program')
         self.browser.ChangeInstance(self.current_tab)                                              
         
-    def ListTabsInfo(self):
+    def ListTabsInfo(self)->list:
         """Displays information about tabs.
         
 
@@ -531,16 +578,18 @@ class EasySelenium():
         
 if __name__ == '__main__': 
     a=EasySelenium('chrome')
-    # a.OpenURL('https://www.python.org')
-    a.PrepareDownloads(__file__)
-    a.CheckDownloads()
-    a.CloseBrowser()
+    a.OpenURL('https://www.python.org')
+    # a.PrepareDownloads(__file__)
+    # a.CheckDownloads()
+    # a.CloseBrowser()
     # a.BrowserWait(30)
     # a.CreateTroubleshootWindow(500,False)
     # print(a.CurrentURLAddress())
     # print(a.CurrentURLTitle())
-    # a.AddTab('www.facebook.com')
-    # a.AddTab('www.google.com')
+    a.AddTab('www.facebook.com')
+    a.AddTab('www.google.com')
+    a.ReloadBrowser()
+    a.BrowserWait(10)
     # a.GoRightTab()
     # a.OpenURL('https://www.wp.pl')
     # a.CloseURLTab(a.links[2])
@@ -549,5 +598,10 @@ if __name__ == '__main__':
     # a.GoLeftmostTab()
     # a.CloseCurrentTab()
     # a.GoRightmostTab()
+    
+    
+    
+#TODO: when tab is opened not by user, then he can't go to it (it's not in list of tabs) and can't close
+#TODO: when trying to press button through ActionChains it's doing to many tries and crashes
 
     

@@ -76,7 +76,11 @@ class ParseNovel():
         pattern_fin=r'[?❌]*✓[?❌]*'
         pattern_notes=r'[(]([\d\s]*([a-zA-Z,.\s?!]+[\d\s]*)+)[)]' #[(][\s]*[\d\s]?[\w\s]+[\d\s]*[\s]*[)]
         pattern_prio=r'([💯🌟💩]+[\s]*)+'
+        pos=1
         for item in self.__NovelList:
+            pos+=1
+            if pos==601:
+                break
             self.__NovelList[item].title= self.__NovelList[item].title.replace('�', '')
             title= self.__NovelList[item].title
             last_chap=re.search(pattern_last_chap,title)
@@ -294,7 +298,7 @@ class ParseNovel():
         print(self.__dump)
         print(60*'=')
     
-    def AmountOfChapters(self,Novel_time=9,Manga_time=6,Hmanga_time=6):
+    def AmountOfChapters(self,Novel_time=10,Manga_time=5,Hmanga_time=10):
         manga=0
         novel=0
         hmanga=0
@@ -349,9 +353,11 @@ class ParseNovel():
                 
         
 a=ParseNovel('Liczenie_przeczytanych\\lista.txt')
-a.AmountOfNovels()
-a.PrintList(filter_mode='manga',mode='HALF',sort='inc_chapter')
+a.PrintList(mode='HALF',sort='inc_chapter')
 a.PrintDump()
+a.AmountOfNovels()
+
+
 a.AmountOfChapters()
 # a.SearchForTitles(filter_mode='novel')
 
