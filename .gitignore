@@ -5,6 +5,7 @@ testy/
 .vscode/
 /**/*.txt
 /**/*.log
+
 /Proste_Szyfrowanie/*.txt
 /text_from_image/**/*.png
 /text_from_image/**/*.jpg
