@@ -2,8 +2,14 @@ text_from_image/text/*.*
 Proste_Szyfrowanie/*.txt
 utf8_operacje/*.txt
 testy/
+.vscode/
+/**/*.txt
+/**/*.log
 /Proste_Szyfrowanie/*.txt
 /text_from_image/**/*.png
 /text_from_image/**/*.jpg
 /text_from_image/**/*.txt
 **/SessionDownloads/
+/Python-3.9.10-Windows/*.*
+/**/__pycache__/
+/WEB
