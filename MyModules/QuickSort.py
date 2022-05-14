@@ -1,5 +1,5 @@
 def QuickSortNestedList(array):
-    """Quick sort using recurention that allows sorting lists
+    """Quick sort using recursion that allows sorting lists
 
     Args:
     
