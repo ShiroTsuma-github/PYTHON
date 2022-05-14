@@ -4,7 +4,7 @@ utf8_operacje/*.txt
 testy/
 .vscode/
 /**/*.txt
-*.log
+*/*.log
 
 /Proste_Szyfrowanie/*.txt
 /text_from_image/**/*.png
