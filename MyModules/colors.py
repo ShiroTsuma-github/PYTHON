@@ -144,7 +144,6 @@ class color_convert():
                 "gainsboro":[[220,220,220],"#DCDCDC"],
                 "white smoke":[[245,245,245],"#F5F5F5"],
                 "white":[[255,255,255],"#FFFFFF"]
-
                 }
     def show_colors(self):
         for word in self.basic_colors:
