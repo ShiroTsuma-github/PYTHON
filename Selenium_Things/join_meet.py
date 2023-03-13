@@ -63,27 +63,28 @@ class Meet(SI):
         self.AddChromeOption('--allow-running-insecure-content')
         self.browser=''
         print('Odpalone')
-        self.browser.get('https://accounts.google.com/ServiceLogin/identifier?service=classroom&passive=1209600&continue=https%3A%2F%2Fclassroom.google.com%2F&followup=https%3A%2F%2Fclassroom.google.com%2F&emr=1&flowName=GlifWebSignIn&flowEntry=AddSession')
-        username=self.browser.find_element_by_id('identifierId')
-        username.click()
-        username.send_keys('spam.shiro@gmail.com')
-
-        next=self.browser.find_element_by_xpath('//*[@id="identifierNext"]/div/button/div[2]')
-        next.click()
-        sleep(2)
-        password=self.browser.find_element_by_xpath('//*[@id="password"]/div[1]/div/div[1]/input')
-        password.click()
-        password.send_keys('enter_your_password_here')
-        next=self.browser.find_element_by_xpath('//*[@id="passwordNext"]/div/button/div[2]')
-        next.click()
-        sleep(15)
+        self.browser.get('https:www.saucedemo.com')
         sleep(100)
-        pass
+        # username=self.browser.find_element_by_id('identifierId')
+        # username.click()
+        # username.send_keys('spam.shiro@gmail.com')
+
+        # next=self.browser.find_element_by_xpath('//*[@id="identifierNext"]/div/button/div[2]')
+        # next.click()
+        # sleep(2)
+        # password=self.browser.find_element_by_xpath('//*[@id="password"]/div[1]/div/div[1]/input')
+        # password.click()
+        # password.send_keys('enter_your_password_here')
+        # next=self.browser.find_element_by_xpath('//*[@id="passwordNext"]/div/button/div[2]')
+        # next.click()
+        # sleep(15)
+        # sleep(100)
+        # pass
 
 
     
         
-# a=Meet(headless=False,BrowserType='Chrome')
-# a.Start(datetime.now().weekday(),datetime.now().hour)
+a=Meet(headless=False,BrowserType='Chrome')
+a.Start(datetime.now().weekday(),datetime.now().hour)
 # # automatedshirotsuma@gmail.com
 # Automated

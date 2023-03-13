@@ -14,6 +14,7 @@ testy/
 /Python-3.9.10-Windows/*.*
 /**/__pycache__/
 /WEB
+.history
 
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
