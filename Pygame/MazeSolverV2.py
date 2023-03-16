@@ -1,6 +1,6 @@
 from typing import  Union
 from math import sqrt
-from random import shuffle
+from random import shuffle, choice
 
 src = """
 .#####
@@ -170,6 +170,141 @@ Neighbours: {self.neighbours}
         for obj in self.__GetObjects():
             obj.GetNeighbours(self.state)
 
+    def __SolverDoubleSided(self, distanceFunc, chooseFunc):
+
+        def ParentSwap(main, other):
+            ogParent = main                     # Backup of actual node
+            actualNode = other                  # Swapping positions to do reversal
+            while True:                         # Since we go from start we go to end
+                temp = actualNode.parent        # Keeping parent 1 further in graph
+                actualNode.parent = ogParent    # Changing directions of parent in actual position
+                ogParent = actualNode           # After direction change we store this as backup
+                actualNode = temp               # We swap with parent 1 further to do another swap
+                if actualNode.start or actualNode.end:
+                    break
+            self.endNode = actualNode           # When we finish save this as endNode
+            self.endNode.parent = ogParent      # Give parent to last node
+            return
+
+        def Filter(nextX, actualNodeX):
+            self.visited.append(actualNodeX)
+            self.actionLog.append(actualNodeX.position)
+            nextX.pop(nextX.index(actualNodeX))
+            for pos in actualNodeX.neighbours:
+                if pos in self.visited or pos in nextX:
+                    continue
+                else:
+                    if pos.parent is not None:
+                        ParentSwap(actualNodeX, pos)
+                        return (-1, -1)
+                    else:
+                        pos.parent = actualNodeX
+                        pos.distance = distanceFunc(
+                            actualNodeX,
+                            pos,
+                            startPos.position if actualNodeX == actualNodeE else endPos.position)
+                        nextX.append(pos)
+            return (nextX, chooseFunc(nextX))
+
+        self.mode = 'DoubleSided'
+        steps = 0
+        nextS = []
+        nextE = []
+        startPos = self.state[self.startPos[0]][self.startPos[1]]
+        actualNodeS = startPos
+        endPos = self.state[self.endPos[0]][self.endPos[1]]
+        actualNodeE = endPos
+        actualNodeS.distance = distanceFunc(startPos, None, endPos.position)
+        actualNodeE.distance = distanceFunc(endPos, None, startPos.position)
+        nextS.append(actualNodeS)
+        nextE.append(actualNodeE)
+        while nextS or nextS:
+            nextS, actualNodeS = Filter(nextS, actualNodeS)
+            if nextS == -1:
+                return
+            nextE, actualNodeE = Filter(nextE, actualNodeE)
+            if nextE == -1:
+                return
+            steps += 1
+
+    def SolveDoubleSidedFIFO(self):
+
+        def distFunc(actualNode, pos, *args):
+            if pos is None:
+                return 0
+            return actualNode.distance + 1
+
+        def chooseFunc(nextX):
+            return nextX[0]
+
+        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.mode += 'FIFO'
+
+    def SolveDoubleSidedLIFO(self):
+
+        def distFunc(actualNode, pos, *args):
+            if pos is None:
+                return 0
+            return actualNode.distance + 1
+
+        def chooseFunc(nextX):
+            return nextX[len(nextX) - 1]
+
+        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.mode += 'LIFO'
+
+    def SolveDoubleSidedClosest(self):
+
+        def distFunc(actualNode, pos, *args):
+            if pos is None:
+                return 0
+            return actualNode.distance + 1
+
+        def chooseFunc(nextX):
+            minPos = nextX[0]
+            table = nextX
+            for pos in table:
+                if pos.distance <= minPos.distance:
+                    minPos = pos
+            return minPos
+
+        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.mode += 'Closest'
+
+    def SolveDoubleSidedLeastDistance(self):
+
+        def distFunc(actualNode, pos, endPos=None):
+            end_y, end_x = endPos
+            if pos is None:
+                y, x = actualNode.position
+            else:
+                y, x = pos.position
+            return sqrt( (end_x - x)**2 + (end_y - y)**2 )
+
+        def chooseFunc(nextX):
+            minPos = nextX[0]
+            table = nextX
+            for pos in table:
+                if pos.distance <= minPos.distance:
+                    minPos = pos
+            return minPos
+
+        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.mode += 'minDistance'
+
+    def SolveDoubleSidedRandom(self):
+
+        def distFunc(actualNode, pos, *args):
+            if pos is None:
+                return 0
+            return actualNode.distance + 1
+
+        def chooseFunc(nextX):
+            return choice(nextX)
+
+        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.mode += 'Random'
+
     def __Solver(self, distanceFunc, chooseFunc):
         steps = 0
         actualNode = self.state[self.startPos[0]][self.startPos[1]]
@@ -257,6 +392,17 @@ Neighbours: {self.neighbours}
 
         self.__Solver(distFunc, chooseFunc)
 
+    def SolveRandom(self):
+        self.mode = 'Random'
+
+        def distFunc(actualNode, pos):
+            return actualNode.distance + 1
+
+        def chooseFunc():
+            return choice(self.next)
+
+        self.__Solver(distFunc, chooseFunc)
+
     def DisplayMaze(self):
         for pos in self.visited:
             if pos.start or pos.end:
@@ -264,9 +410,10 @@ Neighbours: {self.neighbours}
             y, x = pos.position
             self.table[y][x] = MazeSolver.traversed['Seen']
         actualNode = self.endNode
-        while not actualNode.start:
-            self.shortestPathLen += 1
-            if actualNode.end:
+        target = actualNode.start if self.endNode.end else actualNode.end
+        while not target:
+            target = actualNode.start if self.endNode.end else actualNode.end
+            if actualNode.end or actualNode.start:
                 actualNode = actualNode.parent
                 continue
             y, x = actualNode.position
@@ -279,7 +426,9 @@ Neighbours: {self.neighbours}
             raise ValueError("DisplayStats invoked before solving labirynth")
         if self.shortestPathLen == 0:
             actualNode = self.endNode
-            while not actualNode.start:
+            target = actualNode.start if self.endNode.end else actualNode.end
+            while not target:
+                target = actualNode.start if self.endNode.end else actualNode.end
                 self.shortestPathLen += 1
                 actualNode = actualNode.parent
         t = set(self.actionLog)
@@ -329,34 +478,66 @@ Neighbours: {self.neighbours}
 
 
 def main():
+
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # a = MazeSolver(table)
+    # a.SolveFIFO()
+    # a.DisplayStats()
+    ## a.DisplayMaze()
+
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # b = MazeSolver(table)
+    # b.SolveLIFO()
+    # b.DisplayStats()
+    ## b.DisplayMaze()
+
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # c = MazeSolver(table)
+    # c.SolveClosest()
+    # c.DisplayStats()
+    ## c.DisplayMaze()
+
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # d = MazeSolver(table)
+    # d.SolveLeastDistance()
+    # d.DisplayStats()
+    ## d.DisplayMaze()
+
     table = MazeSolver.ConvertStringToTable(src2)
-    a = MazeSolver(table)
-    a.SolveFIFO()
-    a.DisplayStats()
-    # a.DisplayMaze()
+    e = MazeSolver(table)
+    e.SolveRandom()
+    e.DisplayStats()
+    ## e.DisplayMaze()
+    
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # f = MazeSolver(table)
+    # f.SolveDoubleSidedFIFO()
+    # f.DisplayStats()
+    ## f.DisplayMaze()
 
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # g = MazeSolver(table)
+    # g.SolveDoubleSidedLIFO()
+    # g.DisplayStats()
+    ## g.DisplayMaze()
+
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # h = MazeSolver(table)
+    # h.SolveDoubleSidedClosest()
+    # h.DisplayStats()
+    ## h.DisplayMaze()
+
+    # table = MazeSolver.ConvertStringToTable(src2)
+    # i = MazeSolver(table)
+    # i.SolveDoubleSidedLeastDistance()
+    # i.DisplayStats()
+    ## i.DisplayMaze()
 
     table = MazeSolver.ConvertStringToTable(src2)
-    b = MazeSolver(table)
-    b.SolveLIFO()
-    b.DisplayStats()
-    # b.DisplayMaze()
-
-
-    table = MazeSolver.ConvertStringToTable(src2)
-    c = MazeSolver(table)
-    c.SolveClosest()
-    c.DisplayStats()
-    # c.DisplayMaze()
-
-
-    table = MazeSolver.ConvertStringToTable(src2)
-    d = MazeSolver(table)
-    d.SolveLeastDistance()
-    d.DisplayStats()
-    # d.DisplayMaze()
-
-
+    j = MazeSolver(table)
+    j.SolveDoubleSidedRandom()
+    j.DisplayStats()
+    j.DisplayMaze()
 
 if __name__ == '__main__':
     main()
