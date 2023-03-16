@@ -38,7 +38,7 @@ class Labirynth():
             if MFlen == len(line):
                 pass
             else:
-                for add in range(0,MFlen-len(line)):
+                for _ in range(0,MFlen-len(line)):
                     fields[i].append(self.wall)
         return fields
     def prettify(self):
