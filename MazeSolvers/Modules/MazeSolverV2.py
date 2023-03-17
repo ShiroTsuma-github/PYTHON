@@ -170,7 +170,7 @@ Neighbours: {self.neighbours}
         for obj in self.__GetObjects():
             obj.GetNeighbours(self.state)
 
-    def __SolverDoubleSided(self, distanceFunc, chooseFunc):
+    def __BaseSolverDoubleSided(self, distanceFunc, chooseFunc):
 
         def ParentSwap(main, other):
             ogParent = main                     # Backup of actual node
@@ -237,7 +237,7 @@ Neighbours: {self.neighbours}
         def chooseFunc(nextX):
             return nextX[0]
 
-        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.__BaseSolverDoubleSided(distFunc, chooseFunc)
         self.mode += 'FIFO'
 
     def SolveDoubleSidedLIFO(self):
@@ -250,7 +250,7 @@ Neighbours: {self.neighbours}
         def chooseFunc(nextX):
             return nextX[len(nextX) - 1]
 
-        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.__BaseSolverDoubleSided(distFunc, chooseFunc)
         self.mode += 'LIFO'
 
     def SolveDoubleSidedClosest(self):
@@ -268,7 +268,7 @@ Neighbours: {self.neighbours}
                     minPos = pos
             return minPos
 
-        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.__BaseSolverDoubleSided(distFunc, chooseFunc)
         self.mode += 'Closest'
 
     def SolveDoubleSidedLeastDistance(self):
@@ -289,7 +289,7 @@ Neighbours: {self.neighbours}
                     minPos = pos
             return minPos
 
-        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.__BaseSolverDoubleSided(distFunc, chooseFunc)
         self.mode += 'minDistance'
 
     def SolveDoubleSidedRandom(self):
@@ -302,10 +302,10 @@ Neighbours: {self.neighbours}
         def chooseFunc(nextX):
             return choice(nextX)
 
-        self.__SolverDoubleSided(distFunc, chooseFunc)
+        self.__BaseSolverDoubleSided(distFunc, chooseFunc)
         self.mode += 'Random'
 
-    def __Solver(self, distanceFunc, chooseFunc):
+    def __BaseSolver(self, distanceFunc, chooseFunc):
         steps = 0
         actualNode = self.state[self.startPos[0]][self.startPos[1]]
         actualNode.distance = distanceFunc(actualNode, None)
@@ -338,7 +338,7 @@ Neighbours: {self.neighbours}
         def chooseFunc():
             return self.next[0]
 
-        self.__Solver(distFunc, chooseFunc)
+        self.__BaseSolver(distFunc, chooseFunc)
 
     def SolveLIFO(self):
         self.mode = 'LIFO'
@@ -351,7 +351,7 @@ Neighbours: {self.neighbours}
         def chooseFunc():
             return self.next[len(self.next) - 1]
 
-        self.__Solver(distFunc, chooseFunc)
+        self.__BaseSolver(distFunc, chooseFunc)
 
     def SolveClosest(self):
         self.mode = 'Closest'
@@ -369,7 +369,7 @@ Neighbours: {self.neighbours}
                     minPos = pos
             return minPos
 
-        self.__Solver(distFunc, chooseFunc)
+        self.__BaseSolver(distFunc, chooseFunc)
 
     def SolveLeastDistance(self):
         self.mode = 'minDistance'
@@ -390,7 +390,7 @@ Neighbours: {self.neighbours}
                     minPos = pos
             return minPos
 
-        self.__Solver(distFunc, chooseFunc)
+        self.__BaseSolver(distFunc, chooseFunc)
 
     def SolveRandom(self):
         self.mode = 'Random'
@@ -401,7 +401,7 @@ Neighbours: {self.neighbours}
         def chooseFunc():
             return choice(self.next)
 
-        self.__Solver(distFunc, chooseFunc)
+        self.__BaseSolver(distFunc, chooseFunc)
 
     def DisplayMaze(self):
         for pos in self.visited:
@@ -460,6 +460,18 @@ Neighbours: {self.neighbours}
             for obj in line:
                 yield obj
 
+    def GetShortestPath(self) -> list:
+        path = []
+        if self.endNode is None:
+            raise RuntimeError("Can't get shortest path without solving")
+        actualNode = self.endNode
+        target = actualNode.start if self.endNode.end else actualNode.end
+        while not target:
+            path.append(actualNode.position)
+            target = actualNode.start if self.endNode.end else actualNode.end
+            actualNode = actualNode.parent
+        return list(reversed(path))
+
     @staticmethod
     def ConvertStringToTable(src):
         table = []
@@ -476,68 +488,63 @@ Neighbours: {self.neighbours}
             result += '\n'
         return result
 
+    def CompareSolves(self, table: list):
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveFIFO()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveDoubleSidedFIFO()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveLIFO()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveDoubleSidedLIFO()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveClosest()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveDoubleSidedClosest()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveLeastDistance()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveDoubleSidedLeastDistance()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveRandom()
+        temp.DisplayStats()
+
+        tableCopy = table.copy()
+        temp = MazeSolver(tableCopy)
+        temp.SolveDoubleSidedRandom()
+        temp.DisplayStats()
+
 
 def main():
-
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # a = MazeSolver(table)
-    # a.SolveFIFO()
-    # a.DisplayStats()
-    ## a.DisplayMaze()
-
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # b = MazeSolver(table)
-    # b.SolveLIFO()
-    # b.DisplayStats()
-    ## b.DisplayMaze()
-
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # c = MazeSolver(table)
-    # c.SolveClosest()
-    # c.DisplayStats()
-    ## c.DisplayMaze()
-
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # d = MazeSolver(table)
-    # d.SolveLeastDistance()
-    # d.DisplayStats()
-    ## d.DisplayMaze()
-
     table = MazeSolver.ConvertStringToTable(src2)
-    e = MazeSolver(table)
-    e.SolveRandom()
-    e.DisplayStats()
-    ## e.DisplayMaze()
-    
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # f = MazeSolver(table)
-    # f.SolveDoubleSidedFIFO()
-    # f.DisplayStats()
-    ## f.DisplayMaze()
+    a = MazeSolver(table)
+    a.CompareSolves(table)
 
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # g = MazeSolver(table)
-    # g.SolveDoubleSidedLIFO()
-    # g.DisplayStats()
-    ## g.DisplayMaze()
-
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # h = MazeSolver(table)
-    # h.SolveDoubleSidedClosest()
-    # h.DisplayStats()
-    ## h.DisplayMaze()
-
-    # table = MazeSolver.ConvertStringToTable(src2)
-    # i = MazeSolver(table)
-    # i.SolveDoubleSidedLeastDistance()
-    # i.DisplayStats()
-    ## i.DisplayMaze()
-
-    table = MazeSolver.ConvertStringToTable(src2)
-    j = MazeSolver(table)
-    j.SolveDoubleSidedRandom()
-    j.DisplayStats()
-    j.DisplayMaze()
 
 if __name__ == '__main__':
     main()
