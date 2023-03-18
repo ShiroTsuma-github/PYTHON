@@ -1,17 +1,22 @@
 from typing import  Union
 from math import sqrt
 from random import shuffle, choice
+if __name__ != '__main__':
+    from .FileListConversion import GetTable
+else:
+    from FileListConversion import GetTable
 
-src = """
-.#####
-......
-.##.##
-.##@##
-.#..##
-.#.###
-!..###
+if __name__ == '__main__':
+    src = """
+#..........@
+#.#########.
+#.#.......#.
+#.#.#####.#.
+#...#.....#.
+###.#.#####.
+!...#.......
 """
-src2 = """
+    src2 = """
 #################################################################################
 #.#...#....!....#...................#.............#.......#.............#.......#
 #.#.#.#.###.###.#########.#########.#.#####.#####.#####.#.#.#######.###.#.#####.#
@@ -54,7 +59,7 @@ src2 = """
 #...#.......#.......#.......#...#..........#........#...#...#...#..............@#
 #################################################################################
 """
-src3 = """
+    src3 = """
 ##########
 ........#@
 ...###....
@@ -63,7 +68,6 @@ src3 = """
 ...#####!#
 ..........
 ##########
-
 """
 
 
@@ -78,6 +82,7 @@ class MazeSolver:
             self.parent = None
             self.neighbours = None
             self.distance = 0
+            self.steps = 0
 
         def GetNeighbours(self, state) -> None:
             if self.mark != 'Path':
@@ -196,6 +201,8 @@ Neighbours: {self.neighbours}
                 else:
                     if pos.parent is not None:
                         ParentSwap(actualNodeX, pos)
+                        self.actionLog.append(pos.parent)
+                        self.visited.append(pos.parent)
                         return (-1, -1)
                     else:
                         pos.parent = actualNodeX
@@ -310,6 +317,7 @@ Neighbours: {self.neighbours}
         actualNode = self.state[self.startPos[0]][self.startPos[1]]
         actualNode.distance = distanceFunc(actualNode, None)
         self.next.append(actualNode)
+        actualNode.steps = steps
         while self.next:
             self.actionLog.append(actualNode.position)
             self.next.pop(self.next.index(actualNode))
@@ -321,6 +329,7 @@ Neighbours: {self.neighbours}
                 if pos in self.visited or pos in self.next:
                     continue
                 else:
+                    pos.steps = actualNode.steps + 1
                     pos.parent = actualNode
                     pos.distance = distanceFunc(actualNode, pos)
                     self.next.append(pos)
@@ -353,20 +362,27 @@ Neighbours: {self.neighbours}
 
         self.__BaseSolver(distFunc, chooseFunc)
 
-    def SolveClosest(self):
-        self.mode = 'Closest'
+    def SolveAStar(self):
+        self.mode = 'A*'
 
         def distFunc(actualNode, pos):
+            end_y, end_x = self.endPos
             if pos is None:
-                return 0
-            return actualNode.distance + 1
+                y, x = actualNode.position
+            else:
+                y, x = pos.position
+            return (actualNode.steps / 1.4) + sqrt((end_x - x)**2 + (end_y - y)**2)
 
         def chooseFunc():
             minPos = self.next[0]
             table = self.next
             for pos in table:
                 if pos.distance <= minPos.distance:
-                    minPos = pos
+                    if pos.distance < minPos.distance:
+                        minPos = pos
+                    elif pos.distance == minPos.distance:
+                        if pos.steps < minPos.steps:
+                            minPos = pos
             return minPos
 
         self.__BaseSolver(distFunc, chooseFunc)
@@ -380,7 +396,7 @@ Neighbours: {self.neighbours}
                 y, x = actualNode.position
             else:
                 y, x = pos.position
-            return sqrt( (end_x - x)**2 + (end_y - y)**2 )
+            return abs(end_x - x) + abs(end_y - y)
 
         def chooseFunc():
             minPos = self.next[0]
@@ -511,7 +527,7 @@ Neighbours: {self.neighbours}
 
         tableCopy = table.copy()
         temp = MazeSolver(tableCopy)
-        temp.SolveClosest()
+        temp.SolveAStar()
         temp.DisplayStats()
 
         tableCopy = table.copy()
@@ -541,9 +557,18 @@ Neighbours: {self.neighbours}
 
 
 def main():
-    table = MazeSolver.ConvertStringToTable(src2)
+    # table = MazeSolver.ConvertStringToTable(src)
+    table = GetTable('MazeSolvers\labirynth2.txt')
     a = MazeSolver(table)
-    a.CompareSolves(table)
+    a.SolveAStar()
+    a.DisplayStats()
+    # table = MazeSolver.ConvertStringToTable(src)
+    table = GetTable('MazeSolvers\labirynth2.txt')
+    a = MazeSolver(table)
+    a.SolveLeastDistance()
+    a.DisplayStats()
+    # a.DisplayMaze()s
+    # a.CompareSolves(table)
 
 
 if __name__ == '__main__':

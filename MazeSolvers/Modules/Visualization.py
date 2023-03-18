@@ -1,5 +1,8 @@
 import pygame
 from .Colors import Colors
+from pathlib import Path
+from .FileListConversion import SaveToFile
+
 
 
 class Visualize():
@@ -34,7 +37,7 @@ class Visualize():
         lenY = len(table)
         lenX = len(table[0])
         self.cellSize = (round(self.size[0] / lenY, 0), round(self.size[1] / lenX, 0))
-        self.Resize((self.cellSize[0] * (lenY - 1), self.cellSize[1] * (lenX - 1)))
+        # self.Resize((self.cellSize[0] * (lenY - 1), self.cellSize[1] * (lenX - 1)))
 
     def Setup(self, table):
         self.__CalculateCellSize(table)
@@ -47,7 +50,9 @@ class Visualize():
                     y * self.cellSize[0],   # TOP
                     self.cellSize[1],       # WIDH
                     self.cellSize[0]))      # HEIGHT
-
+        self.Resize((self.boardState[y][x].left + self.boardState[y][x].width,
+                     self.boardState[y][x].top + self.boardState[y][x].height))
+   
     def __DrawBase(self):
         for y, lineY in enumerate(self.board):
             for x, objX in enumerate(lineY):
@@ -97,7 +102,6 @@ class Visualize():
                 self.board[sqY][sqX] = get_keys_from_value(self.marks, 'Wall')
             elif self.marks[self.board[sqY][sqX]] == 'Wall':
                 self.board[sqY][sqX] = get_keys_from_value(self.marks, 'Path')
-            # print(f'{mouseY=} {sqY=}, {mouseX=} {sqX=}')
         elif button == 2:
             if self.marks[self.board[sqY][sqX]] == 'Path':
                 if not self.multipleEnds:
@@ -125,7 +129,7 @@ class Visualize():
     def DisplayButtons(self):
         pass
 
-    def run(self, actionLog: list, pathLog: list, speed: int = 60):
+    def run(self, actionLog: list, pathLog: list, save='', speed: int = 60):
         self._background()
         self.__DrawBase()
         pygame.display.flip()
@@ -142,10 +146,16 @@ class Visualize():
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if update:
                         continue
-                    return self.__Recalculate(event.pos, event.button)
+                    ans = self.__Recalculate(event.pos, event.button)
+                    if save:
+                        
+                        SaveToFile(f'MazeSolvers/Output/{save}', ans)
+                    return (False, ans)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         update = not update
+                    elif event.key == pygame.K_RETURN:
+                        return (True, self.board)
             if not update:
                 continue
             current = actionLog[currentPos] if actions else pathLog[currentPos]

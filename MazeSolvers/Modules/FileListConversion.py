@@ -9,6 +9,13 @@ def GetTable(path):
     return table
 
 
+def SaveToFile(path, data):
+    with open(f'{Path(path)}', 'w+', encoding='utf-8') as f:
+        for line in data:
+            f.write(''.join(line))
+            f.write('\n')
+
+
 if __name__ == '__main__':
     for line in GetTable('MazeSolvers\labirynth.txt'):
         print(line)

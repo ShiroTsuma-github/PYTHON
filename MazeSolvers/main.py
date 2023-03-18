@@ -1,14 +1,27 @@
 from Modules.Visualization import Visualize
 from Modules.MazeSolverV2 import MazeSolver
-from Modules.FileToList import GetTable
+from Modules.FileListConversion import GetTable
 
 
-def main(speed, mode, src, size):
+def main(speed, mode, src, size, save):
     table = src
     allowMultipleEnds = False
     previous = []
+    nextMode = False
     while True:
         a = MazeSolver(table)
+        modes = ['LeastDistance',
+                 'FIFO',
+                 'LIFO',
+                 'A*',
+                 'Random',
+                 'DoubleLeast',
+                 'DoubleFIFO',
+                 'DoubleLIFO',
+                 'DoubleClosest',
+                 'DoubleRandom']
+        if  nextMode:
+            mode = modes[modes.index(mode) + 1] if modes.index(mode) + 1 < len(modes) - 1 else modes[0]
         try:
             if mode == 'LeastDistance':
                 allowMultipleEnds = True
@@ -19,9 +32,9 @@ def main(speed, mode, src, size):
             elif mode == 'LIFO':
                 allowMultipleEnds = True
                 a.SolveLIFO()
-            elif mode == 'Closest':
+            elif mode == 'A*':
                 allowMultipleEnds = True
-                a.SolveClosest()
+                a.SolveAStar()
             elif mode == 'Random':
                 allowMultipleEnds = True
                 a.SolveRandom()
@@ -44,7 +57,7 @@ def main(speed, mode, src, size):
         previous = CopyVals(table)
         b.Setup(table)
         try:
-            table = list(b.run(a.actionLog, a.GetShortestPath(), speed=speed))
+            nextMode, table = list(b.run(a.actionLog, a.GetShortestPath(), save, speed))
         except TypeError:
             break
 
@@ -63,12 +76,19 @@ if __name__ == '__main__':
     # LeastDistance
     # FIFO
     # LIFO
-    # Closest
+    # A*
     # Random
     # DoubleLeast
     # DoubleFIFO
     # DoubleLIFO
     # DoubleClosest
     # DoubleRandom
-    tab = GetTable('MazeSolvers\labirynth.txt')
-    main(150, 'LeastDistance', tab, (1000, 1000))
+
+    # SPACE - PAUSE / RESUME
+    # ALL MODIFICATIONS CAN BE DONE ONLY WHEN PAUSED
+    # ENTER - CHANGE MODE (FROM INITIAL TO NEXT ONE IN LIST)
+    # LMB - PLACE WALL
+    # MMB - PLACE END (IF SINGLE SEARCH MODE YOU CAN PLACE MORE THAN 1)
+    # RMB - PLACE START (CHANGES LOCATION OF START)
+    tab = GetTable('MazeSolvers/Output/labirynth.txt')
+    main(150, 'A*', tab, (1000, 1000), save='CustomLabirynth.txt')
