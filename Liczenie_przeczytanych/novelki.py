@@ -70,46 +70,48 @@ class ParseNovel():
     def __get_element(self):
         """Using regexp and couple of predefined patterns searches title for needed data and then saves it to variable (`everything is stored in namedlist`) after which it removes that part from title.
         """
-        pattern_last_chap=r'([ ]\d+($|[\n ])+)|([ ]\d+[.]\d+($|[ \n])+)'
-        pattern_total_chap=r'([ ][(][\d ~]+[)]($|[ \n]))'
-        pattern_freq=r'([^()]~[\d?x]+)'
-        pattern_fin=r'[?❌]*✓[?❌]*'
-        pattern_notes=r'[(]([\d\s]*([a-zA-Z,.\s?!]+[\d\s]*)+)[)]' #[(][\s]*[\d\s]?[\w\s]+[\d\s]*[\s]*[)]
-        pattern_prio=r'([💯🌟💩]+[\s]*)+'
-        pos=1
-        for item in self.__NovelList:
-            pos+=1
-            if pos==601:
-                break
-            self.__NovelList[item].title= self.__NovelList[item].title.replace('�', '')
-            title= self.__NovelList[item].title
-            last_chap=re.search(pattern_last_chap,title)
-            total_chap=re.search(pattern_total_chap,title)
-            freq_chap=re.search(pattern_freq,title)
-            status_=re.search(pattern_fin,title)
-            notes=re.search(pattern_notes,title)
-            priorit=re.search(pattern_prio,title)
-            if last_chap:
-                 self.__NovelList[item].last_chapter=last_chap.group().strip()
-                 self.__NovelList[item].title= self.__NovelList[item].title.replace(last_chap.group(), ' ')
-            if total_chap:
-                 self.__NovelList[item].total_chapters=total_chap.group().strip().replace('(', '').replace(')', '')
-                 self.__NovelList[item].title= self.__NovelList[item].title.replace(total_chap.group(), ' ')
-            else:
-                 self.__NovelList[item].total_chapters= self.__NovelList[item].last_chapter
-            if freq_chap:
-                 self.__NovelList[item].frequency=freq_chap.group().strip().replace('~', '')
-                 self.__NovelList[item].title= self.__NovelList[item].title.replace(freq_chap.group(), ' ')
-            if status_:
-                 self.__NovelList[item].status=status_.group().strip()
-                 self.__NovelList[item].title= self.__NovelList[item].title.replace(status_.group(), ' ')
-            if notes:
-                 self.__NovelList[item].notes=notes.group().replace('(', '').replace(')', '')
-                 self.__NovelList[item].title= self.__NovelList[item].title.replace(notes.group(), ' ')
-            if priorit:
-                 self.__NovelList[item].priority=priorit.group().strip().replace('�', '')
-                 self.__NovelList[item].title= self.__NovelList[item].title.replace(priorit.group(), ' ')
-            self.__NovelList[item].title= self.__NovelList[item].title.strip()
+        try:
+            pattern_last_chap=r'([ ]\d+($|[\n ])+)|([ ]\d+[.]\d+($|[ \n])+)'
+            pattern_total_chap=r'([ ][(][\d ~]+[)]($|[ \n]))'
+            pattern_freq=r'([^()]~[\d?x]+)'
+            pattern_fin=r'[?❌]*✓[?❌]*'
+            pattern_notes=r'[(]([\d\s]*([a-zA-Z,.\s?!]+[\d\s]*)+)[)]' #[(][\s]*[\d\s]?[\w\s]+[\d\s]*[\s]*[)]
+            pattern_prio=r'([💯🌟💩]+[\s]*)+'
+            pos=1
+            for item in self.__NovelList:
+                pos+=1
+                self.__NovelList[item].title= self.__NovelList[item].title.replace('�', '')
+                title= self.__NovelList[item].title
+                last_chap=re.search(pattern_last_chap,title)
+                total_chap=re.search(pattern_total_chap,title)
+                freq_chap=re.search(pattern_freq,title)
+                status_=re.search(pattern_fin,title)
+                notes=re.search(pattern_notes,title)
+                priorit=re.search(pattern_prio,title)
+                print(f"Parsing {pos}")
+                if last_chap:
+                    self.__NovelList[item].last_chapter=last_chap.group().strip()
+                    self.__NovelList[item].title= self.__NovelList[item].title.replace(last_chap.group(), ' ')
+                if total_chap:
+                    self.__NovelList[item].total_chapters=total_chap.group().strip().replace('(', '').replace(')', '')
+                    self.__NovelList[item].title= self.__NovelList[item].title.replace(total_chap.group(), ' ')
+                else:
+                    self.__NovelList[item].total_chapters= self.__NovelList[item].last_chapter
+                if freq_chap:
+                    self.__NovelList[item].frequency=freq_chap.group().strip().replace('~', '')
+                    self.__NovelList[item].title= self.__NovelList[item].title.replace(freq_chap.group(), ' ')
+                if status_:
+                    self.__NovelList[item].status=status_.group().strip()
+                    self.__NovelList[item].title= self.__NovelList[item].title.replace(status_.group(), ' ')
+                if notes:
+                    self.__NovelList[item].notes=notes.group().replace('(', '').replace(')', '')
+                    self.__NovelList[item].title= self.__NovelList[item].title.replace(notes.group(), ' ')
+                if priorit:
+                    self.__NovelList[item].priority=priorit.group().strip().replace('�', '')
+                    self.__NovelList[item].title= self.__NovelList[item].title.replace(priorit.group(), ' ')
+                self.__NovelList[item].title= self.__NovelList[item].title.strip()
+        except:
+            raise "There was error"
     
     def __CheckType(self,data):
         """just counts number of dots from key and because of it returns amount (done pretty stupidly)

@@ -3,25 +3,34 @@ from Modules.MazeSolverV2 import MazeSolver
 from Modules.FileListConversion import GetTable
 
 
-def main(speed, mode, src, size, save):
-    table = src
+def main(speed, mode, size, save, cfile):
+    table = GetTable(f'MazeSolvers/Output/{cfile}')
     allowMultipleEnds = False
     previous = []
     nextMode = False
+    fileChange = False
+    modes = ['LeastDistance',
+            'FIFO',
+            'LIFO',
+            'A*',
+            'Random',
+            'DoubleLeast',
+            'DoubleFIFO',
+            'DoubleLIFO',
+            'DoubleClosest',
+            'DoubleRandom']
+    files = ['labirynth.txt',
+             'labirynth2.txt',
+             'CustomLabirynth.txt']
     while True:
+        if fileChange:
+            cfile = files[files.index(cfile) + 1] if files.index(cfile) + 1 < len(files) else files[0]
+            table = GetTable(f'MazeSolvers/Output/{cfile}')
+            fileChange = False
         a = MazeSolver(table)
-        modes = ['LeastDistance',
-                 'FIFO',
-                 'LIFO',
-                 'A*',
-                 'Random',
-                 'DoubleLeast',
-                 'DoubleFIFO',
-                 'DoubleLIFO',
-                 'DoubleClosest',
-                 'DoubleRandom']
-        if  nextMode:
-            mode = modes[modes.index(mode) + 1] if modes.index(mode) + 1 < len(modes) - 1 else modes[0]
+        if nextMode:
+            mode = modes[modes.index(mode) + 1] if modes.index(mode) + 1 < len(modes) else modes[0]
+            nextMode = False
         try:
             if mode == 'LeastDistance':
                 allowMultipleEnds = True
@@ -57,7 +66,7 @@ def main(speed, mode, src, size, save):
         previous = CopyVals(table)
         b.Setup(table)
         try:
-            nextMode, table = list(b.run(a.actionLog, a.GetShortestPath(), save, speed))
+            nextMode, table, fileChange = list(b.run(a.actionLog, a.GetShortestPath(), save, speed))
         except TypeError:
             break
 
@@ -90,5 +99,4 @@ if __name__ == '__main__':
     # LMB - PLACE WALL
     # MMB - PLACE END (IF SINGLE SEARCH MODE YOU CAN PLACE MORE THAN 1)
     # RMB - PLACE START (CHANGES LOCATION OF START)
-    tab = GetTable('MazeSolvers/Output/labirynth.txt')
-    main(150, 'A*', tab, (1000, 1000), save='CustomLabirynth.txt')
+    main(150, 'A*', (1000, 1000), save='CustomLabirynth.txt', cfile = 'labirynth.txt')

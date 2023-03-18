@@ -150,12 +150,14 @@ class Visualize():
                     if save:
                         
                         SaveToFile(f'MazeSolvers/Output/{save}', ans)
-                    return (False, ans)
+                    return (False, ans, False)
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:
                         update = not update
                     elif event.key == pygame.K_RETURN:
-                        return (True, self.board)
+                        return (True, self.board, False)
+                    elif event.key == pygame.K_BACKSPACE:
+                        return (False, self.board, True)
             if not update:
                 continue
             current = actionLog[currentPos] if actions else pathLog[currentPos]
