@@ -557,18 +557,18 @@ Neighbours: {self.neighbours}
 
 
 def main():
-    # table = MazeSolver.ConvertStringToTable(src)
-    table = GetTable('MazeSolvers\labirynth2.txt')
+    table = MazeSolver.ConvertStringToTable(src2)
+    # table = GetTable('MazeSolvers\labirynth2.txt')
     a = MazeSolver(table)
-    a.SolveAStar()
-    a.DisplayStats()
+    # a.SolveAStar()
+    # a.DisplayStats()
     # table = MazeSolver.ConvertStringToTable(src)
-    table = GetTable('MazeSolvers\labirynth2.txt')
-    a = MazeSolver(table)
-    a.SolveLeastDistance()
-    a.DisplayStats()
-    # a.DisplayMaze()s
-    # a.CompareSolves(table)
+    # table = GetTable('MazeSolvers\labirynth2.txt')
+    # a = MazeSolver(table)
+    # a.SolveLeastDistance()
+    # a.DisplayStats()
+    # a.DisplayMaze()
+    a.CompareSolves(table)
 
 
 if __name__ == '__main__':
