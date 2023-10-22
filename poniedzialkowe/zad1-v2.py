@@ -20,7 +20,7 @@ def Cholesky_Decomposition(matrix):
             if (j == i):
                 for k in range(j):
                     suma += L[j][k] ** 2
-                L[j][j] = int(math.sqrt(matrix[j][j] - suma))
+                L[j][j] = (math.sqrt(matrix[j][j] - suma))
             else:
                 # dla 3x3
                 # i = 2, j = 1, k = 0
@@ -30,14 +30,20 @@ def Cholesky_Decomposition(matrix):
                 # i = 2, j = 0, 1   2 x 0 = [2, 0] / [0, 0]
                 #                   2 x 1 = [2, 1] / [1, 1] 
                 if (L[j][j] > 0):
-                    L[i][j] = int(
+                    L[i][j] = (
                         (matrix[i][j] - suma) / L[j][j])
     return L
 
 
-matrix: list[list[int]] = [
-    [4, 12, -16],
-    [12, 37, -43],
-    [-16, -43, 98]]
+# matrix: list[list[int]] = [
+#     [4, 12, -16],
+#     [12, 37, -43],
+#     [-16, -43, 98]]
+matrix = [
+    [6, 15, 55],
+    [15, 55, 225],
+    [55, 225, 979]
+]
 L: list[list[int]] = Cholesky_Decomposition(matrix)
 print(L)
+# AVG 17.5 mks

@@ -27,3 +27,4 @@ A: list[list[int]] = [
 L: list[list[float]] = cholesky_decomposition(A)
 print("Macierz L (dolna trójkątna):")
 pprint.pprint(L)
+# AVG 23 mks

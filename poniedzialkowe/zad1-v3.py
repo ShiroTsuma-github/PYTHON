@@ -32,3 +32,4 @@ a = [
 
 L: list[list[float]] = cholesky_decomposition(a)
 print(L)
+# AVG 24.5 mks
