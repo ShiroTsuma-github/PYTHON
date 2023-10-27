@@ -81,6 +81,13 @@ class Layer:
         for child in self.children:
             child.activation_function = activation_function
 
+    def set_children_functions_by_list(self, activation_functions: list[ActivationFunctions]) -> None:
+        if len(activation_functions) != len(self.children):
+            raise ValueError(f"Activation functions count mismatch. Got {len(activation_functions)} | Expected {len(self.children)}")
+        self.__children_functions = [ActivationFunctions(i) for i in activation_functions]
+        for child, activation_function in zip(self.children, activation_functions):
+            child.activation_function = ActivationFunctions(activation_function)
+
     def set_child_function(self, index: int, activation_function: ActivationFunctions) -> None:
         if index >= len(self.children) or index < 0:
             raise ValueError(f"Index out of range. Got {index} | Expected 0 - {len(self.children) - 1}")
@@ -453,7 +460,7 @@ class NeuralNetwork:
     def save_network(self, path):
         perc_dict = {}
         for i, layer in enumerate(self.__hidden_layers):
-            perc_dict[f'{i}'] = {
+            perc_dict[f'{i + 1}'] = {
                 'perceptons_activation_functions': [item.value for item in layer.get_children_functions()]}
 
         save_dict = {
@@ -491,22 +498,31 @@ class NeuralNetwork:
                    network_data.get('output-count', 1),
                    network_data.get('hidden-layer_count', 1))
         self.set_input_values(network_data.get('input-values', [0]))
+        self.set_perceptrons_per_layer(network_data.get('perceptrons-per-layer', [1]))
+        for line in network_data.get('perceptrons_by_hidden_layer', []):
+            func_in_line = network_data['perceptrons_by_hidden_layer'][line]['perceptons_activation_functions']
+            layer = self.get_layer_by_index(int(line))
+            layer.set_children_functions_by_list(func_in_line)
 
     def __repr__(self) -> str:
         return self.id
 
 
 network = NeuralNetwork()
-network.setup(5, 2, 3)
-network.set_input_values([1, 2, 3, 4, 5])
-network.set_perceptrons_per_layer([2, 3, 4])
-network.set_layer_activation_function(3, ActivationFunctions.RELU_PARAMETRIC)
+network.setup(2, 1, 1)
+network.set_input_values([0.7, 1.3])
+network.set_perceptrons_per_layer([2])
 network.get_layer_by_index(1).set_child_function(1, ActivationFunctions.SIGMOID_BIPOLAR)
-print(network.get_layer_by_index(3).get_children_functions())
+# print(network.get_layer_by_index(3).get_children_functions())
 
 # pprint.pprint(network.get_dict())
-network.save_network('CustomNeuralNetwork/network.nn')
+# network.save_network('CustomNeuralNetwork/network.nn')
+network.set_layer_activation_function(1, ActivationFunctions.RELU)
+print(network.get_layer_by_index(1).get_children_functions())
+# pprint.pprint(network.get_dict())
 # network.load_network('CustomNeuralNetwork/network.nn')
+print(network.get_layer_by_index(1).get_children_functions())
+pprint.pprint(network.get_dict())
 # pprint.pprint(network.get_dict())
 
 
