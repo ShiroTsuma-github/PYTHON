@@ -3,7 +3,7 @@ from math import exp, log
 from typing import Literal
 from enum import Enum, auto
 import pprint
-# from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet
 
 
 class LayerTypes(Enum):
@@ -34,6 +34,7 @@ class Layer:
         self.layer_type: LayerTypes = layer_type
         self.right_layer: Layer = right_layer
         self.left_layer: Layer = left_layer
+        self.__children_functions: list[ActivationFunctions] = []
         self.__layer_num: int = None
 
     def get_child_count(self) -> int:
@@ -50,6 +51,8 @@ class Layer:
         elif self.layer_type == LayerTypes.HIDDEN and not isinstance(child, Perceptron):
             raise ValueError(f"Incorrect child argument. Got {type(child)}. Expected: {Perceptron}")
         self.children.append(child)
+        if isinstance(child, Perceptron):
+            self.__children_functions.append(child.activation_function)
         child.set_id(self.__layer_num, len(self.children))
         self.__update_id()
 
@@ -74,8 +77,18 @@ class Layer:
         return [item.calc_sum() for item in self.children]
 
     def set_children_functions(self, activation_function: ActivationFunctions) -> None:
+        self.__children_functions = [activation_function for _ in range(len(self.children))]
         for child in self.children:
             child.activation_function = activation_function
+
+    def set_child_function(self, index: int, activation_function: ActivationFunctions) -> None:
+        if index >= len(self.children) or index < 0:
+            raise ValueError(f"Index out of range. Got {index} | Expected 0 - {len(self.children) - 1}")
+        self.__children_functions[index] = activation_function
+        self.children[index].activation_function = activation_function
+
+    def get_children_functions(self) -> list[ActivationFunctions]:
+        return self.__children_functions
 
     def validate(self) -> None:
         if not isinstance(self.layer_type, LayerTypes):
@@ -438,6 +451,11 @@ class NeuralNetwork:
         return obj_dict
 
     def save_network(self, path):
+        perc_dict = {}
+        for i, layer in enumerate(self.__hidden_layers):
+            perc_dict[f'{i}'] = {
+                'perceptons_activation_functions': [item.value for item in layer.get_children_functions()]}
+
         save_dict = {
             'network': {
                 'id': self.id,
@@ -446,7 +464,8 @@ class NeuralNetwork:
                 'perceptrons-per-layer': self.perceptrons_per_layer,
                 'output-count': self.__output_layer.get_child_count(),
                 'input-values': self.get_input_values(),
-                'output-values': self.get_output_values()
+                'output-values': self.get_output_values(),
+                'perceptrons_by_hidden_layer': perc_dict
             }
         }
         json_string = json.dumps(save_dict)
@@ -481,11 +500,12 @@ network = NeuralNetwork()
 network.setup(5, 2, 3)
 network.set_input_values([1, 2, 3, 4, 5])
 network.set_perceptrons_per_layer([2, 3, 4])
-network.set_layer_activation_function(1, ActivationFunctions.RELU_PARAMETRIC)
-
+network.set_layer_activation_function(3, ActivationFunctions.RELU_PARAMETRIC)
+network.get_layer_by_index(1).set_child_function(1, ActivationFunctions.SIGMOID_BIPOLAR)
+print(network.get_layer_by_index(3).get_children_functions())
 
 # pprint.pprint(network.get_dict())
-# network.save_network('CustomNeuralNetwork/network.nn')
+network.save_network('CustomNeuralNetwork/network.nn')
 # network.load_network('CustomNeuralNetwork/network.nn')
 # pprint.pprint(network.get_dict())
 
