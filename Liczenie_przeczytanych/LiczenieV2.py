@@ -429,8 +429,9 @@ class ParseListV2:
 
 if __name__ == '__main__':
     a = ParseListV2('Liczenie_przeczytanych/lista.txt')
-    # a.ParseFile()
-    # a.SaveToJson()
-    a.ReadFromJson()
+    a.ParseFile()
+    a.SaveToJson()
+    a.ShowDump()
+    # a.ReadFromJson()
     # a.PrintAllAlphaByType()
-    a.TimeSpentReading()
+    # a.TimeSpentReading()

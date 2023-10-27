@@ -100,4 +100,4 @@ if __name__ == '__main__':
     # LMB - PLACE WALL
     # MMB - PLACE END (IF SINGLE SEARCH MODE YOU CAN PLACE MORE THAN 1)
     # RMB - PLACE START (CHANGES LOCATION OF START)
-    main(100, 'LIFO', (1000, 1000), save='CustomLabirynth.txt', cfile = 'labirynth.txt')
+    main(30, 'LIFO', (1000, 1000), save='CustomLabirynth.txt', cfile = 'labirynth.txt')

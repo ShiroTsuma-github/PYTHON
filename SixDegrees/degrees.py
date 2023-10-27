@@ -1,5 +1,6 @@
 import csv
 import sys
+from funcy import print_durations
 
 # Maps names to a set of corresponding person_ids
 names = {}
@@ -12,19 +13,22 @@ movies = {}
 
 
 class Node:
-    def __init__(self, value=None, parent=None, neighbours=[]) -> None:
+    def __init__(self, value=None, parent=None, neighbours=[], film = None) -> None:
         self.value = value
         self.parent = parent
         self.neighbours = neighbours
+        self.film = film
 
     def __str__(self) -> str:
         return f"""
 Value: {self.value}
 Parent: {self.parent}
 Neighbours: {self.neighbours}
+Movie: {self.film}
         """
 
 
+@print_durations()
 def load_data(directory):
     """
     Load data from CSV files into memory.
@@ -67,16 +71,18 @@ def load_data(directory):
 def main():
     if len(sys.argv) > 2:
         sys.exit("Usage: python degrees.py [directory]")
-    directory = sys.argv[1] if len(sys.argv) == 2 else "SixDegrees\\large"
+    directory = sys.argv[1] if len(sys.argv) == 2 else "SixDegrees\\small"
     # Load data from files into memory
     print("Loading data...")
     load_data(directory)
     print("Data loaded.")
 
     source = person_id_for_name(input("Name: "))
+    # source = person_id_for_name("Kevin Bacon")
     if source is None:
         sys.exit("Person not found.")
     target = person_id_for_name(input("Name: "))
+    # target = person_id_for_name("Tom Hanks")
     if target is None:
         sys.exit("Person not found.")
 
@@ -95,6 +101,7 @@ def main():
             print(f"{i + 1}: {person1} and {person2} starred in {movie}")
 
 
+@print_durations()
 def shortest_path(source, target):
     """
     Returns the shortest list of (movie_id, person_id) pairs
@@ -108,32 +115,35 @@ def shortest_path(source, target):
     visited = []
     future = []
     ans = []
+    seen = set(ActualNode.value)
     future.append(ActualNode)
     while future:
         ActualNode.neighbours = neighbors_for_person(ActualNode.value)
-        visited.append(ActualNode)
+        visited.append(ActualNode.value)
         future.pop(0)
         if ActualNode.value == EndNode.value:
             while ActualNode != StartNode:
-                for pos in ActualNode.neighbours:
-                    if ActualNode.value == pos[1]:
-                        ans.append(pos)
-                        break
+                # for pos in ActualNode.neighbours:
+                    # if ActualNode.value == pos[1]:
+                    #     ans.append(pos)
+                    #     break
+                ans.append((ActualNode.film, ActualNode.value))
                 ActualNode = ActualNode.parent
             return list(reversed(ans))
         for personFilm in ActualNode.neighbours:
-            temp = Node(value=personFilm[1], parent=ActualNode)
-            if temp in visited:
+            temp = Node(value=personFilm[1], parent=ActualNode, film=personFilm[0])
+            if temp.value in seen or temp.value in visited:
                 continue
             elif temp.value == EndNode.value:
                 ActualNode = temp
                 break
+            seen.add(temp.value)
             future.append(temp)
-        ActualNode = future[0] if ActualNode.value != EndNode.value else ActualNode
+        ActualNode = future[0] if (ActualNode.value != EndNode.value and len(future) != 0) else ActualNode
 
     return None
 
-
+@print_durations()
 def person_id_for_name(name):
     """
     Returns the IMDB id for a person's name,
@@ -159,7 +169,7 @@ def person_id_for_name(name):
     else:
         return person_ids[0]
 
-
+@print_durations()
 def neighbors_for_person(person_id):
     """
     Returns (movie_id, person_id) pairs for people
