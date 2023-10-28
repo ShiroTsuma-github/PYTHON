@@ -45,11 +45,14 @@ class Layer:
 
     def add_child(self, child) -> None:
         if self.layer_type == LayerTypes.INPUT and not isinstance(child, NetworkInput):
-            raise ValueError(f"Incorrect child argument. Got {type(child)}. Expected: {NetworkInput}")
+            raise ValueError(
+                f"Incorrect child argument. Got {type(child)}. Expected: {NetworkInput}")
         elif self.layer_type == LayerTypes.OUTPUT and not isinstance(child, NetworkOutput):
-            raise ValueError(f"Incorrect child argument. Got {type(child)}. Expected: {NetworkOutput}")
+            raise ValueError(
+                f"Incorrect child argument. Got {type(child)}. Expected: {NetworkOutput}")
         elif self.layer_type == LayerTypes.HIDDEN and not isinstance(child, Perceptron):
-            raise ValueError(f"Incorrect child argument. Got {type(child)}. Expected: {Perceptron}")
+            raise ValueError(
+                f"Incorrect child argument. Got {type(child)}. Expected: {Perceptron}")
         self.children.append(child)
         if isinstance(child, Perceptron):
             self.__children_functions.append(child.activation_function)
@@ -77,40 +80,84 @@ class Layer:
         return [item.calc_sum() for item in self.children]
 
     def set_children_functions(self, activation_function: ActivationFunctions) -> None:
-        self.__children_functions = [activation_function for _ in range(len(self.children))]
+        self.__children_functions = [
+            activation_function for _ in range(len(self.children))]
         for child in self.children:
             child.activation_function = activation_function
 
+    def set_child_weights(self, index: int, weights: list[float]) -> None:
+        if index >= len(self.children) or index < 0:
+            raise ValueError(
+                f"Index out of range. Got {index} | Expected 0 - {len(self.children) - 1}")
+        if len(weights) != len(self.left_layer.children) + 1:
+            raise ValueError(
+                f"Weights count mismatch. Got {len(weights)} | Expected {len(self.left_layer.children)} + 1 (own weight)")
+        self.children[index].weights = weights
+
+    def set_children_weights(self, weights: list[list[float]]) -> None:
+        if len(weights) != len(self.children):
+            raise ValueError(
+                f"Weights count mismatch. Got {len(weights)} | Expected {len(self.children)}")
+        for i, weight in enumerate(weights):
+            self.set_child_weights(i, weight)
+
     def set_children_functions_by_list(self, activation_functions: list[ActivationFunctions]) -> None:
         if len(activation_functions) != len(self.children):
-            raise ValueError(f"Activation functions count mismatch. Got {len(activation_functions)} | Expected {len(self.children)}")
-        self.__children_functions = [ActivationFunctions(i) for i in activation_functions]
+            raise ValueError(
+                f"Activation functions count mismatch. Got {len(activation_functions)} | Expected {len(self.children)}")
+        self.__children_functions = [
+            ActivationFunctions(i) for i in activation_functions]
         for child, activation_function in zip(self.children, activation_functions):
-            child.activation_function = ActivationFunctions(activation_function)
+            child.activation_function = ActivationFunctions(
+                activation_function)
 
     def set_child_function(self, index: int, activation_function: ActivationFunctions) -> None:
         if index >= len(self.children) or index < 0:
-            raise ValueError(f"Index out of range. Got {index} | Expected 0 - {len(self.children) - 1}")
+            raise ValueError(
+                f"Index out of range. Got {index} | Expected 0 - {len(self.children) - 1}")
         self.__children_functions[index] = activation_function
         self.children[index].activation_function = activation_function
 
     def get_children_functions(self) -> list[ActivationFunctions]:
         return self.__children_functions
 
+    def debug_indepth(self) -> None:
+        print(f"Layer {self.id}")
+        print(f"Layer type: {self.layer_type}")
+        print(f"Left layer: {self.left_layer}")
+        print(f"Right layer: {self.right_layer}")
+        print(f"Children count: {len(self.children)}")
+        print(f"Children: {self.children}")
+        print(f"Children functions: {self.__children_functions}")
+        print("Children analysis:")
+        for child in self.children:
+            print('=' * 20)
+            print(f"Child {child.id}")
+            print(child.activation_function)
+            print("Weights: ", child.weights)
+            print("Output with activation function: ", child.get_output())
+            print("On left side: ", child.left_neightbours)
+            print(
+                "Note to self: first item on left side is inner value to get inner weight * inner value (Bias)")
+
     def validate(self) -> None:
         if not isinstance(self.layer_type, LayerTypes):
-            raise ValueError(f"Incorrect layer_type. Expected {LayerTypes}. Got {type(self.layer_type)}")
+            raise ValueError(
+                f"Incorrect layer_type. Expected {LayerTypes}. Got {type(self.layer_type)}")
 
         if self.layer_type == LayerTypes.INPUT:
             if self.left_layer is not None:
-                raise ValueError(f"Input layer doesn't have left side layer. Got {self.left_layer}")
+                raise ValueError(
+                    f"Input layer doesn't have left side layer. Got {self.left_layer}")
             if self.right_layer is None:
-                raise ValueError("Input layer can't have empty right side layer")
+                raise ValueError(
+                    "Input layer can't have empty right side layer")
         elif self.layer_type == LayerTypes.OUTPUT:
             if self.left_layer is None:
                 raise ValueError("Output layer needs left side layer.")
             if self.right_layer is not None:
-                raise ValueError(f"Output layer doesn't have right side layer. Got {self.right_layer}")
+                raise ValueError(
+                    f"Output layer doesn't have right side layer. Got {self.right_layer}")
         elif self.layer_type == LayerTypes.HIDDEN:
             if self.left_layer is None:
                 raise ValueError("Hidden layer needs left side layer.")
@@ -118,9 +165,11 @@ class Layer:
                 raise ValueError("Hidden layer needs right side layer.")
 
         if not isinstance(self.left_layer, Layer) and self.left_layer is not None:
-            raise ValueError(f"Incorrect left layer. Expected {Layer}. Got {type(self.left_layer)}")
+            raise ValueError(
+                f"Incorrect left layer. Expected {Layer}. Got {type(self.left_layer)}")
         elif not isinstance(self.right_layer, Layer) and self.right_layer is not None:
-            raise ValueError(f"Incorrect right layer. Expected {Layer}. Got {type(self.right_layer)}")
+            raise ValueError(
+                f"Incorrect right layer. Expected {Layer}. Got {type(self.right_layer)}")
 
     def get_dict(self) -> dict:
         obj_dict = {}
@@ -270,7 +319,7 @@ class Perceptron:
         sum = 0
         for perc, weight in zip(self.left_neightbours, self.weights):
             sum += perc.output * weight
-        return sum + self.bias
+        return sum
 
     def set_id(self, layer: int, position: int) -> None:
         self.id: str = f'P/{layer}/{position}'
@@ -372,7 +421,8 @@ class NeuralNetwork:
 
     def set_input_values(self, values: list[float]) -> None:
         if len(values) != self.__input_layer.get_child_count():
-            raise ValueError(f"Input values mismatch. Got {len(values)} | Expected {self.__input_layer.get_child_count()}")
+            raise ValueError(
+                f"Input values mismatch. Got {len(values)} | Expected {self.__input_layer.get_child_count()}")
         for value, input in zip(values, self.__input_layer.get_children()):
             input.output = value
 
@@ -421,7 +471,8 @@ class NeuralNetwork:
 
     def set_perceptrons_per_layer(self, perceptrons_per_layer: list[int]) -> None:
         if len(perceptrons_per_layer) != len(self.__hidden_layers):
-            raise ValueError(f"Perceptron count mismatch. Got {len(perceptrons_per_layer)} | Expected {len(self.__hidden_layers)}")
+            raise ValueError(
+                f"Got perceptrons for incorrect number of layers. Got {len(perceptrons_per_layer)} | Expected {len(self.__hidden_layers)}")
         self.perceptrons_per_layer = perceptrons_per_layer
         for layer, perceptron_count in zip(self.__hidden_layers, perceptrons_per_layer):
             for i in range(perceptron_count):
@@ -442,7 +493,8 @@ class NeuralNetwork:
         # check if index is in range
         if index >= 1 and index < len(self.layers) - 1:
             return self.layers[index]
-        raise ValueError(f"Index out of range. Got {index} | Expected 1 - {len(self.layers) - 1}")
+        raise ValueError(
+            f"Index out of range. Got {index} | Expected 1 - {len(self.layers) - 1}")
 
     def get_dict(self) -> dict:
         obj_dict = {}
@@ -461,7 +513,8 @@ class NeuralNetwork:
         perc_dict = {}
         for i, layer in enumerate(self.__hidden_layers):
             perc_dict[f'{i + 1}'] = {
-                'perceptons_activation_functions': [item.value for item in layer.get_children_functions()]}
+                'perceptons_activation_functions': [item.value for item in layer.get_children_functions()],
+                'perceptons_weights': [item.weights for item in layer.get_children()]}
 
         save_dict = {
             'network': {
@@ -472,7 +525,7 @@ class NeuralNetwork:
                 'output-count': self.__output_layer.get_child_count(),
                 'input-values': self.get_input_values(),
                 'output-values': self.get_output_values(),
-                'perceptrons_by_hidden_layer': perc_dict
+                'perceptrons_data': perc_dict
             }
         }
         json_string = json.dumps(save_dict)
@@ -498,31 +551,44 @@ class NeuralNetwork:
                    network_data.get('output-count', 1),
                    network_data.get('hidden-layer_count', 1))
         self.set_input_values(network_data.get('input-values', [0]))
-        self.set_perceptrons_per_layer(network_data.get('perceptrons-per-layer', [1]))
+        self.set_perceptrons_per_layer(
+            network_data.get('perceptrons-per-layer', [1]))
         for line in network_data.get('perceptrons_by_hidden_layer', []):
-            func_in_line = network_data['perceptrons_by_hidden_layer'][line]['perceptons_activation_functions']
+            func_in_line = network_data['perceptrons_data'][line]['perceptons_activation_functions']
+            weights_in_line = network_data['perceptrons_data'][line]['perceptons_weights']
             layer = self.get_layer_by_index(int(line))
             layer.set_children_functions_by_list(func_in_line)
+            layer.set_children_weights(weights_in_line)
 
     def __repr__(self) -> str:
         return self.id
 
 
 network = NeuralNetwork()
-network.setup(2, 1, 1)
-network.set_input_values([0.7, 1.3])
-network.set_perceptrons_per_layer([2])
-network.get_layer_by_index(1).set_child_function(1, ActivationFunctions.SIGMOID_BIPOLAR)
-# print(network.get_layer_by_index(3).get_children_functions())
+# network.setup(2, 1, 2)
+# network.set_input_values([0.7, 1.3])
+# network.set_perceptrons_per_layer([2,1])
+# network.get_layer_by_index(1).set_child_function(
+#     1, ActivationFunctions.SIGMOID_BIPOLAR)
+# # print(network.get_layer_by_index(3).get_children_functions())
+# network.get_layer_by_index(1).set_children_weights([[1, 0.5, 0.5], [-0.5, 0.3, 0.2]])
+# # network.get_layer_by_index(1).set_child_weights(0, [1, 0.5, 0.5])
+# # network.get_layer_by_index(1).set_child_weights(1, [-0.5, 0.3, 0.2])
+# network.get_layer_by_index(1).debug_indepth()
+# network.get_layer_by_index(2).debug_indepth()
+# # pprint.pprint(network.get_dict())
+# # network.save_network('CustomNeuralNetwork/network.nn')
 
+# network.get_layer_by_index(1).set_children_weights([[0, 0, 0], [0, 0, 0]])
+# network.get_layer_by_index(1).debug_indepth()
+# network.set_layer_activation_function(1, ActivationFunctions.RELU)
+# print(network.get_layer_by_index(1).get_children_functions())
 # pprint.pprint(network.get_dict())
-# network.save_network('CustomNeuralNetwork/network.nn')
-network.set_layer_activation_function(1, ActivationFunctions.RELU)
-print(network.get_layer_by_index(1).get_children_functions())
-# pprint.pprint(network.get_dict())
-# network.load_network('CustomNeuralNetwork/network.nn')
-print(network.get_layer_by_index(1).get_children_functions())
+network.load_network('CustomNeuralNetwork/network.nn')
+network.get_layer_by_index(1).debug_indepth()
 pprint.pprint(network.get_dict())
+# print(network.get_layer_by_index(1).get_children_functions())
+# pprint.pprint(network.get_dict())
 # pprint.pprint(network.get_dict())
 
 
@@ -530,5 +596,3 @@ pprint.pprint(network.get_dict())
 # TODO: Implement softmax
 # TODO: Implement linear
 # TODO: Implement sigmoid
-# TODO: Implement setting up perceptron activation functions
-# TODO: Implement setting up perceptron weights
