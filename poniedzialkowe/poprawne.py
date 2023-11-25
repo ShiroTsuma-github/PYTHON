@@ -3,12 +3,17 @@ from funcy import print_durations
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import networkx as nx
 from matplotlib.widgets import Slider, Button
 
 
+SIZE = 4
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
-SIZE = 5
+FLOW = True
+FLOW_CHART_SHELL = True
+FLOW_CHART_TREE = True
+PLOT = True
 
 
 def generate_pos_def_matrix(n):
@@ -167,37 +172,67 @@ df = df.sort_values(by=['i', 'j', 'k'])
 df = df.reset_index(drop=True)
 
 if DISPLAY_FULL_TABLE:
-    pd.set_option('display.max_rows', None)
+    pd.s_option('display.max_rows', None)
     pd.set_option('display.max_columns', None)
 
 # Wydrukuj DataFrame
 print(df)
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+dependencies_df = pd.DataFrame(columns=['From', 'To'])
+last_occurrence = {}
+unique_paris = set()
+for index, row in df.iterrows():
+    operands = [row['i, i'], row['j, i'], row['j, k'], row['k, i']]
+    for order, operand in enumerate(operands):
+        if operand:
+            from_values = tuple(last_occurrence.get(operand, {'i': row["i"], 'j': row["j"], 'k': row["k"]}).values())
+            to_values = tuple({'i': row['i'], 'j': row['j'], 'k': row['k']}.values())
+            if str(from_values) + str(to_values) not in unique_paris:
+                dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
+                    'From': [from_values],
+                    'To': [to_values],
+                    'Type': ['Move data' if from_values != to_values else 'Calculate']
+                })], ignore_index=True)
+                last_occurrence[operand] = {'i': row['i'], 'j': row['j'], 'k': row['k']}
+                unique_paris.add(str(from_values) + str(to_values))
+dependencies_df = dependencies_df.sort_values(by=['To', 'From'])
+dependencies_df = dependencies_df.reset_index(drop=True)
+dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
+    'From': [(SIZE, SIZE, SIZE)],
+    'To': [(SIZE, SIZE, SIZE)],
+    'Type': ['Calculate']
+})], ignore_index=True)
+print(dependencies_df)
 
-x = df['j']
-y = df['k']
-z = df['i']
+if FLOW:
+    G = nx.DiGraph()
+    for _, row in dependencies_df.iterrows():
+        if row['Type'] == 'Move data':
+            G.add_edge(row['From'], row['To'], weight=row['Type'])
 
-colors = {'sqrt': 'red', 'div': 'blue', 'min mul': 'purple'}
-op_colors = df['op'].map(colors)
+    # Perform topological sorting for "Move data" dependencies
+    try:
+        topological_order = list(nx.topological_sort(G))
+    except nx.NetworkXUnfeasible:
+        print("Cycle detected in 'Move data' dependencies")
 
+    # Display the topological order
+    print("\n\nTopological Order for 'Move data' dependencies:")
+    [print(f'{i + 1}: {topological_order[i]}') for i in range(len(topological_order))]
 
-c = df['op'].map(colors)
-
-scatter = ax.scatter(x, y, z, c=op_colors, marker='o', s=100)
-
-#  Set labels and ticks
-ax.set_xlabel('j')
-ax.set_ylabel('k')
-ax.set_zlabel('i')
-
-ax.set_xticks(np.arange(1, SIZE + 1, 1))
-ax.set_yticks(np.arange(1, SIZE + 1, 1))
-ax.set_zticks(np.arange(1, SIZE + 1, 1))
-
-plt.title('Cholesky Decomposition')
+    # Visualize the graph (optional)
+    if FLOW_CHART_SHELL:
+        plt.figure()
+        plt.title('Cholesky Decomposition Flow Chart (Shell Layout))')
+        pos = nx.shell_layout(G)
+        nx.draw(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+    if FLOW_CHART_TREE:
+        plt.figure()
+        plt.title('Cholesky Decomposition Flow Chart (Tree Layout))')
+        tree = nx.bfs_tree(G, source=topological_order[0])
+        pos = nx.spring_layout(tree)
+        nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+        
 
 
 def draw_x_arrows(z_val=None):
@@ -277,24 +312,6 @@ def draws_z_arrows(z_val=None):
     return arrows_min_mul, arrows_other
 
 
-arrows_x = draw_x_arrows()
-arrows_y = draw_y_arrows()
-arrows_min_mul, arrows_other = draws_z_arrows()
-
-ax_z_slider = plt.axes([0.1, 0.02, 0.65, 0.03], facecolor='lightgoldenrodyellow')
-z_slider = Slider(ax_z_slider, 'Z Value', df['i'].min(), df['i'].max(), valstep=1)
-z_slider.set_val(0)
-
-ax_reset_button = plt.axes([0.85, 0.02, 0.1, 0.03])
-reset_button = Button(ax_reset_button, 'Reset', color='lightgoldenrodyellow', hovercolor='0.975')
-initial_state = {
-    'x': x,
-    'y': y,
-    'z': z,
-    'op_colors': op_colors
-}
-
-
 def update(val):
     z_val = round(z_slider.val)
     global arrows_x
@@ -328,9 +345,6 @@ def update(val):
     plt.draw()
 
 
-z_slider.on_changed(update)
-
-
 def reset(event):
     global arrows_x
     global arrows_y
@@ -343,7 +357,7 @@ def reset(event):
 
     scatter.remove()
     scatter = ax.scatter(initial_state['x'], initial_state['y'], initial_state['z'],
-                         c=initial_state['op_colors'], marker='o', s=100)
+                        c=initial_state['op_colors'], marker='o', s=100)
     ax.set_zlim([z.min() - 0.5, z.max() + 0.5])
     ax.set_xticks(np.arange(1, SIZE + 1, 1))
     ax.set_yticks(np.arange(1, SIZE + 1, 1))
@@ -355,6 +369,51 @@ def reset(event):
     plt.draw()
 
 
-reset_button.on_clicked(reset)
+if PLOT:
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
 
-plt.show()
+    x = df['j']
+    y = df['k']
+    z = df['i']
+
+    colors = {'sqrt': 'red', 'div': 'blue', 'min mul': 'purple'}
+    op_colors = df['op'].map(colors)
+
+    c = df['op'].map(colors)
+
+    scatter = ax.scatter(x, y, z, c=op_colors, marker='o', s=100)
+
+    #  Set labels and ticks
+    ax.set_xlabel('j')
+    ax.set_ylabel('k')
+    ax.set_zlabel('i')
+
+    ax.set_xticks(np.arange(1, SIZE + 1, 1))
+    ax.set_yticks(np.arange(1, SIZE + 1, 1))
+    ax.set_zticks(np.arange(1, SIZE + 1, 1))
+
+    plt.title('Cholesky Decomposition')
+
+    arrows_x = draw_x_arrows()
+    arrows_y = draw_y_arrows()
+    arrows_min_mul, arrows_other = draws_z_arrows()
+
+    ax_z_slider = plt.axes([0.1, 0.02, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+    z_slider = Slider(ax_z_slider, 'Z Value', df['i'].min(), df['i'].max(), valstep=1)
+    z_slider.set_val(0)
+
+    ax_reset_button = plt.axes([0.85, 0.02, 0.1, 0.03])
+    reset_button = Button(ax_reset_button, 'Reset', color='lightgoldenrodyellow', hovercolor='0.975')
+    initial_state = {
+        'x': x,
+        'y': y,
+        'z': z,
+        'op_colors': op_colors
+    }
+
+    z_slider.on_changed(update)
+    reset_button.on_clicked(reset)
+
+if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
+    plt.show()
