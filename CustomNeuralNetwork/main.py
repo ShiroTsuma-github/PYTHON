@@ -9,7 +9,7 @@ from cryptography.fernet import Fernet
 class LayerTypes(Enum):
     INPUT = auto()
     OUTPUT = auto()
-    HIDDEN = auto()
+    PERC = auto()
 
 
 class ActivationFunctions(Enum):
@@ -50,7 +50,7 @@ class Layer:
         elif self.layer_type == LayerTypes.OUTPUT and not isinstance(child, NetworkOutput):
             raise ValueError(
                 f"Incorrect child argument. Got {type(child)}. Expected: {NetworkOutput}")
-        elif self.layer_type == LayerTypes.HIDDEN and not isinstance(child, Perceptron):
+        elif self.layer_type == LayerTypes.PERC and not isinstance(child, Perceptron):
             raise ValueError(
                 f"Incorrect child argument. Got {type(child)}. Expected: {Perceptron}")
         self.children.append(child)
@@ -62,14 +62,14 @@ class Layer:
     def set_id(self, layer: int) -> None:
         self.__layer_num = layer
         l_type = 'I' if self.layer_type == LayerTypes.INPUT\
-            else 'H' if self.layer_type == LayerTypes.HIDDEN else 'O'
+            else 'P' if self.layer_type == LayerTypes.PERC else 'O'
         self.id: str = f'L/{l_type}/{layer}/{len(self.children)}'
 
     def __update_id(self):
         if self.__layer_num is None:
             return
         l_type: Literal['I', 'H', 'O'] = 'I' if self.layer_type == LayerTypes.INPUT\
-            else 'H' if self.layer_type == LayerTypes.HIDDEN else 'O'
+            else 'H' if self.layer_type == LayerTypes.PERC else 'O'
         self.id: str = f'L/{l_type}/{self.__layer_num}/{len(self.children)}'
 
     def set_children_ids(self) -> None:
@@ -158,11 +158,11 @@ class Layer:
             if self.right_layer is not None:
                 raise ValueError(
                     f"Output layer doesn't have right side layer. Got {self.right_layer}")
-        elif self.layer_type == LayerTypes.HIDDEN:
+        elif self.layer_type == LayerTypes.PERC:
             if self.left_layer is None:
-                raise ValueError("Hidden layer needs left side layer.")
+                raise ValueError("Perceptron layer needs left side layer.")
             if self.right_layer is None:
-                raise ValueError("Hidden layer needs right side layer.")
+                raise ValueError("Perceptron layer needs right side layer.")
 
         if not isinstance(self.left_layer, Layer) and self.left_layer is not None:
             raise ValueError(
@@ -402,7 +402,7 @@ class NeuralNetwork:
         self.id = 'N/I/?/H/?/P/?/O/?'
         self.layer_count: int = 0
         self.layers: list[Layer] = []
-        self.__hidden_layers: list[Layer] = []
+        self.__perc_layers: list[Layer] = []
         self.__input_layer: Layer = None
         self.__output_layer: Layer = None
         self.perceptrons_per_layer: list[int] = []
@@ -411,7 +411,7 @@ class NeuralNetwork:
         self.__mov_layer_i: int = 1
 
     def __update_id(self):
-        self.id = f'N/I/{self.__input_layer.get_child_count()}/H/{len(self.__hidden_layers)}/P/{self.get_perceptron_count()}/O/{self.__output_layer.get_child_count()}'
+        self.id = f'N/I/{self.__input_layer.get_child_count()}/H/{len(self.__perc_layers)}/P/{self.get_perceptron_count()}/O/{self.__output_layer.get_child_count()}'
 
     def get_perceptron_count(self) -> int:
         return sum(self.perceptrons_per_layer)
@@ -437,17 +437,20 @@ class NeuralNetwork:
         self.__output_layer.get_sums()
         # implement softmax, linear and sigmoid as output functions
 
-    def setup(self, inputs: int = 1, outputs: int = 1, hidden_layers: int = 1):
+    def get_output(self) -> list[float]:
+        pass
+
+    def setup(self, inputs: int = 1, outputs: int = 1, perc_layers: int = 1):
         layer = Layer(LayerTypes.INPUT)
         layer.set_id(self.__mov_layer_i)
         self.__mov_layer_i += 1
         self.layers.append(layer)
-        for i in range(hidden_layers):
-            layer = Layer(LayerTypes.HIDDEN)
+        for i in range(perc_layers):
+            layer = Layer(LayerTypes.PERC)
             layer.set_id(self.__mov_layer_i)
             self.__mov_layer_i += 1
             self.layers.append(layer)
-            self.__hidden_layers.append(layer)
+            self.__perc_layers.append(layer)
         layer = Layer(LayerTypes.OUTPUT)
         layer.set_id(self.__mov_layer_i)
         self.__mov_layer_i += 1
@@ -458,6 +461,7 @@ class NeuralNetwork:
             self.layers[0].add_child(NetworkInput())
         for i in range(outputs):
             self.layers[len(self.layers) - 1].add_child(NetworkOutput())
+            self.layers[len(self.layers) - 2].add_child(Perceptron(ActivationFunctions.STEP_UNIPOLAR))
         for index in range(len(self.layers)):
             if index == 0:
                 self.layers[index].right_layer = self.layers[index + 1]
@@ -470,11 +474,11 @@ class NeuralNetwork:
         self.__update_id()
 
     def set_perceptrons_per_layer(self, perceptrons_per_layer: list[int]) -> None:
-        if len(perceptrons_per_layer) != len(self.__hidden_layers):
+        if len(perceptrons_per_layer) != len(self.__perc_layers):
             raise ValueError(
-                f"Got perceptrons for incorrect number of layers. Got {len(perceptrons_per_layer)} | Expected {len(self.__hidden_layers)}")
+                f"Got perceptrons for incorrect number of layers. Got {len(perceptrons_per_layer)} | Expected {len(self.__perc_layers)}")
         self.perceptrons_per_layer = perceptrons_per_layer
-        for layer, perceptron_count in zip(self.__hidden_layers, perceptrons_per_layer):
+        for layer, perceptron_count in zip(self.__perc_layers, perceptrons_per_layer):
             for i in range(perceptron_count):
                 layer.add_child(Perceptron(ActivationFunctions.STEP_UNIPOLAR))
             layer.set_children_ids()
@@ -502,7 +506,7 @@ class NeuralNetwork:
         obj_dict['input-layer'] = self.__input_layer
         obj_dict['input-count'] = self.__input_layer.get_child_count()
         obj_dict['input_values'] = self.get_input_values()
-        obj_dict['hidden-layers'] = self.__hidden_layers
+        obj_dict['hidden-layers'] = self.__perc_layers
         obj_dict['perceptrons-per-layer'] = self.perceptrons_per_layer
         obj_dict['output-layer'] = self.__output_layer
         obj_dict['output-count'] = self.__output_layer.get_child_count()
@@ -511,7 +515,7 @@ class NeuralNetwork:
 
     def save_network(self, path):
         perc_dict = {}
-        for i, layer in enumerate(self.__hidden_layers):
+        for i, layer in enumerate(self.__perc_layers):
             perc_dict[f'{i + 1}'] = {
                 'perceptons_activation_functions': [item.value for item in layer.get_children_functions()],
                 'perceptons_weights': [item.weights for item in layer.get_children()]}
@@ -520,7 +524,7 @@ class NeuralNetwork:
             'network': {
                 'id': self.id,
                 'input-count': self.__input_layer.get_child_count(),
-                'hidden-layer_count': len(self.__hidden_layers),
+                'hidden-layer_count': len(self.__perc_layers),
                 'perceptrons-per-layer': self.perceptrons_per_layer,
                 'output-count': self.__output_layer.get_child_count(),
                 'input-values': self.get_input_values(),
@@ -565,7 +569,10 @@ class NeuralNetwork:
 
 
 network = NeuralNetwork()
-# network.setup(2, 1, 2)
+network.setup(2, 1, 2)
+pprint.pprint(network.get_dict())
+network.set_input_values([0.7, 1.3])
+network.get_layer_by_index(2).debug_indepth()
 # network.set_input_values([0.7, 1.3])
 # network.set_perceptrons_per_layer([2,1])
 # network.get_layer_by_index(1).set_child_function(
@@ -584,9 +591,9 @@ network = NeuralNetwork()
 # network.set_layer_activation_function(1, ActivationFunctions.RELU)
 # print(network.get_layer_by_index(1).get_children_functions())
 # pprint.pprint(network.get_dict())
-network.load_network('CustomNeuralNetwork/network.nn')
-network.get_layer_by_index(1).debug_indepth()
-pprint.pprint(network.get_dict())
+# network.load_network('CustomNeuralNetwork/network.nn')
+# network.get_layer_by_index(1).debug_indepth()
+# pprint.pprint(network.get_dict())
 # print(network.get_layer_by_index(1).get_children_functions())
 # pprint.pprint(network.get_dict())
 # pprint.pprint(network.get_dict())
@@ -596,3 +603,4 @@ pprint.pprint(network.get_dict())
 # TODO: Implement softmax
 # TODO: Implement linear
 # TODO: Implement sigmoid
+# TODO: Implement training

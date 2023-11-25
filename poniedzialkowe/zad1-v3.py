@@ -32,4 +32,5 @@ a = [
 
 L: list[list[float]] = cholesky_decomposition(a)
 print(L)
-# AVG 24.5 mks
+# PC AVG 24.5 mks
+# LAPTOP AVG 50 mks

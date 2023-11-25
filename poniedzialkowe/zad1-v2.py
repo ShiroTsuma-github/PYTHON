@@ -3,9 +3,9 @@ from funcy import print_durations
 
 
 @print_durations()
-def Cholesky_Decomposition(matrix):
-    n = len(matrix)
-    L = [[0 for _ in range(n)] for _ in range(n)]
+def Cholesky_Decomposition(matrix) -> list[list[int]]:
+    n: int = len(matrix)
+    L: list[list[int]] = [[0 for _ in range(n)] for _ in range(n)]
     for i in range(n):
         # i = 0 -> j = 0
         # i = 1 -> j = 0, 1
@@ -35,15 +35,15 @@ def Cholesky_Decomposition(matrix):
     return L
 
 
+matrix: list[list[int]] = [
+    [4, 12, -16],
+    [12, 37, -43],
+    [-16, -43, 98]]
 # matrix: list[list[int]] = [
-#     [4, 12, -16],
-#     [12, 37, -43],
-#     [-16, -43, 98]]
-matrix = [
-    [6, 15, 55],
-    [15, 55, 225],
-    [55, 225, 979]
-]
+#     [6, 15, 55],
+#     [15, 55, 225],
+#     [55, 225, 979]]
 L: list[list[int]] = Cholesky_Decomposition(matrix)
 print(L)
-# AVG 17.5 mks
+# PC AVG 17.5 mks
+# LAPTOP AVG 60 mks
