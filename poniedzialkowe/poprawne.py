@@ -2,11 +2,13 @@ import math
 from funcy import print_durations
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider, Button
 
 
-DISPLAY_PARTIAL_TABLES = False
+DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
-SIZE = 10
+SIZE = 5
 
 
 def generate_pos_def_matrix(n):
@@ -20,21 +22,13 @@ def generate_pos_def_matrix(n):
 @print_durations()
 def Cholesky_Decomposition(a) -> list[list[float]]:
     N = len(a)
-    z = 0
     L: list[list[float]] = [[0 for _ in range(N)] for _ in range(N)]
-    # print(' id   i j k a[j][i] a[i][k] a[j][k]      op')
     for i in range(N):
-        z += 1
-        # print(f'[{str(z).ljust(2, " ")}]: {i + 1} {i + 1} {i + 1}  {(i + 1, i + 1)}  {(i + 1, i + 1)}  {(i + 1, i + 1)} \tsqrt')
         a[i][i] = math.sqrt(a[i][i])
         for j in range(i + 1, N):
-            z += 1
-            # print(f'[{str(z).ljust(2, " ")}]: {i + 1} {j + 1} {i + 1}  {(j + 1, i + 1)}  {(i + 1, i + 1)}  {(j + 1, i + 1)} \tdiv')
             a[j][i] = a[j][i] / a[i][i]
         for j in range(i + 1, N):
             for k in range(i + 1, j + 1):
-                z += 1
-                # print(f'[{str(z).ljust(2, " ")}]: {i + 1} {j + 1} {k + 1}  {(j + 1, i + 1)}  {(i + 1, k + 1)}  {(j + 1, k + 1)} \tmin mul')
                 a[j][k] = a[j][k] - a[j][i] * a[k][i]
 
     # do wyciagania i >= j    
@@ -124,7 +118,6 @@ for i in range(SIZE):
             a[j][k] = a[j][k] - a[j][i] * a[k][i]
             z += 1
 print('\n\n')
-# pprint.pprint(result_dict)
 
 ids = []
 i_values = []
@@ -179,3 +172,189 @@ if DISPLAY_FULL_TABLE:
 
 # Wydrukuj DataFrame
 print(df)
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+x = df['j']
+y = df['k']
+z = df['i']
+
+colors = {'sqrt': 'red', 'div': 'blue', 'min mul': 'purple'}
+op_colors = df['op'].map(colors)
+
+
+c = df['op'].map(colors)
+
+scatter = ax.scatter(x, y, z, c=op_colors, marker='o', s=100)
+
+#  Set labels and ticks
+ax.set_xlabel('j')
+ax.set_ylabel('k')
+ax.set_zlabel('i')
+
+ax.set_xticks(np.arange(1, SIZE + 1, 1))
+ax.set_yticks(np.arange(1, SIZE + 1, 1))
+ax.set_zticks(np.arange(1, SIZE + 1, 1))
+
+plt.title('Cholesky Decomposition')
+
+
+def draw_x_arrows(z_val=None):
+    arrows_x = []
+    if z_val is None:
+        for i in range(len(df) - 1):
+            num_arrows = len(df) - i
+            if df['j'].iloc[i] != df['j'].max():  # Avoid drawing arrows when x=size
+                arrows_x.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+                                df['k'].iloc[i] * np.ones(num_arrows),
+                                df['i'].iloc[i] * np.ones(num_arrows),
+                                np.ones(num_arrows), np.zeros(num_arrows), np.zeros(num_arrows),
+                                color='red', arrow_length_ratio=0.1))
+    else:
+        for i in range(len(df) - 1):
+            num_arrows = len(df) - i
+            if df['i'].iloc[i] == z_val:
+                if df['j'].iloc[i] != df['j'].max():  # Avoid drawing arrows when x=size
+                    arrows_x.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+                                    df['k'].iloc[i] * np.ones(num_arrows),
+                                    df['i'].iloc[i] * np.ones(num_arrows),
+                                    np.ones(num_arrows), np.zeros(num_arrows), np.zeros(num_arrows),
+                                    color='red', arrow_length_ratio=0.1))
+    return arrows_x
+
+
+def draw_y_arrows(z_val=None):
+    arrows_y = []
+    if z_val is None:
+        for i in range(len(df) - 1, 0, -1):
+            num_arrows = len(df) - i
+            if df['k'].iloc[i] < df['j'].iloc[i]:
+                arrows_y.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+                                df['k'].iloc[i] * np.ones(num_arrows),
+                                df['i'].iloc[i] * np.ones(num_arrows),
+                                np.zeros(num_arrows), np.ones(num_arrows), np.zeros(num_arrows),
+                                color='red', arrow_length_ratio=0.1))
+    else:
+        for i in range(len(df) - 1, 0, -1):
+            num_arrows = len(df) - i
+            if df['i'].iloc[i] == z_val and df['k'].iloc[i] < df['j'].iloc[i]:
+                arrows_y.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+                                df['k'].iloc[i] * np.ones(num_arrows),
+                                df['i'].iloc[i] * np.ones(num_arrows),
+                                np.zeros(num_arrows), np.ones(num_arrows), np.zeros(num_arrows),
+                                color='red', arrow_length_ratio=0.1))
+    return arrows_y
+
+
+def draws_z_arrows(z_val=None):
+    arrows_min_mul = []
+    arrows_other = []
+    if z_val is None:
+        for i in range(0, len(df)):
+            if df['op'].iloc[i] == 'min mul':
+                color = 'red'
+                arrow_length_ratio = 0.1
+                arrows_min_mul.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+                                      0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+            else:
+                color = 'green'
+                arrow_length_ratio = 0.05  # Adjust the length for green arrows
+                arrows_other.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+                                    0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+    else:
+        for i in range(len(df)):
+            if df['op'].iloc[i] == 'min mul' and df['i'].iloc[i] == z_val:
+                color = 'red'
+                arrow_length_ratio = 0.1
+                arrows_min_mul.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+                                      0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+            elif df['i'].iloc[i] == z_val:
+                color = 'green'
+                arrow_length_ratio = 0.05  # Adjust the length for green arrows
+                arrows_other.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+                                    0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+    return arrows_min_mul, arrows_other
+
+
+arrows_x = draw_x_arrows()
+arrows_y = draw_y_arrows()
+arrows_min_mul, arrows_other = draws_z_arrows()
+
+ax_z_slider = plt.axes([0.1, 0.02, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+z_slider = Slider(ax_z_slider, 'Z Value', df['i'].min(), df['i'].max(), valstep=1)
+z_slider.set_val(0)
+
+ax_reset_button = plt.axes([0.85, 0.02, 0.1, 0.03])
+reset_button = Button(ax_reset_button, 'Reset', color='lightgoldenrodyellow', hovercolor='0.975')
+initial_state = {
+    'x': x,
+    'y': y,
+    'z': z,
+    'op_colors': op_colors
+}
+
+
+def update(val):
+    z_val = round(z_slider.val)
+    global arrows_x
+    global arrows_y
+    global arrows_min_mul
+    global arrows_other
+    global scatter
+    for arrow in arrows_min_mul:
+        arrow.remove()
+    for arrow in arrows_other:
+        arrow.remove()
+    for arrow in arrows_x:
+        arrow.remove()
+    for arrow in arrows_y:
+        arrow.remove()
+
+    arrows_min_mul.clear()
+    arrows_other.clear()
+    arrows_x.clear()
+    arrows_y.clear()
+    arrows_min_mul, arrows_other = draws_z_arrows(z_val)
+    arrows_x = draw_x_arrows(z_val)
+    arrows_y = draw_y_arrows(z_val)
+    mask = (z == z_val)
+    scatter.remove()
+    scatter = ax.scatter(x[mask], y[mask], z[mask], c=op_colors[mask], marker='o', s=100)
+    ax.set_zlim([z_val - 0.5, z_val + 0.5])
+    ax.set_xticks(np.arange(1, SIZE + 1, 1))
+    ax.set_yticks(np.arange(1, SIZE + 1, 1))
+    ax.set_zticks(np.arange(1, SIZE + 1, 1))
+    plt.draw()
+
+
+z_slider.on_changed(update)
+
+
+def reset(event):
+    global arrows_x
+    global arrows_y
+    global arrows_min_mul
+    global arrows_other
+    global scatter
+
+    z_slider.reset()
+    z_slider.set_val(0)
+
+    scatter.remove()
+    scatter = ax.scatter(initial_state['x'], initial_state['y'], initial_state['z'],
+                         c=initial_state['op_colors'], marker='o', s=100)
+    ax.set_zlim([z.min() - 0.5, z.max() + 0.5])
+    ax.set_xticks(np.arange(1, SIZE + 1, 1))
+    ax.set_yticks(np.arange(1, SIZE + 1, 1))
+    ax.set_zticks(np.arange(1, SIZE + 1, 1))
+
+    arrows_x = draw_x_arrows()
+    arrows_y = draw_y_arrows()
+    arrows_min_mul, arrows_other = draws_z_arrows()
+    plt.draw()
+
+
+reset_button.on_clicked(reset)
+
+plt.show()
