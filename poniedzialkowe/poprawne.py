@@ -7,7 +7,7 @@ import networkx as nx
 from matplotlib.widgets import Slider, Button
 
 
-SIZE = 4
+SIZE = 3
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
 FLOW = True
@@ -216,23 +216,35 @@ if FLOW:
     except nx.NetworkXUnfeasible:
         print("Cycle detected in 'Move data' dependencies")
 
+    node_numbers = {}
+
+    for node in topological_order:
+        predecessors = list(G.predecessors(node))
+        if not predecessors:
+            # If the node has no predecessors, assign it number 1
+            node_numbers[node] = 1
+        else:
+            # Assign the node number as the maximum number from its predecessors plus one
+            node_numbers[node] = max(node_numbers[predecessor] for predecessor in predecessors) + 1
+
+    dependencies_df['Order'] = dependencies_df['To'].map(node_numbers)
     # Display the topological order
     print("\n\nTopological Order for 'Move data' dependencies:")
-    [print(f'{i + 1}: {topological_order[i]}') for i in range(len(topological_order))]
+    [print(f'{j}: {i}') for i, j in zip(node_numbers.keys(), node_numbers.values())]
 
-    # Visualize the graph (optional)
     if FLOW_CHART_SHELL:
         plt.figure()
         plt.title('Cholesky Decomposition Flow Chart (Shell Layout))')
         pos = nx.shell_layout(G)
         nx.draw(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+        for node, (x, y) in pos.items():
+            plt.text(x, y - 0.05, str(node_numbers[node]), ha='center', va='top', bbox=dict(facecolor='white', alpha=0.5))
     if FLOW_CHART_TREE:
         plt.figure()
         plt.title('Cholesky Decomposition Flow Chart (Tree Layout))')
         tree = nx.bfs_tree(G, source=topological_order[0])
         pos = nx.spring_layout(tree)
         nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
-        
 
 
 def draw_x_arrows(z_val=None):
