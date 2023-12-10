@@ -5,15 +5,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.widgets import Slider, Button
+from random import randint
 
 
 SIZE = 3
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
-FLOW = True
-FLOW_CHART_SHELL = True
-FLOW_CHART_TREE = True
-PLOT = True
+FLOW = False
+FLOW_CHART_SHELL = False
+FLOW_CHART_TREE = False
+PLOT = False
 
 
 def generate_pos_def_matrix(n):
@@ -36,7 +37,7 @@ def Cholesky_Decomposition(a) -> list[list[float]]:
             for k in range(i + 1, j + 1):
                 a[j][k] = a[j][k] - a[j][i] * a[k][i]
 
-    # do wyciagania i >= j    
+    # do wyciagania i >= j
     for i in range(N):
         for j in range(i + 1):
             if i >= j:
@@ -176,6 +177,7 @@ if DISPLAY_FULL_TABLE:
     pd.set_option('display.max_columns', None)
 
 # Wydrukuj DataFrame
+print('\n\n')
 print(df)
 
 dependencies_df = pd.DataFrame(columns=['From', 'To'])
@@ -202,7 +204,15 @@ dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
     'To': [(SIZE, SIZE, SIZE)],
     'Type': ['Calculate']
 })], ignore_index=True)
-print(dependencies_df)
+print('\n\n')
+print('Lista węzłów')
+for i, row in df.iterrows():
+    print(f'[{str(i).ljust(2, " ")}]', (row['i'], row['j'], row['k']), row['op'])
+print('\n\n')
+print("Lista łuków: ")
+for _, row in dependencies_df.iterrows():
+    if row['Type'] == 'Move data':
+        print(row['From'], row['To'])
 
 if FLOW:
     G = nx.DiGraph()
@@ -229,14 +239,17 @@ if FLOW:
 
     dependencies_df['Order'] = dependencies_df['To'].map(node_numbers)
     # Display the topological order
-    print("\n\nTopological Order for 'Move data' dependencies:")
-    [print(f'{j}: {i}') for i, j in zip(node_numbers.keys(), node_numbers.values())]
 
+    print("\n\nCalculation Order:")
+    [print(f'{node_numbers[i]}: {i}') for i in node_numbers.keys()]
+
+    print('\n\n')
+    print(f'Max: {max(node_numbers.values())}')
     if FLOW_CHART_SHELL:
         plt.figure()
         plt.title('Cholesky Decomposition Flow Chart (Shell Layout))')
         pos = nx.shell_layout(G)
-        nx.draw(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+        nx.draw_networkx(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
         for node, (x, y) in pos.items():
             plt.text(x, y - 0.05, str(node_numbers[node]), ha='center', va='top', bbox=dict(facecolor='white', alpha=0.5))
     if FLOW_CHART_TREE:
@@ -369,7 +382,7 @@ def reset(event):
 
     scatter.remove()
     scatter = ax.scatter(initial_state['x'], initial_state['y'], initial_state['z'],
-                        c=initial_state['op_colors'], marker='o', s=100)
+                         c=initial_state['op_colors'], marker='o', s=100)
     ax.set_zlim([z.min() - 0.5, z.max() + 0.5])
     ax.set_xticks(np.arange(1, SIZE + 1, 1))
     ax.set_yticks(np.arange(1, SIZE + 1, 1))
@@ -429,3 +442,92 @@ if PLOT:
 
 if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
     plt.show()
+
+
+# def get_Fs():
+#     D = [
+#         [1, 0, 0],
+#         [0, 1, 0],
+#         [0, 0, 1]]
+
+#     Ans = [[0 for _ in range(3)] for _ in range(2)]
+#     Fs = [ [randint(-1, 1) for _ in range(3)] for _ in range(2)] 
+#     for pos, val in enumerate(Fs):
+#         for i in range(len(D[0])):
+#             for j in range(len(D)):
+#                 Ans[pos][i] += D[j][i] * val[i]
+#     return Fs, Ans
+
+
+# def is_valid(ans, ft):
+#     for line in ans:
+#         for val in line:
+#             if abs(val) > 1:
+#                 return False
+#     temp = [0 for _ in range(3)]
+#     for i in range(3):
+#         for j in range(2):
+#             temp[i] += ans[j][i] * ft[i]
+#     if sum(temp) >= 1:
+#         return True
+#     return False
+
+
+# valid_options = []
+# while True:
+#     Fs, Ans = get_Fs()
+#     Ft = [1 for _ in range(3)]
+#     if is_valid(Ans, Ft):
+#         valid_options.append(Fs)
+#         print(Fs)
+#     if len(valid_options) >= 10:
+#         break
+valid_options = [
+    [[1, 0, 0], [1, 1, 1]],
+    [[1, 0, 1], [1, 1, -1]],
+    [[1, -1, 0], [1, -1, 1]],
+    [[1, 1, 1], [1, 1, -1]],
+    [[-1, -1, 1], [1, 1, 0]],
+    [[1, 0, -1], [1, 0, 0]],
+    [[0, 1, 1], [1, -1, -1]],
+    [[0, 1, -1], [1, -1, 1]],
+    [[-1, 0, 0], [1, 1, 0]],
+    [[1, 1, -1], [1, -1, 1]]]
+print('\n\n')
+for i, option in enumerate(valid_options):
+    for i, row in df.iterrows():
+        print(f'[{str(i).ljust(2, " ")}]', (row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2],
+                                            row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2],
+                                            row['op']))
+    print('\n')
+"""
+[[1, 0, 0],
+[1, 1, 1]]
+
+[[1, 0, 1],
+[1, 1, -1]]
+
+[[1, -1, 0],
+[1, -1, 1]]
+
+[[1, 1, 1],
+[1, 1, -1]]
+
+[[-1, -1, 1],
+[1, 1, 0]]
+
+[[1, 0, -1],
+[1, 0, 0]]
+
+[[0, 1, 1],
+[1, -1, -1]]
+
+[[0, 1, -1],
+[1, -1, 1]]
+
+[[-1, 0, 0],
+[1, 1, 0]]
+
+[[1, 1, -1],
+[1, -1, 1]]
+"""
