@@ -444,44 +444,57 @@ if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
     plt.show()
 
 
-# def get_Fs():
-#     D = [
-#         [1, 0, 0],
-#         [0, 1, 0],
-#         [0, 0, 1]]
+def get_Fs():
+    D = [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]]
 
-#     Ans = [[0 for _ in range(3)] for _ in range(2)]
-#     Fs = [ [randint(-1, 1) for _ in range(3)] for _ in range(2)] 
-#     for pos, val in enumerate(Fs):
-#         for i in range(len(D[0])):
-#             for j in range(len(D)):
-#                 Ans[pos][i] += D[j][i] * val[i]
-#     return Fs, Ans
-
-
-# def is_valid(ans, ft):
-#     for line in ans:
-#         for val in line:
-#             if abs(val) > 1:
-#                 return False
-#     temp = [0 for _ in range(3)]
-#     for i in range(3):
-#         for j in range(2):
-#             temp[i] += ans[j][i] * ft[i]
-#     if sum(temp) >= 1:
-#         return True
-#     return False
+    Ans = [[0 for _ in range(3)] for _ in range(2)]
+    Fs = [ [randint(-5, 5) for _ in range(3)] for _ in range(2)] 
+    for pos, val in enumerate(Fs):
+        for i in range(len(D[0])):
+            for j in range(len(D)):
+                Ans[pos][i] += D[j][i] * val[i]
+    return Fs, Ans
 
 
-# valid_options = []
-# while True:
-#     Fs, Ans = get_Fs()
-#     Ft = [1 for _ in range(3)]
-#     if is_valid(Ans, Ft):
-#         valid_options.append(Fs)
-#         print(Fs)
-#     if len(valid_options) >= 10:
-#         break
+def is_valid(ans, ft):
+    for i in range(3):
+        sum_ = 0
+        for j in range(2):
+            sum_ += ans[j][i]
+        if abs(sum_) > 1:
+            return False
+    return True
+
+
+def get_random_valid():
+    valid_options = []
+    Ft = [1 for _ in range(3)]
+    while True:
+        Fs, Ans = get_Fs()
+        
+        if is_valid(Ans, Ft):
+            valid_options.append(Fs)
+        if len(valid_options) >= 10:
+            break
+    return valid_options
+
+
+# valid_options = get_random_valid()
+
+# valid_options = [
+#     [[1, 5, -5], [-2, -5, 5]],
+#     [[3, -4, -3], [-3, 5, 4]],
+#     [[-4, -1, 0], [5, 2, 1]],
+#     [[-4, 4, -4], [4, -3, 3]],
+#     [[5, 4, 5], [-4, -5, -5]],
+#     [[-1, 1, 1], [1, -1, -1]],
+#     [[4, -1, 4], [-5, 0, -4]],
+#     [[-4, 0, 5], [3, -1, -4]],
+#     [[1, 0, -4], [0, -1, 3]],
+#     [[-4, 3, 5], [5, -2, -5]]]
 valid_options = [
     [[1, 0, 0], [1, 1, 1]],
     [[1, 0, 1], [1, 1, -1]],
