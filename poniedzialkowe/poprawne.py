@@ -8,7 +8,7 @@ from matplotlib.widgets import Slider, Button
 from random import randint
 
 
-SIZE = 4
+SIZE = 3
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
 FLOW = True
@@ -480,52 +480,74 @@ def get_random_valid():
 
 # valid_options = get_random_valid()
 
-# valid_options = [
-#     [[1, 0, 0], [1, 1, 1]],
-#     [[1, 0, 1], [1, 1, -1]],
-#     [[1, -1, 0], [1, -1, 1]],
-#     [[1, 1, 1], [1, 1, -1]],
-#     [[-1, -1, 1], [1, 1, 0]],
-#     [[1, 0, -1], [1, 0, 0]],
-#     [[0, 1, 1], [1, -1, -1]],
-#     [[0, 1, -1], [1, -1, 1]],
-#     [[-1, 0, 0], [1, 1, 0]],
-#     [[1, 1, -1], [1, -1, 1]]]
-valid_options = [[[1, 0, 0], [1, 1, 1]]]
-print('\n\n')
-indexes = []
-block_used = {}
+valid_options = [
+    [[1, 0, 0], [1, 1, 1]],
+    [[1, 0, 1], [1, 1, -1]],
+    [[1, -1, 0], [1, -1, 1]],
+    [[1, 1, 1], [1, 1, -1]],
+    [[-1, -1, 1], [1, 1, 0]],
+    [[1, 0, -1], [1, 0, 0]],
+    [[0, 1, 1], [1, -1, -1]],
+    [[0, 1, -1], [1, -1, 1]],
+    [[-1, 0, 0], [1, 1, 0]],
+    [[1, 1, -1], [1, -1, 1]]]
+# valid_options = [[[1, 0, 1], [1, 1, -1]]]
+# valid_options = [[[-1, -1, 1], [1, 1, 0]]]
 for i, option in enumerate(valid_options):
-    for i, row in df.iterrows():
-        # if f'{row["i"] * option[0][0] + row["j"] * option[0][1] + row["k"] * option[0][2]}{row["i"] * option[1][0] + row["j"] * option[1][1] + row["k"] * option[1][2]}' not in indexes:
-        #     indexes[f'{row["i"] * option[0][0] + row["j"] * option[0][1] + row["k"] * option[0][2]}{row["i"] * option[1][0] + row["j"] * option[1][1] + row["k"] * option[1][2]}'] = 1
-        # else:
-        #     indexes[f"{row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2]}{row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2]}"] += 1
-        indexes.append((row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2], row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2]))
-        block_used[(row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2], row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2])] = False
-        print(f'[{str(i).ljust(2, " ")}]', (row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2],
-                                            row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2],
-                                            row['op']))
-    print('\n')
-
-print('\n\n')
-base_tact = 0
-delay = 0
-for block, position in zip(indexes, node_numbers.keys()):
-    new_tact = node_numbers[position]
-    if new_tact != base_tact:
-        base_tact = new_tact
-        for item in block_used.keys():
-            block_used[item] = False
-    if not block_used[block]:
-        block_used[block] = True
-        print(f'{base_tact + delay}: {block}: {position}')
+    indexes = []
+    block_used = {}
+    invalid = False
+    H = nx.DiGraph()
+    for _, row in dependencies_df.iterrows():
+        if row['Type'] == 'Move data':
+            x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
+            x2 = (row['To'][0] * option[0][0] + row['To'][1] * option[0][1] + row['To'][2] * option[0][2])
+            
+            y1 = (row['From'][0] * option[1][0] + row['From'][1] * option[1][1] + row['From'][2] * option[1][2])
+            y2 = (row['To'][0] * option[1][0] + row['To'][1] * option[1][1] + row['To'][2] * option[1][2])
+            
+            H.add_edge((x1, y1), (x2, y2))
+            x = abs(x1 - x2)
+            y = abs(y1 - y2)
+            if x > 1:
+                invalid = True
+                print("Invalid on x")
+            elif y > 1:
+                invalid = True
+                print("Invalid on y")
+    if invalid:
         continue
-    else:
-        delay += 1
-        print(f'{base_tact + delay}: {block}: {position}')
+    try:
+        block_order = list(nx.topological_sort(H))
+    except nx.NetworkXUnfeasible:
+        # FILTER ONES THAT USE THE SAME BLOCK TWICE
+        continue
+    plt.figure()
+    plt.title('Block Diagram (Tree Layout))')
+    tree = nx.bfs_tree(H, source=block_order[0])
+    pos = nx.spring_layout(tree)
+    nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
 
+    block_numbers = {}
 
+    for node in block_order:
+        predecessors = list(H.predecessors(node))
+        if not predecessors:
+            # If the node has no predecessors, assign it number 1
+            block_numbers[node] = 1
+        else:
+            # Assign the node number as the maximum number from its predecessors plus one
+            block_numbers[node] = max(block_numbers[predecessor] for predecessor in predecessors) + 1
+    # Display the topological order
+
+    print("\n\nBlock Calculation Order:")
+    [print(f'{block_numbers[i]}: {i}') for i in block_numbers.keys()]
+
+    print(f'Max: {max(block_numbers.values())}')
+    print('\n\n')
+    
+
+# not exactly accounted for returning to the same block
 
 
 
