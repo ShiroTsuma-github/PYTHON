@@ -8,13 +8,13 @@ from matplotlib.widgets import Slider, Button
 from random import randint
 
 
-SIZE = 3
+SIZE = 4
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
-FLOW = False
-FLOW_CHART_SHELL = False
-FLOW_CHART_TREE = False
-PLOT = False
+FLOW = True
+FLOW_CHART_SHELL = True
+FLOW_CHART_TREE = True
+PLOT = True
 
 
 def generate_pos_def_matrix(n):
@@ -440,9 +440,6 @@ if PLOT:
     z_slider.on_changed(update)
     reset_button.on_clicked(reset)
 
-if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
-    plt.show()
-
 
 def get_Fs():
     D = [
@@ -451,7 +448,7 @@ def get_Fs():
         [0, 0, 1]]
 
     Ans = [[0 for _ in range(3)] for _ in range(2)]
-    Fs = [ [randint(-5, 5) for _ in range(3)] for _ in range(2)] 
+    Fs = [[randint(-1, 1) for _ in range(3)] for _ in range(2)]
     for pos, val in enumerate(Fs):
         for i in range(len(D[0])):
             for j in range(len(D)):
@@ -474,7 +471,6 @@ def get_random_valid():
     Ft = [1 for _ in range(3)]
     while True:
         Fs, Ans = get_Fs()
-        
         if is_valid(Ans, Ft):
             valid_options.append(Fs)
         if len(valid_options) >= 10:
@@ -485,34 +481,58 @@ def get_random_valid():
 # valid_options = get_random_valid()
 
 # valid_options = [
-#     [[1, 5, -5], [-2, -5, 5]],
-#     [[3, -4, -3], [-3, 5, 4]],
-#     [[-4, -1, 0], [5, 2, 1]],
-#     [[-4, 4, -4], [4, -3, 3]],
-#     [[5, 4, 5], [-4, -5, -5]],
-#     [[-1, 1, 1], [1, -1, -1]],
-#     [[4, -1, 4], [-5, 0, -4]],
-#     [[-4, 0, 5], [3, -1, -4]],
-#     [[1, 0, -4], [0, -1, 3]],
-#     [[-4, 3, 5], [5, -2, -5]]]
-valid_options = [
-    [[1, 0, 0], [1, 1, 1]],
-    [[1, 0, 1], [1, 1, -1]],
-    [[1, -1, 0], [1, -1, 1]],
-    [[1, 1, 1], [1, 1, -1]],
-    [[-1, -1, 1], [1, 1, 0]],
-    [[1, 0, -1], [1, 0, 0]],
-    [[0, 1, 1], [1, -1, -1]],
-    [[0, 1, -1], [1, -1, 1]],
-    [[-1, 0, 0], [1, 1, 0]],
-    [[1, 1, -1], [1, -1, 1]]]
+#     [[1, 0, 0], [1, 1, 1]],
+#     [[1, 0, 1], [1, 1, -1]],
+#     [[1, -1, 0], [1, -1, 1]],
+#     [[1, 1, 1], [1, 1, -1]],
+#     [[-1, -1, 1], [1, 1, 0]],
+#     [[1, 0, -1], [1, 0, 0]],
+#     [[0, 1, 1], [1, -1, -1]],
+#     [[0, 1, -1], [1, -1, 1]],
+#     [[-1, 0, 0], [1, 1, 0]],
+#     [[1, 1, -1], [1, -1, 1]]]
+valid_options = [[[1, 0, 0], [1, 1, 1]]]
 print('\n\n')
+indexes = []
+block_used = {}
 for i, option in enumerate(valid_options):
     for i, row in df.iterrows():
+        # if f'{row["i"] * option[0][0] + row["j"] * option[0][1] + row["k"] * option[0][2]}{row["i"] * option[1][0] + row["j"] * option[1][1] + row["k"] * option[1][2]}' not in indexes:
+        #     indexes[f'{row["i"] * option[0][0] + row["j"] * option[0][1] + row["k"] * option[0][2]}{row["i"] * option[1][0] + row["j"] * option[1][1] + row["k"] * option[1][2]}'] = 1
+        # else:
+        #     indexes[f"{row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2]}{row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2]}"] += 1
+        indexes.append((row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2], row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2]))
+        block_used[(row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2], row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2])] = False
         print(f'[{str(i).ljust(2, " ")}]', (row['i'] * option[0][0] + row['j'] * option[0][1] + row['k'] * option[0][2],
                                             row['i'] * option[1][0] + row['j'] * option[1][1] + row['k'] * option[1][2],
                                             row['op']))
     print('\n')
+
+print('\n\n')
+base_tact = 0
+delay = 0
+for block, position in zip(indexes, node_numbers.keys()):
+    new_tact = node_numbers[position]
+    if new_tact != base_tact:
+        base_tact = new_tact
+        for item in block_used.keys():
+            block_used[item] = False
+    if not block_used[block]:
+        block_used[block] = True
+        print(f'{base_tact + delay}: {block}: {position}')
+        continue
+    else:
+        delay += 1
+        print(f'{base_tact + delay}: {block}: {position}')
+
+
+
+
+
+
+
+if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
+    plt.show()
 """
 [[1, 0, 0],
 [1, 1, 1]]
