@@ -529,11 +529,6 @@ for i, option in enumerate(valid_options):
         # FILTER ONES THAT USE THE SAME BLOCK TWICE
         print("Cycle Invalid")
         continue
-    plt.figure()
-    plt.title('Block Diagram (Tree Layout))')
-    tree = nx.bfs_tree(H, source=block_order[0])
-    pos = nx.spring_layout(tree)
-    nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
 
     block_numbers = {}
 
@@ -550,6 +545,13 @@ for i, option in enumerate(valid_options):
     if len(block_numbers) != len(node_numbers):
         print("Lost Nodes Invalid")
         continue
+
+    plt.figure()
+    plt.title('Block Diagram (Tree Layout))')
+    tree = nx.bfs_tree(H, source=block_order[0])
+    pos = nx.spring_layout(tree)
+    nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+
     for item in to_print:
         print(item)
     print('\n')
@@ -570,7 +572,7 @@ for i, option in enumerate(valid_options):
 # not exactly accounted for returning to the same block
 
 
-
+# trzeba zmienic podejscie przechodzenia, bo teraz nie moze wracac do tego samego bloku, co odrzuca rozwiazania dla 3x3+
 
 
 if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
