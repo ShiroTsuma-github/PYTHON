@@ -8,7 +8,7 @@ from matplotlib.widgets import Slider, Button
 from random import randint
 
 
-SIZE = 3
+SIZE = 5
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
 FLOW = True
@@ -243,8 +243,9 @@ if FLOW:
     print("\n\nCalculation Order:")
     [print(f'{node_numbers[i]}: {i}') for i in node_numbers.keys()]
 
-    print('\n\n')
+    print('\n')
     print(f'Max: {max(node_numbers.values())}')
+    print('\n')
     if FLOW_CHART_SHELL:
         plt.figure()
         plt.title('Cholesky Decomposition Flow Chart (Shell Layout))')
@@ -480,24 +481,27 @@ def get_random_valid():
 
 # valid_options = get_random_valid()
 
-# valid_options = [
-#     [[1, 0, 0], [1, 1, 1]],
-#     [[1, 0, 1], [1, 1, -1]],
-#     [[1, -1, 0], [1, -1, 1]],
-#     [[1, 1, 1], [1, 1, -1]],
-#     [[-1, -1, 1], [1, 1, 0]],
-#     [[1, 0, -1], [1, 0, 0]],
-#     [[0, 1, 1], [1, -1, -1]],
-#     [[0, 1, -1], [1, -1, 1]],
-#     [[-1, 0, 0], [1, 1, 0]],
-#     [[1, 1, -1], [1, -1, 1]]]
-valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
+valid_options = [
+    [[1, 0, 0], [1, 1, 1]],
+    [[1, 0, 1], [1, 1, -1]],
+    [[1, -1, 0], [1, -1, 1]],
+    [[1, 1, 1], [1, 1, -1]],
+    [[-1, -1, 1], [1, 1, 0]],
+    [[1, 0, -1], [1, 0, 0]],
+    [[0, 1, 1], [1, -1, -1]],
+    [[0, 1, -1], [1, -1, 1]],
+    [[-1, 0, 0], [1, 1, 0]],
+    [[1, 1, -1], [1, -1, 1]]]
+# valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
 # valid_options = [[[-1, -1, 1], [1, 1, 0]]]
 for i, option in enumerate(valid_options):
     indexes = []
     block_used = {}
     invalid = False
     H = nx.DiGraph()
+    to_print = []
+    to_print.append("Lista łuków dla bloków:")
+    # print("Lista łuków dla bloków:")
     for _, row in dependencies_df.iterrows():
         if row['Type'] == 'Move data':
             x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
@@ -515,13 +519,15 @@ for i, option in enumerate(valid_options):
             elif y > 1:
                 invalid = True
                 print("Invalid on y")
-            print(f"{(x1, y1)} -> {(x2, y2)}")
+            to_print.append(f"{(x1, y1)} -> {(x2, y2)}")
+            # print(f"{(x1, y1)} -> {(x2, y2)}")
     if invalid:
         continue
     try:
         block_order = list(nx.topological_sort(H))
     except nx.NetworkXUnfeasible:
         # FILTER ONES THAT USE THE SAME BLOCK TWICE
+        print("Cycle Invalid")
         continue
     plt.figure()
     plt.title('Block Diagram (Tree Layout))')
@@ -541,10 +547,23 @@ for i, option in enumerate(valid_options):
             block_numbers[node] = max(block_numbers[predecessor] for predecessor in predecessors) + 1
     # Display the topological order
 
+    if len(block_numbers) != len(node_numbers):
+        print("Lost Nodes Invalid")
+        continue
+    for item in to_print:
+        print(item)
+    print('\n')
     print("\n\nBlock Calculation Order:")
     [print(f'{block_numbers[i]}: {i}') for i in block_numbers.keys()]
 
     print(f'Max: {max(block_numbers.values())}')
+    print('\n')
+    print('\n')
+    tc = (max(block_numbers.values()) * 24)
+    ts = (tc / 320_000_000)
+    lep = lop = len(block_numbers)
+    print(f"{ts}s | {ts*1_000_000_000}ns")
+    print(f'P[%] = {round((lop / (lep * tc/24))*100,2)}%')
     print('\n\n')
     
 
@@ -593,6 +612,6 @@ if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
 # 7 * 24 = 168 takty
 # czas = 525ns?
 # T = 168
-# Lep = 7
-# Lop = 7
+# Lep = 10
+# Lop = 10
 # P[%] = 59.52%?
