@@ -480,18 +480,18 @@ def get_random_valid():
 
 # valid_options = get_random_valid()
 
-valid_options = [
-    [[1, 0, 0], [1, 1, 1]],
-    [[1, 0, 1], [1, 1, -1]],
-    [[1, -1, 0], [1, -1, 1]],
-    [[1, 1, 1], [1, 1, -1]],
-    [[-1, -1, 1], [1, 1, 0]],
-    [[1, 0, -1], [1, 0, 0]],
-    [[0, 1, 1], [1, -1, -1]],
-    [[0, 1, -1], [1, -1, 1]],
-    [[-1, 0, 0], [1, 1, 0]],
-    [[1, 1, -1], [1, -1, 1]]]
-# valid_options = [[[1, 0, 1], [1, 1, -1]]]
+# valid_options = [
+#     [[1, 0, 0], [1, 1, 1]],
+#     [[1, 0, 1], [1, 1, -1]],
+#     [[1, -1, 0], [1, -1, 1]],
+#     [[1, 1, 1], [1, 1, -1]],
+#     [[-1, -1, 1], [1, 1, 0]],
+#     [[1, 0, -1], [1, 0, 0]],
+#     [[0, 1, 1], [1, -1, -1]],
+#     [[0, 1, -1], [1, -1, 1]],
+#     [[-1, 0, 0], [1, 1, 0]],
+#     [[1, 1, -1], [1, -1, 1]]]
+valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
 # valid_options = [[[-1, -1, 1], [1, 1, 0]]]
 for i, option in enumerate(valid_options):
     indexes = []
@@ -515,6 +515,7 @@ for i, option in enumerate(valid_options):
             elif y > 1:
                 invalid = True
                 print("Invalid on y")
+            print(f"{(x1, y1)} -> {(x2, y2)}")
     if invalid:
         continue
     try:
@@ -586,3 +587,12 @@ if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
 [[1, 1, -1],
 [1, -1, 1]]
 """
+# 3x3
+# 24 takty operacja
+# 320 MHz
+# 7 * 24 = 168 takty
+# czas = 525ns?
+# T = 168
+# Lep = 7
+# Lop = 7
+# P[%] = 59.52%?
