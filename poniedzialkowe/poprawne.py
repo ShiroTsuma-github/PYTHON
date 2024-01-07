@@ -481,19 +481,19 @@ def get_random_valid():
 
 # valid_options = get_random_valid()
 
-valid_options = [
-    [[1, 0, 0], [1, 1, 1]],
-    [[1, 0, 1], [1, 1, -1]],
-    [[1, -1, 0], [1, -1, 1]],
-    [[1, 1, 1], [1, 1, -1]],
-    [[-1, -1, 1], [1, 1, 0]],
-    [[1, 0, -1], [1, 0, 0]],
-    [[0, 1, 1], [1, -1, -1]],
-    [[0, 1, -1], [1, -1, 1]],
-    [[-1, 0, 0], [1, 1, 0]],
-    [[1, 1, -1], [1, -1, 1]]]
+# valid_options = [
+#     [[1, 0, 0], [1, 1, 1]],
+#     [[1, 0, 1], [1, 1, -1]],
+#     [[1, -1, 0], [1, -1, 1]],
+#     [[1, 1, 1], [1, 1, -1]],
+#     [[-1, -1, 1], [1, 1, 0]],
+#     [[1, 0, -1], [1, 0, 0]],
+#     [[0, 1, 1], [1, -1, -1]],
+#     [[0, 1, -1], [1, -1, 1]],
+#     [[-1, 0, 0], [1, 1, 0]],
+#     [[1, 1, -1], [1, -1, 1]]]
 # valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
-# valid_options = [[[-1, -1, 1], [1, 1, 0]]]
+valid_options = [[[-1, -1, 1], [1, 1, 0]]]
 for i, option in enumerate(valid_options):
     indexes = []
     block_used = {}
@@ -544,6 +544,8 @@ for i, option in enumerate(valid_options):
 
     if len(block_numbers) != len(node_numbers):
         print("Lost Nodes Invalid")
+        # for item in to_print:
+        #     print(item)
         continue
 
     plt.figure()
