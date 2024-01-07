@@ -8,7 +8,7 @@ from matplotlib.widgets import Slider, Button
 from random import randint
 
 
-SIZE = 5
+SIZE = 3
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
 FLOW = True
