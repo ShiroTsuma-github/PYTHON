@@ -8,7 +8,7 @@ from matplotlib.widgets import Slider, Button
 from random import randint
 
 
-SIZE = 3
+SIZE = 5
 DISPLAY_PARTIAL_TABLES = True
 DISPLAY_FULL_TABLE = False
 FLOW = True
@@ -481,19 +481,19 @@ def get_random_valid():
 
 # valid_options = get_random_valid()
 
-# valid_options = [
-#     [[1, 0, 0], [1, 1, 1]],
-#     [[1, 0, 1], [1, 1, -1]],
-#     [[1, -1, 0], [1, -1, 1]],
-#     [[1, 1, 1], [1, 1, -1]],
-#     [[-1, -1, 1], [1, 1, 0]],
-#     [[1, 0, -1], [1, 0, 0]],
-#     [[0, 1, 1], [1, -1, -1]],
-#     [[0, 1, -1], [1, -1, 1]],
-#     [[-1, 0, 0], [1, 1, 0]],
-#     [[1, 1, -1], [1, -1, 1]]]
+valid_options = [
+    [[1, 0, 0], [1, 1, 1]],
+    [[1, 0, 1], [1, 1, -1]],
+    [[1, -1, 0], [1, -1, 1]],
+    [[1, 1, 1], [1, 1, -1]],
+    [[-1, -1, 1], [1, 1, 0]],
+    [[1, 0, -1], [1, 0, 0]],
+    [[0, 1, 1], [1, -1, -1]],
+    [[0, 1, -1], [1, -1, 1]],
+    [[-1, 0, 0], [1, 1, 0]],
+    [[1, 1, -1], [1, -1, 1]]]
 # valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
-valid_options = [[[-1, -1, 1], [1, 1, 0]]]
+# valid_options = [[[-1, -1, 1], [1, 1, 0]]]
 for i, option in enumerate(valid_options):
     indexes = []
     block_used = {}
@@ -506,10 +506,9 @@ for i, option in enumerate(valid_options):
         if row['Type'] == 'Move data':
             x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
             x2 = (row['To'][0] * option[0][0] + row['To'][1] * option[0][1] + row['To'][2] * option[0][2])
-            
+
             y1 = (row['From'][0] * option[1][0] + row['From'][1] * option[1][1] + row['From'][2] * option[1][2])
             y2 = (row['To'][0] * option[1][0] + row['To'][1] * option[1][1] + row['To'][2] * option[1][2])
-            
             H.add_edge((x1, y1), (x2, y2))
             x = abs(x1 - x2)
             y = abs(y1 - y2)
@@ -520,61 +519,70 @@ for i, option in enumerate(valid_options):
                 invalid = True
                 print("Invalid on y")
             to_print.append(f"{(x1, y1)} -> {(x2, y2)}")
-            # print(f"{(x1, y1)} -> {(x2, y2)}")
     if invalid:
         continue
-    try:
-        block_order = list(nx.topological_sort(H))
-    except nx.NetworkXUnfeasible:
-        # FILTER ONES THAT USE THE SAME BLOCK TWICE
-        print("Cycle Invalid")
-        continue
 
-    block_numbers = {}
+    tacts = {1: []}
+    for node in topological_order:
+        x1 = (node[0] * option[0][0] + node[1] * option[0][1] + node[2] * option[0][2])
+        y1 = (node[0] * option[1][0] + node[1] * option[1][1] + node[2] * option[1][2])
+        node_coords = (x1, y1)
+        placed = False
+        walk = 0
 
-    for node in block_order:
-        predecessors = list(H.predecessors(node))
+        predecessors = list(G.predecessors(node))
         if not predecessors:
-            # If the node has no predecessors, assign it number 1
-            block_numbers[node] = 1
+            if node_coords not in tacts[1]:
+                tacts[1].append(node_coords)
+                node_numbers[node] = 1
+            else:
+                while not placed:
+                    walk += 1
+                    if tacts.get(walk) is None:
+                        tacts[walk] = []
+                    if node_coords not in tacts[walk]:
+                        tacts[walk].append(node_coords)
+                        placed = True
+                        node_numbers[node] = walk
         else:
-            # Assign the node number as the maximum number from its predecessors plus one
-            block_numbers[node] = max(block_numbers[predecessor] for predecessor in predecessors) + 1
-    # Display the topological order
-
-    if len(block_numbers) != len(node_numbers):
-        print("Lost Nodes Invalid")
-        # for item in to_print:
-        #     print(item)
-        continue
+            loc_max = max(node_numbers[predecessor] for predecessor in predecessors)
+            if tacts.get(loc_max + 1) is None:
+                tacts[loc_max + 1] = []
+            if node_coords not in tacts[loc_max + 1]:
+                node_numbers[node] = loc_max + 1
+                tacts[loc_max + 1].append(node_coords)
+            else:
+                while not placed:
+                    walk += 1
+                    if tacts.get(loc_max + 1 + walk) is None:
+                        tacts[loc_max + 1 + walk] = []
+                    if node_coords not in tacts[loc_max + 1 + walk]:
+                        tacts[loc_max + 1 + walk].append(node_coords)
+                        placed = True
+                        node_numbers[node] = loc_max + 1 + walk
 
     plt.figure()
-    plt.title('Block Diagram (Tree Layout))')
-    tree = nx.bfs_tree(H, source=block_order[0])
-    pos = nx.spring_layout(tree)
-    nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
-
-    for item in to_print:
-        print(item)
-    print('\n')
-    print("\n\nBlock Calculation Order:")
-    [print(f'{block_numbers[i]}: {i}') for i in block_numbers.keys()]
-
-    print(f'Max: {max(block_numbers.values())}')
-    print('\n')
-    print('\n')
-    tc = (max(block_numbers.values()) * 24)
-    ts = (tc / 320_000_000)
-    lep = lop = len(block_numbers)
-    print(f"{ts}s | {ts*1_000_000_000}ns")
-    print(f'P[%] = {round((lop / (lep * tc/24))*100,2)}%')
+    plt.title('Block Diagram')
+    pos = nx.spring_layout(H)
+    nx.draw(H, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+    for i in tacts:
+        tact = i
+        nodes = tacts[i]
+        for item in nodes:
+            print(f"{tact}: {item}")
     print('\n\n')
-    
-
-# not exactly accounted for returning to the same block
 
 
-# trzeba zmienic podejscie przechodzenia, bo teraz nie moze wracac do tego samego bloku, co odrzuca rozwiazania dla 3x3+
+
+    # print(f'Max: {max(block_numbers.values())}')
+    # print('\n')
+    # print('\n')
+    # tc = (max(block_numbers.values()) * 24)
+    # ts = (tc / 320_000_000)
+    # lep = lop = len(block_numbers)
+    # print(f"{ts}s | {ts*1_000_000_000}ns")
+    # print(f'P[%] = {round((lop / (lep * tc/24))*100,2)}%')
+    # print('\n\n')
 
 
 if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:

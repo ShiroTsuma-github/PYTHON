@@ -136,5 +136,10 @@ class Stack:
 
 
 if __name__ == '__main__':
-    stack = Stack()
-    stack.parse("3^10^5+*12+4_/18-")
+    # stack = Stack()
+    # stack.parse("3^10^5+*12+4_/18-")
+    pass
+
+print([0 + i * 5 for i in (range(0, 35))])
+
+
