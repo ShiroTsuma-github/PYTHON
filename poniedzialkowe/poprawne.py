@@ -6,10 +6,15 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.widgets import Slider, Button
 from random import randint
+from alive_progress import alive_bar
+import time
+from pathlib import Path
+import os.path
 
 
+FILE_PATH = Path(__file__).resolve().parent 
 SIZE = 5
-DISPLAY_PARTIAL_TABLES = True
+DISPLAY_PARTIAL_TABLES = False
 DISPLAY_FULL_TABLE = False
 FLOW = True
 FLOW_CHART_SHELL = True
@@ -46,6 +51,7 @@ def Cholesky_Decomposition(a) -> list[list[float]]:
 
 
 matrix = generate_pos_def_matrix(SIZE)
+matrix = np.array(matrix, dtype=np.float64)
 L: list[list[float]] = Cholesky_Decomposition(matrix.copy())
 L_np = np.array(L)
 Lt_np = L_np.transpose()
@@ -134,6 +140,7 @@ jk_values = []
 ki_values = []
 ii_values = []
 op_values = []
+print("Tables created")
 
 # Przejdź przez słownik i dodaj dane do list
 for key, value in result_dict.items():
@@ -169,34 +176,42 @@ df = pd.DataFrame({
 })
 df = df.sort_values(by=['i', 'j', 'k'])
 
+print("DataFrame created")
 # Zresetuj indeksy DataFrame
 df = df.reset_index(drop=True)
 
-if DISPLAY_FULL_TABLE:
-    pd.s_option('display.max_rows', None)
-    pd.set_option('display.max_columns', None)
+# if DISPLAY_FULL_TABLE:
+#     pd.s_option('display.max_rows', None)
+#     pd.set_option('display.max_columns', None)
 
 # Wydrukuj DataFrame
-print('\n\n')
-print(df)
+# print('\n\n')
+# print(df)
 
 dependencies_df = pd.DataFrame(columns=['From', 'To'])
 last_occurrence = {}
 unique_paris = set()
-for index, row in df.iterrows():
-    operands = [row['i, i'], row['j, i'], row['j, k'], row['k, i']]
-    for order, operand in enumerate(operands):
-        if operand:
-            from_values = tuple(last_occurrence.get(operand, {'i': row["i"], 'j': row["j"], 'k': row["k"]}).values())
-            to_values = tuple({'i': row['i'], 'j': row['j'], 'k': row['k']}.values())
-            if str(from_values) + str(to_values) not in unique_paris:
-                dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
-                    'From': [from_values],
-                    'To': [to_values],
-                    'Type': ['Move data' if from_values != to_values else 'Calculate']
-                })], ignore_index=True)
-                last_occurrence[operand] = {'i': row['i'], 'j': row['j'], 'k': row['k']}
-                unique_paris.add(str(from_values) + str(to_values))
+pairs_dict = {}
+
+print("Searching for dependencies...")
+search_dep_start = time.time()
+with alive_bar(len(df)) as bar:
+    for index, row in df.iterrows():
+        operands = [row['i, i'], row['j, i'], row['j, k'], row['k, i']]
+        for order, operand in enumerate(operands):
+            if operand:
+                from_values = tuple(last_occurrence.get(operand, {'i': row["i"], 'j': row["j"], 'k': row["k"]}).values())
+                to_values = tuple({'i': row['i'], 'j': row['j'], 'k': row['k']}.values())
+                if pairs_dict.get(str(from_values) + str(to_values)) is None:
+                    dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
+                        'From': [from_values],
+                        'To': [to_values],
+                        'Type': ['Move data' if from_values != to_values else 'Calculate']
+                    })], ignore_index=True)
+                    last_occurrence[operand] = {'i': row['i'], 'j': row['j'], 'k': row['k']}
+                    unique_paris.add(str(from_values) + str(to_values))
+                    pairs_dict[str(from_values) + str(to_values)] = True
+        bar()
 dependencies_df = dependencies_df.sort_values(by=['To', 'From'])
 dependencies_df = dependencies_df.reset_index(drop=True)
 dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
@@ -204,16 +219,21 @@ dependencies_df = pd.concat([dependencies_df, pd.DataFrame({
     'To': [(SIZE, SIZE, SIZE)],
     'Type': ['Calculate']
 })], ignore_index=True)
-print('\n\n')
-print('Lista węzłów')
-for i, row in df.iterrows():
-    print(f'[{str(i).ljust(2, " ")}]', (row['i'], row['j'], row['k']), row['op'])
-print('\n\n')
-print("Lista łuków: ")
-for _, row in dependencies_df.iterrows():
-    if row['Type'] == 'Move data':
-        print(row['From'], row['To'])
-
+search_dep_end = time.time()
+print(f"Dependencies found. Time elapsed: {search_dep_end - search_dep_start} seconds")
+if not os.path.exists(f'{FILE_PATH}\\cholesky{SIZE}x{SIZE}.csv'):
+    dependencies_df.to_csv(f'{FILE_PATH}\\cholesky{SIZE}x{SIZE}.csv')
+# print('\n\n')
+# print('Lista węzłów')
+# for i, row in df.iterrows():
+#     print(f'[{str(i).ljust(2, " ")}]', (row['i'], row['j'], row['k']), row['op'])
+# print('\n\n')
+# print("Lista łuków: ")
+# for _, row in dependencies_df.iterrows():
+#     if row['Type'] == 'Move data':
+#         print(row['From'], row['To'])
+print("Creating graph...")
+graph_start = time.time()
 if FLOW:
     G = nx.DiGraph()
     for _, row in dependencies_df.iterrows():
@@ -236,210 +256,212 @@ if FLOW:
         else:
             # Assign the node number as the maximum number from its predecessors plus one
             node_numbers[node] = max(node_numbers[predecessor] for predecessor in predecessors) + 1
-
+    
+    graph_end = time.time()
+    print(f"Graph created. Time elapsed: {graph_end - graph_start} seconds")
     dependencies_df['Order'] = dependencies_df['To'].map(node_numbers)
     # Display the topological order
 
-    print("\n\nCalculation Order:")
-    [print(f'{node_numbers[i]}: {i}') for i in node_numbers.keys()]
+    # print("\n\nCalculation Order:")
+    # [print(f'{node_numbers[i]}: {i}') for i in node_numbers.keys()]
 
     print('\n')
     print(f'Max: {max(node_numbers.values())}')
     print('\n')
-    if FLOW_CHART_SHELL:
-        plt.figure()
-        plt.title('Cholesky Decomposition Flow Chart (Shell Layout))')
-        pos = nx.shell_layout(G)
-        nx.draw_networkx(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
-        for node, (x, y) in pos.items():
-            plt.text(x, y - 0.05, str(node_numbers[node]), ha='center', va='top', bbox=dict(facecolor='white', alpha=0.5))
-    if FLOW_CHART_TREE:
-        plt.figure()
-        plt.title('Cholesky Decomposition Flow Chart (Tree Layout))')
-        tree = nx.bfs_tree(G, source=topological_order[0])
-        pos = nx.spring_layout(tree)
-        nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+    # if FLOW_CHART_SHELL:
+    #     plt.figure()
+    #     plt.title('Cholesky Decomposition Flow Chart (Shell Layout))')
+    #     pos = nx.shell_layout(G)
+    #     nx.draw_networkx(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+    #     for node, (x, y) in pos.items():
+    #         plt.text(x, y - 0.05, str(node_numbers[node]), ha='center', va='top', bbox=dict(facecolor='white', alpha=0.5))
+    # if FLOW_CHART_TREE:
+    #     plt.figure()
+    #     plt.title('Cholesky Decomposition Flow Chart (Tree Layout))')
+    #     tree = nx.bfs_tree(G, source=topological_order[0])
+    #     pos = nx.spring_layout(tree)
+    #     nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
 
 
-def draw_x_arrows(z_val=None):
-    arrows_x = []
-    if z_val is None:
-        for i in range(len(df) - 1):
-            num_arrows = len(df) - i
-            if df['j'].iloc[i] != df['j'].max():  # Avoid drawing arrows when x=size
-                arrows_x.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
-                                df['k'].iloc[i] * np.ones(num_arrows),
-                                df['i'].iloc[i] * np.ones(num_arrows),
-                                np.ones(num_arrows), np.zeros(num_arrows), np.zeros(num_arrows),
-                                color='red', arrow_length_ratio=0.1))
-    else:
-        for i in range(len(df) - 1):
-            num_arrows = len(df) - i
-            if df['i'].iloc[i] == z_val:
-                if df['j'].iloc[i] != df['j'].max():  # Avoid drawing arrows when x=size
-                    arrows_x.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
-                                    df['k'].iloc[i] * np.ones(num_arrows),
-                                    df['i'].iloc[i] * np.ones(num_arrows),
-                                    np.ones(num_arrows), np.zeros(num_arrows), np.zeros(num_arrows),
-                                    color='red', arrow_length_ratio=0.1))
-    return arrows_x
+# def draw_x_arrows(z_val=None):
+#     arrows_x = []
+#     if z_val is None:
+#         for i in range(len(df) - 1):
+#             num_arrows = len(df) - i
+#             if df['j'].iloc[i] != df['j'].max():  # Avoid drawing arrows when x=size
+#                 arrows_x.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+#                                 df['k'].iloc[i] * np.ones(num_arrows),
+#                                 df['i'].iloc[i] * np.ones(num_arrows),
+#                                 np.ones(num_arrows), np.zeros(num_arrows), np.zeros(num_arrows),
+#                                 color='red', arrow_length_ratio=0.1))
+#     else:
+#         for i in range(len(df) - 1):
+#             num_arrows = len(df) - i
+#             if df['i'].iloc[i] == z_val:
+#                 if df['j'].iloc[i] != df['j'].max():  # Avoid drawing arrows when x=size
+#                     arrows_x.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+#                                     df['k'].iloc[i] * np.ones(num_arrows),
+#                                     df['i'].iloc[i] * np.ones(num_arrows),
+#                                     np.ones(num_arrows), np.zeros(num_arrows), np.zeros(num_arrows),
+#                                     color='red', arrow_length_ratio=0.1))
+#     return arrows_x
 
 
-def draw_y_arrows(z_val=None):
-    arrows_y = []
-    if z_val is None:
-        for i in range(len(df) - 1, 0, -1):
-            num_arrows = len(df) - i
-            if df['k'].iloc[i] < df['j'].iloc[i]:
-                arrows_y.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
-                                df['k'].iloc[i] * np.ones(num_arrows),
-                                df['i'].iloc[i] * np.ones(num_arrows),
-                                np.zeros(num_arrows), np.ones(num_arrows), np.zeros(num_arrows),
-                                color='red', arrow_length_ratio=0.1))
-    else:
-        for i in range(len(df) - 1, 0, -1):
-            num_arrows = len(df) - i
-            if df['i'].iloc[i] == z_val and df['k'].iloc[i] < df['j'].iloc[i]:
-                arrows_y.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
-                                df['k'].iloc[i] * np.ones(num_arrows),
-                                df['i'].iloc[i] * np.ones(num_arrows),
-                                np.zeros(num_arrows), np.ones(num_arrows), np.zeros(num_arrows),
-                                color='red', arrow_length_ratio=0.1))
-    return arrows_y
+# def draw_y_arrows(z_val=None):
+#     arrows_y = []
+#     if z_val is None:
+#         for i in range(len(df) - 1, 0, -1):
+#             num_arrows = len(df) - i
+#             if df['k'].iloc[i] < df['j'].iloc[i]:
+#                 arrows_y.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+#                                 df['k'].iloc[i] * np.ones(num_arrows),
+#                                 df['i'].iloc[i] * np.ones(num_arrows),
+#                                 np.zeros(num_arrows), np.ones(num_arrows), np.zeros(num_arrows),
+#                                 color='red', arrow_length_ratio=0.1))
+#     else:
+#         for i in range(len(df) - 1, 0, -1):
+#             num_arrows = len(df) - i
+#             if df['i'].iloc[i] == z_val and df['k'].iloc[i] < df['j'].iloc[i]:
+#                 arrows_y.append(ax.quiver(df['j'].iloc[i] * np.ones(num_arrows),
+#                                 df['k'].iloc[i] * np.ones(num_arrows),
+#                                 df['i'].iloc[i] * np.ones(num_arrows),
+#                                 np.zeros(num_arrows), np.ones(num_arrows), np.zeros(num_arrows),
+#                                 color='red', arrow_length_ratio=0.1))
+#     return arrows_y
 
 
-def draws_z_arrows(z_val=None):
-    arrows_min_mul = []
-    arrows_other = []
-    if z_val is None:
-        for i in range(0, len(df)):
-            if df['op'].iloc[i] == 'min mul':
-                color = 'red'
-                arrow_length_ratio = 0.1
-                arrows_min_mul.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
-                                      0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
-            else:
-                color = 'green'
-                arrow_length_ratio = 0.05  # Adjust the length for green arrows
-                arrows_other.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
-                                    0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
-    else:
-        for i in range(len(df)):
-            if df['op'].iloc[i] == 'min mul' and df['i'].iloc[i] == z_val:
-                color = 'red'
-                arrow_length_ratio = 0.1
-                arrows_min_mul.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
-                                      0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
-            elif df['i'].iloc[i] == z_val:
-                color = 'green'
-                arrow_length_ratio = 0.05  # Adjust the length for green arrows
-                arrows_other.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
-                                    0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
-    return arrows_min_mul, arrows_other
+# def draws_z_arrows(z_val=None):
+#     arrows_min_mul = []
+#     arrows_other = []
+#     if z_val is None:
+#         for i in range(0, len(df)):
+#             if df['op'].iloc[i] == 'min mul':
+#                 color = 'red'
+#                 arrow_length_ratio = 0.1
+#                 arrows_min_mul.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+#                                       0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+#             else:
+#                 color = 'green'
+#                 arrow_length_ratio = 0.05  # Adjust the length for green arrows
+#                 arrows_other.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+#                                     0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+#     else:
+#         for i in range(len(df)):
+#             if df['op'].iloc[i] == 'min mul' and df['i'].iloc[i] == z_val:
+#                 color = 'red'
+#                 arrow_length_ratio = 0.1
+#                 arrows_min_mul.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+#                                       0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+#             elif df['i'].iloc[i] == z_val:
+#                 color = 'green'
+#                 arrow_length_ratio = 0.05  # Adjust the length for green arrows
+#                 arrows_other.append(ax.quiver(df['j'].iloc[i], df['k'].iloc[i], df['i'].iloc[i],
+#                                     0, 0, 1, color=color, arrow_length_ratio=arrow_length_ratio))
+#     return arrows_min_mul, arrows_other
 
 
-def update(val):
-    z_val = round(z_slider.val)
-    global arrows_x
-    global arrows_y
-    global arrows_min_mul
-    global arrows_other
-    global scatter
-    for arrow in arrows_min_mul:
-        arrow.remove()
-    for arrow in arrows_other:
-        arrow.remove()
-    for arrow in arrows_x:
-        arrow.remove()
-    for arrow in arrows_y:
-        arrow.remove()
+# def update(val):
+#     z_val = round(z_slider.val)
+#     global arrows_x
+#     global arrows_y
+#     global arrows_min_mul
+#     global arrows_other
+#     global scatter
+#     for arrow in arrows_min_mul:
+#         arrow.remove()
+#     for arrow in arrows_other:
+#         arrow.remove()
+#     for arrow in arrows_x:
+#         arrow.remove()
+#     for arrow in arrows_y:
+#         arrow.remove()
 
-    arrows_min_mul.clear()
-    arrows_other.clear()
-    arrows_x.clear()
-    arrows_y.clear()
-    arrows_min_mul, arrows_other = draws_z_arrows(z_val)
-    arrows_x = draw_x_arrows(z_val)
-    arrows_y = draw_y_arrows(z_val)
-    mask = (z == z_val)
-    scatter.remove()
-    scatter = ax.scatter(x[mask], y[mask], z[mask], c=op_colors[mask], marker='o', s=100)
-    ax.set_zlim([z_val - 0.5, z_val + 0.5])
-    ax.set_xticks(np.arange(1, SIZE + 1, 1))
-    ax.set_yticks(np.arange(1, SIZE + 1, 1))
-    ax.set_zticks(np.arange(1, SIZE + 1, 1))
-    plt.draw()
-
-
-def reset(event):
-    global arrows_x
-    global arrows_y
-    global arrows_min_mul
-    global arrows_other
-    global scatter
-
-    z_slider.reset()
-    z_slider.set_val(0)
-
-    scatter.remove()
-    scatter = ax.scatter(initial_state['x'], initial_state['y'], initial_state['z'],
-                         c=initial_state['op_colors'], marker='o', s=100)
-    ax.set_zlim([z.min() - 0.5, z.max() + 0.5])
-    ax.set_xticks(np.arange(1, SIZE + 1, 1))
-    ax.set_yticks(np.arange(1, SIZE + 1, 1))
-    ax.set_zticks(np.arange(1, SIZE + 1, 1))
-
-    arrows_x = draw_x_arrows()
-    arrows_y = draw_y_arrows()
-    arrows_min_mul, arrows_other = draws_z_arrows()
-    plt.draw()
+#     arrows_min_mul.clear()
+#     arrows_other.clear()
+#     arrows_x.clear()
+#     arrows_y.clear()
+#     arrows_min_mul, arrows_other = draws_z_arrows(z_val)
+#     arrows_x = draw_x_arrows(z_val)
+#     arrows_y = draw_y_arrows(z_val)
+#     mask = (z == z_val)
+#     scatter.remove()
+#     scatter = ax.scatter(x[mask], y[mask], z[mask], c=op_colors[mask], marker='o', s=100)
+#     ax.set_zlim([z_val - 0.5, z_val + 0.5])
+#     ax.set_xticks(np.arange(1, SIZE + 1, 1))
+#     ax.set_yticks(np.arange(1, SIZE + 1, 1))
+#     ax.set_zticks(np.arange(1, SIZE + 1, 1))
+#     plt.draw()
 
 
-if PLOT:
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+# def reset(event):
+#     global arrows_x
+#     global arrows_y
+#     global arrows_min_mul
+#     global arrows_other
+#     global scatter
 
-    x = df['j']
-    y = df['k']
-    z = df['i']
+#     z_slider.reset()
+#     z_slider.set_val(0)
 
-    colors = {'sqrt': 'red', 'div': 'blue', 'min mul': 'purple'}
-    op_colors = df['op'].map(colors)
+#     scatter.remove()
+#     scatter = ax.scatter(initial_state['x'], initial_state['y'], initial_state['z'],
+#                          c=initial_state['op_colors'], marker='o', s=100)
+#     ax.set_zlim([z.min() - 0.5, z.max() + 0.5])
+#     ax.set_xticks(np.arange(1, SIZE + 1, 1))
+#     ax.set_yticks(np.arange(1, SIZE + 1, 1))
+#     ax.set_zticks(np.arange(1, SIZE + 1, 1))
 
-    c = df['op'].map(colors)
+#     arrows_x = draw_x_arrows()
+#     arrows_y = draw_y_arrows()
+#     arrows_min_mul, arrows_other = draws_z_arrows()
+#     plt.draw()
 
-    scatter = ax.scatter(x, y, z, c=op_colors, marker='o', s=100)
 
-    #  Set labels and ticks
-    ax.set_xlabel('j')
-    ax.set_ylabel('k')
-    ax.set_zlabel('i')
+# if PLOT:
+#     fig = plt.figure()
+#     ax = fig.add_subplot(111, projection='3d')
 
-    ax.set_xticks(np.arange(1, SIZE + 1, 1))
-    ax.set_yticks(np.arange(1, SIZE + 1, 1))
-    ax.set_zticks(np.arange(1, SIZE + 1, 1))
+#     x = df['j']
+#     y = df['k']
+#     z = df['i']
 
-    plt.title('Cholesky Decomposition')
+#     colors = {'sqrt': 'red', 'div': 'blue', 'min mul': 'purple'}
+#     op_colors = df['op'].map(colors)
 
-    arrows_x = draw_x_arrows()
-    arrows_y = draw_y_arrows()
-    arrows_min_mul, arrows_other = draws_z_arrows()
+#     c = df['op'].map(colors)
 
-    ax_z_slider = plt.axes([0.1, 0.02, 0.65, 0.03], facecolor='lightgoldenrodyellow')
-    z_slider = Slider(ax_z_slider, 'Z Value', df['i'].min(), df['i'].max(), valstep=1)
-    z_slider.set_val(0)
+#     scatter = ax.scatter(x, y, z, c=op_colors, marker='o', s=100)
 
-    ax_reset_button = plt.axes([0.85, 0.02, 0.1, 0.03])
-    reset_button = Button(ax_reset_button, 'Reset', color='lightgoldenrodyellow', hovercolor='0.975')
-    initial_state = {
-        'x': x,
-        'y': y,
-        'z': z,
-        'op_colors': op_colors
-    }
+#     #  Set labels and ticks
+#     ax.set_xlabel('j')
+#     ax.set_ylabel('k')
+#     ax.set_zlabel('i')
 
-    z_slider.on_changed(update)
-    reset_button.on_clicked(reset)
+#     ax.set_xticks(np.arange(1, SIZE + 1, 1))
+#     ax.set_yticks(np.arange(1, SIZE + 1, 1))
+#     ax.set_zticks(np.arange(1, SIZE + 1, 1))
+
+#     plt.title('Cholesky Decomposition')
+
+#     arrows_x = draw_x_arrows()
+#     arrows_y = draw_y_arrows()
+#     arrows_min_mul, arrows_other = draws_z_arrows()
+
+#     ax_z_slider = plt.axes([0.1, 0.02, 0.65, 0.03], facecolor='lightgoldenrodyellow')
+#     z_slider = Slider(ax_z_slider, 'Z Value', df['i'].min(), df['i'].max(), valstep=1)
+#     z_slider.set_val(0)
+
+#     ax_reset_button = plt.axes([0.85, 0.02, 0.1, 0.03])
+#     reset_button = Button(ax_reset_button, 'Reset', color='lightgoldenrodyellow', hovercolor='0.975')
+#     initial_state = {
+#         'x': x,
+#         'y': y,
+#         'z': z,
+#         'op_colors': op_colors
+#     }
+
+#     z_slider.on_changed(update)
+#     reset_button.on_clicked(reset)
 
 
 def get_Fs():
@@ -480,7 +502,7 @@ def get_random_valid():
 
 
 # valid_options = get_random_valid()
-
+print("Generating valid configurations...")
 valid_options = [
     [[1, 0, 0], [1, 1, 1]],
     [[1, 0, 1], [1, 1, -1]],
@@ -494,85 +516,91 @@ valid_options = [
     [[1, 1, -1], [1, -1, 1]]]
 # valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
 # valid_options = [[[-1, -1, 1], [1, 1, 0]]]
+final_results = []
+to_print = []
 for i, option in enumerate(valid_options):
-    indexes = []
-    block_used = {}
-    invalid = False
-    H = nx.DiGraph()
-    to_print = []
-    to_print.append("Lista łuków dla bloków:")
-    # print("Lista łuków dla bloków:")
-    for _, row in dependencies_df.iterrows():
-        if row['Type'] == 'Move data':
-            x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
-            x2 = (row['To'][0] * option[0][0] + row['To'][1] * option[0][1] + row['To'][2] * option[0][2])
+    # indexes = []
+    # block_used = {}
+    # invalid = False
+    # H = nx.DiGraph()
+    # to_print = []
+    # to_print.append("Lista łuków dla bloków:")
+    # # print("Lista łuków dla bloków:")
+    # for _, row in dependencies_df.iterrows():
+    #     if row['Type'] == 'Move data':
+    #         x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
+    #         x2 = (row['To'][0] * option[0][0] + row['To'][1] * option[0][1] + row['To'][2] * option[0][2])
 
-            y1 = (row['From'][0] * option[1][0] + row['From'][1] * option[1][1] + row['From'][2] * option[1][2])
-            y2 = (row['To'][0] * option[1][0] + row['To'][1] * option[1][1] + row['To'][2] * option[1][2])
-            H.add_edge((x1, y1), (x2, y2))
-            x = abs(x1 - x2)
-            y = abs(y1 - y2)
-            if x > 1:
-                invalid = True
-                print("Invalid on x")
-            elif y > 1:
-                invalid = True
-                print("Invalid on y")
-            to_print.append(f"{(x1, y1)} -> {(x2, y2)}")
-    if invalid:
-        continue
-
+    #         y1 = (row['From'][0] * option[1][0] + row['From'][1] * option[1][1] + row['From'][2] * option[1][2])
+    #         y2 = (row['To'][0] * option[1][0] + row['To'][1] * option[1][1] + row['To'][2] * option[1][2])
+    #         H.add_edge((x1, y1), (x2, y2))
+    #         x = abs(x1 - x2)
+    #         y = abs(y1 - y2)
+    #         if x > 1:
+    #             invalid = True
+    #             print("Invalid on x")
+    #         elif y > 1:
+    #             invalid = True
+    #             print("Invalid on y")
+    #         to_print.append(f"{(x1, y1)} -> {(x2, y2)}")
+    # if invalid:
+    #     continue
     tacts = {1: []}
-    for node in topological_order:
-        x1 = (node[0] * option[0][0] + node[1] * option[0][1] + node[2] * option[0][2])
-        y1 = (node[0] * option[1][0] + node[1] * option[1][1] + node[2] * option[1][2])
-        node_coords = (x1, y1)
-        placed = False
-        walk = 0
+    with alive_bar(len(topological_order)) as bar:
+        for node in topological_order:
+            x1 = (node[0] * option[0][0] + node[1] * option[0][1] + node[2] * option[0][2])
+            y1 = (node[0] * option[1][0] + node[1] * option[1][1] + node[2] * option[1][2])
+            node_coords = (x1, y1)
+            placed = False
+            walk = 0
 
-        predecessors = list(G.predecessors(node))
-        if not predecessors:
-            if node_coords not in tacts[1]:
-                tacts[1].append(node_coords)
-                node_numbers[node] = 1
+            predecessors = list(G.predecessors(node))
+            if not predecessors:
+                if node_coords not in tacts[1]:
+                    tacts[1].append(node_coords)
+                    node_numbers[node] = 1
+                else:
+                    while not placed:
+                        walk += 1
+                        if tacts.get(walk) is None:
+                            tacts[walk] = []
+                        if node_coords not in tacts[walk]:
+                            tacts[walk].append(node_coords)
+                            placed = True
+                            node_numbers[node] = walk
             else:
-                while not placed:
-                    walk += 1
-                    if tacts.get(walk) is None:
-                        tacts[walk] = []
-                    if node_coords not in tacts[walk]:
-                        tacts[walk].append(node_coords)
-                        placed = True
-                        node_numbers[node] = walk
-        else:
-            loc_max = max(node_numbers[predecessor] for predecessor in predecessors)
-            if tacts.get(loc_max + 1) is None:
-                tacts[loc_max + 1] = []
-            if node_coords not in tacts[loc_max + 1]:
-                node_numbers[node] = loc_max + 1
-                tacts[loc_max + 1].append(node_coords)
-            else:
-                while not placed:
-                    walk += 1
-                    if tacts.get(loc_max + 1 + walk) is None:
-                        tacts[loc_max + 1 + walk] = []
-                    if node_coords not in tacts[loc_max + 1 + walk]:
-                        tacts[loc_max + 1 + walk].append(node_coords)
-                        placed = True
-                        node_numbers[node] = loc_max + 1 + walk
+                loc_max = max(node_numbers[predecessor] for predecessor in predecessors)
+                if tacts.get(loc_max + 1) is None:
+                    tacts[loc_max + 1] = []
+                if node_coords not in tacts[loc_max + 1]:
+                    node_numbers[node] = loc_max + 1
+                    tacts[loc_max + 1].append(node_coords)
+                else:
+                    while not placed:
+                        walk += 1
+                        if tacts.get(loc_max + 1 + walk) is None:
+                            tacts[loc_max + 1 + walk] = []
+                        if node_coords not in tacts[loc_max + 1 + walk]:
+                            tacts[loc_max + 1 + walk].append(node_coords)
+                            placed = True
+                            node_numbers[node] = loc_max + 1 + walk
+            bar()
+        final_results.append(tacts)
+        
+        to_print.append(f"Max for option {valid_options[i]}: {max(tacts.keys())}")
+        # plt.figure()
+        # plt.title('Block Diagram')
+        # pos = nx.spring_layout(H)
+        # nx.draw(H, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+        # for i in tacts:
+        #     tact = i
+        #     nodes = tacts[i]
+        #     for item in nodes:
+        #         print(f"{tact}: {item}")
+        # print('\n\n')
 
-    plt.figure()
-    plt.title('Block Diagram')
-    pos = nx.spring_layout(H)
-    nx.draw(H, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
-    for i in tacts:
-        tact = i
-        nodes = tacts[i]
-        for item in nodes:
-            print(f"{tact}: {item}")
-    print('\n\n')
-
-
+for line in to_print:
+    print(line)
 
     # print(f'Max: {max(block_numbers.values())}')
     # print('\n')
@@ -585,8 +613,8 @@ for i, option in enumerate(valid_options):
     # print('\n\n')
 
 
-if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
-    plt.show()
+# if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
+#     plt.show()
 """
 [[1, 0, 0],
 [1, 1, 1]]
