@@ -12,10 +12,10 @@ from pathlib import Path
 import os.path
 
 
-FILE_PATH = Path(__file__).resolve().parent 
-SIZE = 5
-DISPLAY_PARTIAL_TABLES = False
-DISPLAY_FULL_TABLE = False
+FILE_PATH = Path(__file__).resolve().parent
+SIZE = 4
+DISPLAY_PARTIAL_TABLES = True
+DISPLAY_FULL_TABLE = True
 FLOW = True
 FLOW_CHART_SHELL = True
 FLOW_CHART_TREE = True
@@ -53,8 +53,10 @@ def Cholesky_Decomposition(a) -> list[list[float]]:
 matrix = generate_pos_def_matrix(SIZE)
 matrix = np.array(matrix, dtype=np.float64)
 L: list[list[float]] = Cholesky_Decomposition(matrix.copy())
+
 L_np = np.array(L)
 Lt_np = L_np.transpose()
+
 
 original_matrix = np.dot(L_np, Lt_np)
 original_matrix = original_matrix
@@ -180,13 +182,13 @@ print("DataFrame created")
 # Zresetuj indeksy DataFrame
 df = df.reset_index(drop=True)
 
-# if DISPLAY_FULL_TABLE:
-#     pd.s_option('display.max_rows', None)
-#     pd.set_option('display.max_columns', None)
+if DISPLAY_FULL_TABLE:
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
 
 # Wydrukuj DataFrame
-# print('\n\n')
-# print(df)
+print('\n\n')
+print(df)
 
 dependencies_df = pd.DataFrame(columns=['From', 'To'])
 last_occurrence = {}
@@ -223,15 +225,15 @@ search_dep_end = time.time()
 print(f"Dependencies found. Time elapsed: {search_dep_end - search_dep_start} seconds")
 if not os.path.exists(f'{FILE_PATH}\\cholesky{SIZE}x{SIZE}.csv'):
     dependencies_df.to_csv(f'{FILE_PATH}\\cholesky{SIZE}x{SIZE}.csv')
-# print('\n\n')
-# print('Lista węzłów')
-# for i, row in df.iterrows():
-#     print(f'[{str(i).ljust(2, " ")}]', (row['i'], row['j'], row['k']), row['op'])
-# print('\n\n')
-# print("Lista łuków: ")
-# for _, row in dependencies_df.iterrows():
-#     if row['Type'] == 'Move data':
-#         print(row['From'], row['To'])
+print('\n\n')
+print('Lista węzłów')
+for i, row in df.iterrows():
+    print(f'[{str(i).ljust(2, " ")}]', (row['i'], row['j'], row['k']), row['op'])
+print('\n\n')
+print("Lista łuków: ")
+for _, row in dependencies_df.iterrows():
+    if row['Type'] == 'Move data':
+        print(row['From'], row['To'])
 print("Creating graph...")
 graph_start = time.time()
 if FLOW:
@@ -256,7 +258,7 @@ if FLOW:
         else:
             # Assign the node number as the maximum number from its predecessors plus one
             node_numbers[node] = max(node_numbers[predecessor] for predecessor in predecessors) + 1
-    
+
     graph_end = time.time()
     print(f"Graph created. Time elapsed: {graph_end - graph_start} seconds")
     dependencies_df['Order'] = dependencies_df['To'].map(node_numbers)
@@ -275,12 +277,12 @@ if FLOW:
     #     nx.draw_networkx(G, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
     #     for node, (x, y) in pos.items():
     #         plt.text(x, y - 0.05, str(node_numbers[node]), ha='center', va='top', bbox=dict(facecolor='white', alpha=0.5))
-    # if FLOW_CHART_TREE:
-    #     plt.figure()
-    #     plt.title('Cholesky Decomposition Flow Chart (Tree Layout))')
-    #     tree = nx.bfs_tree(G, source=topological_order[0])
-    #     pos = nx.spring_layout(tree)
-    #     nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
+    if FLOW_CHART_TREE:
+        plt.figure()
+        plt.title('Cholesky Decomposition Flow Chart (Tree Layout))')
+        tree = nx.bfs_tree(G, source=topological_order[0])
+        pos = nx.spring_layout(tree)
+        nx.draw(tree, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
 
 
 # def draw_x_arrows(z_val=None):
@@ -464,7 +466,7 @@ if FLOW:
 #     reset_button.on_clicked(reset)
 
 
-def get_Fs():
+def get_Fs2():
     D = [
         [1, 0, 0],
         [0, 1, 0],
@@ -479,7 +481,22 @@ def get_Fs():
     return Fs, Ans
 
 
-def is_valid(ans, ft):
+def get_Fs1():
+    D = [
+        [1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]]
+
+    Ans = [[0 for _ in range(3)]]
+    Fs = [[randint(-1, 1) for _ in range(3)]]
+    for pos, val in enumerate(Fs):
+        for i in range(len(D[0])):
+            for j in range(len(D)):
+                Ans[pos][i] += D[j][i] * val[i]
+    return Fs, Ans
+
+
+def is_valid_2(ans, ft):
     for i in range(3):
         sum_ = 0
         for j in range(2):
@@ -489,68 +506,90 @@ def is_valid(ans, ft):
     return True
 
 
-def get_random_valid():
+def get_random_valid_2():
     valid_options = []
     Ft = [1 for _ in range(3)]
     while True:
-        Fs, Ans = get_Fs()
-        if is_valid(Ans, Ft):
+        Fs, Ans = get_Fs2()
+        if is_valid_2(Ans, Ft):
             valid_options.append(Fs)
         if len(valid_options) >= 10:
             break
     return valid_options
+       
+
+def longest_simple_paths(graph, source, target):
+    longest_paths = []
+    longest_path_length = 0
+    for path in nx.all_simple_paths(graph, source=source, target=target):
+        if len(path) > longest_path_length:
+            longest_path_length = len(path)
+            longest_paths.clear()
+            longest_paths.append(path)
+        elif len(path) == longest_path_length:
+            longest_paths.append(path)
+    return longest_paths
 
 
 # valid_options = get_random_valid()
 print("Generating valid configurations...")
-valid_options = [
-    [[1, 0, 0], [1, 1, 1]],
-    [[1, 0, 1], [1, 1, -1]],
-    [[1, -1, 0], [1, -1, 1]],
-    [[1, 1, 1], [1, 1, -1]],
-    [[-1, -1, 1], [1, 1, 0]],
-    [[1, 0, -1], [1, 0, 0]],
-    [[0, 1, 1], [1, -1, -1]],
-    [[0, 1, -1], [1, -1, 1]],
-    [[-1, 0, 0], [1, 1, 0]],
-    [[1, 1, -1], [1, -1, 1]]]
+# valid_options = [
+#     [[1, 0, 0], [1, 1, 1]],
+#     [[1, 0, 1], [1, 1, -1]],
+#     [[1, -1, 0], [1, -1, 1]],
+#     [[1, 1, 1], [1, 1, -1]],
+#     [[-1, -1, 1], [1, 1, 0]],
+#     [[1, 0, -1], [1, 0, 0]],
+#     [[0, 1, 1], [1, -1, -1]],
+#     [[0, 1, -1], [1, -1, 1]],
+#     [[-1, 0, 0], [1, 1, 0]],
+#     [[1, 1, -1], [1, -1, 1]]]
 # valid_options = [[[1, 0, 1], [1, 1, -1]]] # dla tego poprawne?
-# valid_options = [[[-1, -1, 1], [1, 1, 0]]]
+valid_options =  [[[1, 1, -1], [1, -1, 1]]]
 final_results = []
 to_print = []
 for i, option in enumerate(valid_options):
-    # indexes = []
-    # block_used = {}
-    # invalid = False
-    # H = nx.DiGraph()
-    # to_print = []
+    indexes = []
+    block_used = {}
+    invalid = False
+    H = nx.DiGraph()
+    start = None
+    end = None
     # to_print.append("Lista łuków dla bloków:")
-    # # print("Lista łuków dla bloków:")
-    # for _, row in dependencies_df.iterrows():
-    #     if row['Type'] == 'Move data':
-    #         x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
-    #         x2 = (row['To'][0] * option[0][0] + row['To'][1] * option[0][1] + row['To'][2] * option[0][2])
+    # print("Lista łuków dla bloków:")
+    for _, row in dependencies_df.iterrows():
+        if row['Type'] == 'Move data':
+            x1 = (row['From'][0] * option[0][0] + row['From'][1] * option[0][1] + row['From'][2] * option[0][2])
+            x2 = (row['To'][0] * option[0][0] + row['To'][1] * option[0][1] + row['To'][2] * option[0][2])
 
-    #         y1 = (row['From'][0] * option[1][0] + row['From'][1] * option[1][1] + row['From'][2] * option[1][2])
-    #         y2 = (row['To'][0] * option[1][0] + row['To'][1] * option[1][1] + row['To'][2] * option[1][2])
-    #         H.add_edge((x1, y1), (x2, y2))
-    #         x = abs(x1 - x2)
-    #         y = abs(y1 - y2)
-    #         if x > 1:
-    #             invalid = True
-    #             print("Invalid on x")
-    #         elif y > 1:
-    #             invalid = True
-    #             print("Invalid on y")
-    #         to_print.append(f"{(x1, y1)} -> {(x2, y2)}")
-    # if invalid:
-    #     continue
+            y1 = (row['From'][0] * option[1][0] + row['From'][1] * option[1][1] + row['From'][2] * option[1][2])
+            y2 = (row['To'][0] * option[1][0] + row['To'][1] * option[1][1] + row['To'][2] * option[1][2])
+            H.add_edge((x1, y1), (x2, y2))
+            x = abs(x1 - x2)
+            y = abs(y1 - y2)
+            if start is None:
+                start = (x1, y1)
+            end = (x2, y2)
+            if x > 1:
+                invalid = True
+                print("Invalid on x")
+            elif y > 1:
+                invalid = True
+                print("Invalid on y")
+            # to_print.append(f"{(x1, y1)} -> {(x2, y2)}")
+    if invalid:
+        continue
+
+    undirected_H = H.to_undirected()
+    longest_path = len(longest_simple_paths(undirected_H, start, end)[0])
+
     tacts = {1: []}
     with alive_bar(len(topological_order)) as bar:
         for node in topological_order:
             x1 = (node[0] * option[0][0] + node[1] * option[0][1] + node[2] * option[0][2])
             y1 = (node[0] * option[1][0] + node[1] * option[1][1] + node[2] * option[1][2])
             node_coords = (x1, y1)
+            # node_coords = (x1)
             placed = False
             walk = 0
 
@@ -586,22 +625,24 @@ for i, option in enumerate(valid_options):
                             node_numbers[node] = loc_max + 1 + walk
             bar()
         final_results.append(tacts)
-        
-        to_print.append(f"Max for option {valid_options[i]}: {max(tacts.keys())}")
-        # plt.figure()
-        # plt.title('Block Diagram')
-        # pos = nx.spring_layout(H)
-        # nx.draw(H, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
-        # for i in tacts:
-        #     tact = i
-        #     nodes = tacts[i]
-        #     for item in nodes:
-        #         print(f"{tact}: {item}")
-        # print('\n\n')
+        # ok. mam longest path
+        tc = (max(tacts.keys()) + longest_path * 24)
+        ts = (tc / 320_000_000)
+        Lep = len(H.nodes)
+        Takty = max(tacts.keys())
+        to_print.append(f"Max for option {valid_options[i]}: {max(tacts.keys())}  " + f"{ts}s | {ts*1_000_000_000}ns")
+        plt.figure()
+        plt.title('Block Diagram')
+        pos = nx.spring_layout(H)
+        nx.draw(H, pos, with_labels=True, font_weight='bold', node_size=700, node_color='lightblue')
 
 for line in to_print:
     print(line)
 
+for option in final_results:
+    for item in option:
+        print(f"{item}: {option[item]}")
+    print('\n\n')
     # print(f'Max: {max(block_numbers.values())}')
     # print('\n')
     # print('\n')
@@ -613,8 +654,8 @@ for line in to_print:
     # print('\n\n')
 
 
-# if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
-#     plt.show()
+if PLOT or FLOW_CHART_SHELL or FLOW_CHART_TREE:
+    plt.show()
 """
 [[1, 0, 0],
 [1, 1, 1]]
